@@ -15,5 +15,10 @@ namespace RotaDasTapas.Services
         {
             return _tapasRepository.GetAllTapas();
         }
+
+        public Tapa GetTapaByName(string name)
+        {
+            return _tapasRepository.GetTapaByName(name);
+        }
     }
 }

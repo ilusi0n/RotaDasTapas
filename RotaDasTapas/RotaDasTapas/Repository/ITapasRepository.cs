@@ -6,5 +6,6 @@ namespace RotaDasTapas.Repository
     public interface ITapasRepository
     {
         IEnumerable<Tapa> GetAllTapas();
+        Tapa GetTapaByName(string name);
     }
 }
