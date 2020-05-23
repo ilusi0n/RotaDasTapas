@@ -23,6 +23,9 @@ namespace RotaDasTapas.Controllers
             _tapasService = tapasService;
         }
 
+        /// <summary>
+        ///     Get all Tapas ordered by City, Name
+        /// </summary>
         [HttpGet]
         [Route("Tapas")]
         [ProducesResponseType(typeof(IEnumerable<Tapa>), StatusCodes.Status200OK)]
@@ -41,6 +44,10 @@ namespace RotaDasTapas.Controllers
             return Ok(_tapasService.GetAllTapas());
         }
 
+        /// <summary>
+        ///     Get a Tapa by The name
+        ///     Returns not found if the tapa doesnt exist
+        /// </summary>
         [HttpGet]
         [Route("TapaByName")]
         [ProducesResponseType(typeof(Tapa), StatusCodes.Status200OK)]
@@ -61,6 +68,10 @@ namespace RotaDasTapas.Controllers
             return Ok(result);
         }
         
+        /// <summary>
+        ///     Get all Tapas ordered by name from that city
+        ///     Returns an empty list if there isn't any
+        /// </summary>
         [HttpGet]
         [Route("TapasByCity")]
         [ProducesResponseType(typeof(IEnumerable<Tapa>), StatusCodes.Status200OK)]
