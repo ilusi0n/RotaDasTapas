@@ -14,7 +14,8 @@ namespace RotaDasTapas.Unit.Tests.Mocks
                     Address = "address",
                     Description = "description",
                     Name = "name",
-                    Title = "title"
+                    Title = "title",
+                    City = "Lisboa"
                 }
             };
         }

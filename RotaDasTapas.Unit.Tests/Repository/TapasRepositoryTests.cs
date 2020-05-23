@@ -1,3 +1,5 @@
+using System.Linq;
+using System.Runtime.CompilerServices;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using RotaDasTapas.Repository;
 
@@ -22,6 +24,7 @@ namespace RotaDasTapas.Unit.Tests.Repository
 
             //Assert
             Assert.IsNotNull(result);
+            Assert.IsTrue(result.Any());
         }
         
         [TestMethod]
@@ -39,7 +42,7 @@ namespace RotaDasTapas.Unit.Tests.Repository
         }
         
         [TestMethod]
-        public void GetTapaByname_InvalidName_ReturnNull()
+        public void GetTapaByName_InvalidName_ReturnNull()
         {
             //Arrange
             var name = "fake";
@@ -49,6 +52,37 @@ namespace RotaDasTapas.Unit.Tests.Repository
 
             //Assert
             Assert.IsNull(result);
+        }
+        
+        [TestMethod]
+        public void GetTapaByCity_ValidCity_ReturnListOfTapas()
+        {
+            //Arrange
+            var city = "Lisboa";
+            
+            //Act
+            var result = _tapasRepository.GetTapasByCity(city);
+
+            //Assert
+            Assert.IsNotNull(result);
+            foreach (var res in result)
+            {
+                Assert.AreEqual(city,res.City);
+            }
+        }
+        
+        [TestMethod]
+        public void GetTapaByCity_CityDoesntExist_ReturnEmptyList()
+        {
+            //Arrange
+            var city = "fake";
+            
+            //Act
+            var result = _tapasRepository.GetTapasByCity(city);
+
+            //Assert
+            Assert.IsNotNull(result);
+            Assert.AreEqual(0,result.Count());
         }
     }
 }

@@ -1,4 +1,6 @@
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Net;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -115,6 +117,57 @@ namespace RotaDasTapas.Unit.Tests.Controllers
             Assert.AreEqual((int) HttpStatusCode.NotFound, result.StatusCode);
             Assert.AreEqual(HttpStatusCode.NotFound.ToString(), result.StatusDescription);
             Assert.AreEqual(ErrorConstants.NotFound, result.Message);
+        }
+        
+        [TestMethod]
+        public void GetTapaByCity_ValidCity_ShouldReturnOk()
+        {
+            //Arrange
+            var headers = new RotaDasTapasHeaders
+            {
+                ApiKey = "fakekey"
+            };
+            var rotaDasTapasByCityRequest = new RotaDasTapasByCityRequest()
+            {
+                City = "Lisboa"
+            };
+            var tapa = TapasRepositoryMocks.GetListOfTapasSingleOneWithAllFields();
+            _mockTapasService.Setup(d => d.GetTapaByCity(rotaDasTapasByCityRequest.City)).Returns(tapa);
+
+            //Act
+            var response = _rotaDasTapasController.GetTapasByCity(headers, rotaDasTapasByCityRequest) as ObjectResult;
+            var result = response.Value as IEnumerable<Tapa>;
+
+            //Assert
+            Assert.IsNotNull(result);
+            foreach (var res in result)
+            {
+                Assert.AreEqual(rotaDasTapasByCityRequest.City,res.City);
+            }
+        }
+        
+        [TestMethod]
+        public void GetTapaByCity_CityDoesntExist_ShouldReturnOkEmptyList()
+        {
+            //Arrange
+            var headers = new RotaDasTapasHeaders
+            {
+                ApiKey = "fakekey"
+            };
+            var rotaDasTapasByCityRequest = new RotaDasTapasByCityRequest()
+            {
+                City = "fake"
+            };
+            var tapa = new List<Tapa>();
+            _mockTapasService.Setup(d => d.GetTapaByCity(rotaDasTapasByCityRequest.City)).Returns(tapa);
+
+            //Act
+            var response = _rotaDasTapasController.GetTapasByCity(headers, rotaDasTapasByCityRequest) as ObjectResult;
+            var result = response.Value as IEnumerable<Tapa>;
+
+            //Assert
+            Assert.IsNotNull(result);
+            Assert.IsTrue(!result.Any());
         }
     }
 }

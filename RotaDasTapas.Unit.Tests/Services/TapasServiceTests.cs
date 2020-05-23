@@ -51,6 +51,22 @@ namespace RotaDasTapas.Unit.Tests.Services
             //Assert
             AssertTests(expectedTapa, result);
         }
+        
+        [TestMethod]
+        public void GetTapaByCity_ValidRequest_ReturnsOk()
+        {
+            //Arrange
+            var city = "Lisboa";
+            var expectedTapa = TapasRepositoryMocks.GetListOfTapasSingleOneWithAllFields();
+
+            _tapasRepository.Setup(d => d.GetTapasByCity(city)).Returns(expectedTapa);
+
+            //Act
+            var result = _tapasService.GetTapaByCity(city);
+
+            //Assert
+            AssertTests(expectedTapa, result);
+        }
 
         private void AssertTests(IEnumerable<Tapa> expected, IEnumerable<Tapa> result)
         {

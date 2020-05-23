@@ -91,5 +91,27 @@ namespace RotaDasTapas.Unit.Tests.Filters
             //Assert
             Assert.IsNull(result);
         }
+        
+        [TestMethod]
+        public void OnAuthorization_NoKey_VoidResult()
+        {
+            //Arrange
+            _mockSearchConfiguration
+                .Setup(mock => mock.Value)
+                .Returns(
+                    new RotaDasTapasConfiguration()
+                    {
+                        ApiKey = null
+                    }
+                );
+            var filter = new AuthorizationFilterAttribute(_mockSearchConfiguration.Object);
+
+            //Act
+            filter.OnAuthorization(_context);
+            var result = _context.Result;
+
+            //Assert
+            Assert.IsNull(result);
+        }
     }
 }
