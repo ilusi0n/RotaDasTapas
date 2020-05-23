@@ -36,6 +36,22 @@ namespace RotaDasTapas.Unit.Tests.Services
             AssertTests(expectedListTapas, result);
         }
 
+        [TestMethod]
+        public void GetTapaByName_ValidRequest_ReturnsOk()
+        {
+            //Arrange
+            var name = "name";
+            var expectedTapa = TapasRepositoryMocks.GetGetTapaAllFields();
+
+            _tapasRepository.Setup(d => d.GetTapaByName(name)).Returns(expectedTapa);
+
+            //Act
+            var result = _tapasService.GetTapaByName(name);
+
+            //Assert
+            AssertTests(expectedTapa, result);
+        }
+
         private void AssertTests(IEnumerable<Tapa> expected, IEnumerable<Tapa> result)
         {
             var resultList = result.ToList();
@@ -50,6 +66,15 @@ namespace RotaDasTapas.Unit.Tests.Services
                 Assert.AreEqual(exp.Title, resultList[nExpect].Title);
                 nExpect++;
             }
+        }
+
+        private void AssertTests(Tapa expected, Tapa result)
+        {
+            Assert.IsNotNull(result);
+            Assert.AreEqual(expected.Address, result.Address);
+            Assert.AreEqual(expected.Description, result.Description);
+            Assert.AreEqual(expected.Name, result.Name);
+            Assert.AreEqual(expected.Title, result.Title);
         }
     }
 }

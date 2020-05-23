@@ -18,5 +18,17 @@ namespace RotaDasTapas.Unit.Tests.Mocks
                 }
             };
         }
+
+        public static Tapa GetGetTapaAllFields()
+        {
+            return
+                new Tapa()
+                {
+                    Address = "address",
+                    Description = "description",
+                    Name = "name",
+                    Title = "title"
+                };
+        }
     }
 }
