@@ -20,7 +20,7 @@ namespace RotaDasTapas.Models
         public string Description { get; set; }
         
         /// <summary>
-        ///     Description of the tapa
+        ///     City of where Tapa is located
         /// </summary>
         public string City { get; set; }
     }
