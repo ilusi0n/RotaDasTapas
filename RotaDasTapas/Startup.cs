@@ -5,6 +5,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
+using RotaDasTapas.Models.Configuration;
 using RotaDasTapas.Repository;
 using RotaDasTapas.Services;
 
@@ -19,6 +20,7 @@ namespace RotaDasTapas
         }
 
         public IConfiguration Configuration { get; }
+        private static RotaDasTapasConfiguration _rotaDasTapasConfiguration;
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
@@ -28,8 +30,9 @@ namespace RotaDasTapas
             services.AddScoped<ITapasRepository, TapasRepository>();
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "Rota das Tapas API", Version = "v1" });
+                c.SwaggerDoc("v1", new OpenApiInfo {Title = "Rota das Tapas API", Version = "v1"});
             });
+            SetupRotaDasTapasOptions(services, Configuration);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -39,16 +42,19 @@ namespace RotaDasTapas
             {
                 app.UseDeveloperExceptionPage();
             }
-            
+
             app.UseSwagger();
-            app.UseSwaggerUI(c =>
-            {
-                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Rota das Tapas API");
-            });
+            app.UseSwaggerUI(c => { c.SwaggerEndpoint("/swagger/v1/swagger.json", "Rota das Tapas API"); });
             app.UseHttpsRedirection();
             app.UseRouting();
             app.UseAuthorization();
             app.UseEndpoints(endpoints => { endpoints.MapControllers(); });
+        }
+
+        private static void SetupRotaDasTapasOptions(IServiceCollection services, IConfiguration config)
+        {
+            services.Configure<RotaDasTapasConfiguration>(config.GetSection("RotaDasTapasConfiguration"));
+            _rotaDasTapasConfiguration = config.GetSection("RotaDasTapasConfiguration").Get<RotaDasTapasConfiguration>();
         }
     }
 }

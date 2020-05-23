@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using RotaDasTapas.Constants;
 using RotaDasTapas.Errors;
+using RotaDasTapas.Filters;
 using RotaDasTapas.Models;
 using RotaDasTapas.Models.Request;
 using RotaDasTapas.Services;
@@ -24,13 +25,17 @@ namespace RotaDasTapas.Controllers
         [Route("Tapas")]
         [ProducesResponseType(typeof(IEnumerable<Tapa>), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(InternalServerError), StatusCodes.Status500InternalServerError)]
-        public IActionResult GetTapas()
+        [ProducesResponseType(typeof(UnauthorizedError), StatusCodes.Status401Unauthorized)]
+        [TypeFilter(typeof(AuthorizationFilterAttribute))]
+        public IActionResult GetTapas(
+            [FromHeader] RotaDasTapasHeaders rotaDasTapasHeaders)
         {
             var result = _tapasService.GetAllTapas();
             if (result == null)
             {
                 return new ObjectResult(new InternalServerError(ErrorConstants.InternalError));
             }
+
             return Ok(_tapasService.GetAllTapas());
         }
 
@@ -39,13 +44,18 @@ namespace RotaDasTapas.Controllers
         [ProducesResponseType(typeof(Tapa), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(NotFoundError), StatusCodes.Status404NotFound)]
         [ProducesResponseType(typeof(InternalServerError), StatusCodes.Status500InternalServerError)]
-        public IActionResult GetTapaByName([FromQuery] RotaDasTapasRequest rotaDasTapasRequest)
+        [ProducesResponseType(typeof(UnauthorizedError), StatusCodes.Status401Unauthorized)]
+        [TypeFilter(typeof(AuthorizationFilterAttribute))]
+        public IActionResult GetTapaByName(
+            [FromHeader] RotaDasTapasHeaders rotaDasTapasHeaders,
+            [FromQuery] RotaDasTapasRequest rotaDasTapasRequest)
         {
             var result = _tapasService.GetTapaByName(rotaDasTapasRequest.Name);
             if (result == null)
             {
                 return NotFound(new NotFoundError(ErrorConstants.NotFound));
             }
+
             return Ok(result);
         }
     }

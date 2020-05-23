@@ -6,7 +6,7 @@
 *.user
 *.userosscache
 *.sln.docstates
-*SearchCompositeService/appsettings.development.json
+*RotaDasTapas/appsettings.development.json
 
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs

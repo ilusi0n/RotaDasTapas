@@ -18,6 +18,7 @@ namespace RotaDasTapas.Unit.Tests.Controllers
     {
         private readonly RotaDasTapasController _rotaDasTapasController;
         private readonly Mock<ITapasService> _mockTapasService;
+
         public RotasDasTapasControllerTests()
         {
             _mockTapasService = new Mock<ITapasService>();
@@ -28,76 +29,92 @@ namespace RotaDasTapas.Unit.Tests.Controllers
         public void GetTapas_ValidRequest_ShouldReturnOk()
         {
             //Arrange
+            var headers = new RotaDasTapasHeaders
+            {
+                ApiKey = "fakekey"
+            };
             var listTapas = TapasRepositoryMocks.GetListOfTapasSingleOneWithAllFields();
             _mockTapasService.Setup(d => d.GetAllTapas()).Returns(listTapas);
-            
+
             //Act
-            var response = _rotaDasTapasController.GetTapas() as OkObjectResult;
+            var response = _rotaDasTapasController.GetTapas(headers) as OkObjectResult;
             var result = response.Value as IEnumerable<Tapa>;
 
             //Assert
             Assert.IsNotNull(result);
-            Assert.AreEqual(listTapas,result);
+            Assert.AreEqual(listTapas, result);
         }
-        
+
         [TestMethod]
         public void GetTapas_ListTapasNull_ShouldReturnInternalServerError()
         {
             //Arrange
+            var headers = new RotaDasTapasHeaders
+            {
+                ApiKey = "fakekey"
+            };
             IEnumerable<Tapa> listTapas = null;
             _mockTapasService.Setup(d => d.GetAllTapas()).Returns(listTapas);
-            
+
             //Act
-            var response = _rotaDasTapasController.GetTapas() as ObjectResult;
+            var response = _rotaDasTapasController.GetTapas(headers) as ObjectResult;
             var result = response.Value as InternalServerError;
 
             //Assert
             Assert.IsNotNull(result);
-            Assert.AreEqual((int)HttpStatusCode.InternalServerError,result.StatusCode);
-            Assert.AreEqual(HttpStatusCode.InternalServerError.ToString(),result.StatusDescription);
-            Assert.AreEqual(ErrorConstants.InternalError,result.Message);
+            Assert.AreEqual((int) HttpStatusCode.InternalServerError, result.StatusCode);
+            Assert.AreEqual(HttpStatusCode.InternalServerError.ToString(), result.StatusDescription);
+            Assert.AreEqual(ErrorConstants.InternalError, result.Message);
         }
-        
+
         [TestMethod]
         public void GetTapaByName_ValidRequest_ShouldReturnOk()
         {
             //Arrange
+            var headers = new RotaDasTapasHeaders
+            {
+                ApiKey = "fakekey"
+            };
             var rotaDasTapasRequest = new RotaDasTapasRequest
             {
                 Name = "name"
             };
             var tapa = TapasRepositoryMocks.GetGetTapaAllFields();
             _mockTapasService.Setup(d => d.GetTapaByName(rotaDasTapasRequest.Name)).Returns(tapa);
-            
+
             //Act
-            var response = _rotaDasTapasController.GetTapaByName(rotaDasTapasRequest) as OkObjectResult;
+            var response = _rotaDasTapasController.GetTapaByName(headers, rotaDasTapasRequest) as OkObjectResult;
             var result = response.Value as Tapa;
 
             //Assert
             Assert.IsNotNull(result);
-            Assert.AreEqual(rotaDasTapasRequest.Name,result.Name);
+            Assert.AreEqual(rotaDasTapasRequest.Name, result.Name);
         }
-        
+
         [TestMethod]
         public void GetTapaByName_FakeName_ShouldReturnNotFoundError()
         {
             //Arrange
+            var headers = new RotaDasTapasHeaders
+            {
+                ApiKey = "fakekey"
+            };
             var rotaDasTapasRequest = new RotaDasTapasRequest
             {
                 Name = "fake"
             };
             Tapa tapa = null;
             _mockTapasService.Setup(d => d.GetTapaByName(rotaDasTapasRequest.Name)).Returns(tapa);
-            
+
             //Act
-            var response = _rotaDasTapasController.GetTapaByName(rotaDasTapasRequest) as ObjectResult;
+            var response = _rotaDasTapasController.GetTapaByName(headers, rotaDasTapasRequest) as ObjectResult;
             var result = response.Value as NotFoundError;
 
             //Assert
             Assert.IsNotNull(result);
-            Assert.AreEqual((int)HttpStatusCode.NotFound,result.StatusCode);
-            Assert.AreEqual(HttpStatusCode.NotFound.ToString(),result.StatusDescription);
-            Assert.AreEqual(ErrorConstants.NotFound,result.Message);
+            Assert.AreEqual((int) HttpStatusCode.NotFound, result.StatusCode);
+            Assert.AreEqual(HttpStatusCode.NotFound.ToString(), result.StatusDescription);
+            Assert.AreEqual(ErrorConstants.NotFound, result.Message);
         }
     }
 }
