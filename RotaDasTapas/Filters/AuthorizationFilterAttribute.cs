@@ -11,7 +11,7 @@ namespace RotaDasTapas.Filters
 {
     public class AuthorizationFilterAttribute : Attribute, IAuthorizationFilter
     {
-        private IOptions<RotaDasTapasConfiguration> _rotaDasTapasConfiguration;
+        private readonly IOptions<RotaDasTapasConfiguration> _rotaDasTapasConfiguration;
         public AuthorizationFilterAttribute(IOptions<RotaDasTapasConfiguration> rotaDasTapasConfiguration)
         {
             _rotaDasTapasConfiguration = rotaDasTapasConfiguration;
@@ -21,14 +21,8 @@ namespace RotaDasTapas.Filters
             var apiKey = context.HttpContext.Request.Headers["ApiKey"];
             var herokuKey = Environment.GetEnvironmentVariable("apikey") ?? _rotaDasTapasConfiguration.Value.ApiKey;
 
-            if (apiKey.Any())
-            {
-                if (!apiKey.Equals(herokuKey))
-                {
-                    context.Result = new ObjectResult(new UnauthorizedError(ErrorConstants.UnauthorizedError));
-                }
-            }
-            else
+            if (!apiKey.Any()) return;
+            if (!apiKey.Equals(herokuKey))
             {
                 context.Result = new ObjectResult(new UnauthorizedError(ErrorConstants.UnauthorizedError));
             }

@@ -5,7 +5,7 @@ namespace RotaDasTapas.Errors
     public class UnauthorizedError: ApiError
     {
         public UnauthorizedError(string message)
-            : base((int) HttpStatusCode.Forbidden, HttpStatusCode.Forbidden.ToString(), message)
+            : base((int) HttpStatusCode.Unauthorized, HttpStatusCode.Unauthorized.ToString(), message)
         {
         }
     }

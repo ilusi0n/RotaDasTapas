@@ -23,7 +23,6 @@ namespace RotaDasTapas
         }
 
         public IConfiguration Configuration { get; }
-        private static RotaDasTapasConfiguration _rotaDasTapasConfiguration;
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
@@ -78,7 +77,6 @@ namespace RotaDasTapas
         private static void SetupRotaDasTapasOptions(IServiceCollection services, IConfiguration config)
         {
             services.Configure<RotaDasTapasConfiguration>(config.GetSection("RotaDasTapasConfiguration"));
-            _rotaDasTapasConfiguration = config.GetSection("RotaDasTapasConfiguration").Get<RotaDasTapasConfiguration>();
         }
     }
 }

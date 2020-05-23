@@ -1,8 +1,10 @@
 using System.ComponentModel.DataAnnotations;
+using System.Diagnostics.CodeAnalysis;
 using Microsoft.AspNetCore.Mvc;
 
 namespace RotaDasTapas.Models.Request
 {
+    [ExcludeFromCodeCoverage]
     public class RotaDasTapasHeaders
     {
         /// <summary>
