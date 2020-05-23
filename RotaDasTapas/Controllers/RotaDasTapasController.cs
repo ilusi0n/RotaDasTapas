@@ -10,8 +10,10 @@ using RotaDasTapas.Services;
 
 namespace RotaDasTapas.Controllers
 {
+    //[ApiVersion("1.0")]
     [ApiController]
-    [Route("[controller]")]
+    //[Route("api/v{version:apiVersion}/[Controller]")]
+    [Route("api/v1/[Controller]")]
     public class RotaDasTapasController : ControllerBase
     {
         private readonly ITapasService _tapasService;

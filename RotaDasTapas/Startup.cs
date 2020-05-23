@@ -1,4 +1,7 @@
+using System;
 using System.Diagnostics.CodeAnalysis;
+using System.IO;
+using System.Reflection;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -30,8 +33,24 @@ namespace RotaDasTapas
             services.AddScoped<ITapasRepository, TapasRepository>();
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo {Title = "Rota das Tapas API", Version = "v1"});
+                c.SwaggerDoc("v1", new OpenApiInfo
+                {
+                    Version = "v1",
+                    Title = "Rota das Tapas",
+                    Description = "A simple API for Rota das Tapas",
+                    Contact = new OpenApiContact
+                    {
+                        Name = "Hugo Cabrita",
+                        Email = string.Empty,
+                        Url = new Uri("https://github.com/ilusi0n"),
+                    },
+                });
+                //activate xml comments in swagger
+                var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+                var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+                c.IncludeXmlComments(xmlPath);
             });
+            // Set the comments path for the Swagger JSON and UI.
             SetupRotaDasTapasOptions(services, Configuration);
         }
 
@@ -43,8 +62,13 @@ namespace RotaDasTapas
                 app.UseDeveloperExceptionPage();
             }
 
+            app.UseStaticFiles();
             app.UseSwagger();
-            app.UseSwaggerUI(c => { c.SwaggerEndpoint("/swagger/v1/swagger.json", "Rota das Tapas API"); });
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Rota das Tapas API");
+                c.RoutePrefix = string.Empty;
+            });
             app.UseHttpsRedirection();
             app.UseRouting();
             app.UseAuthorization();
