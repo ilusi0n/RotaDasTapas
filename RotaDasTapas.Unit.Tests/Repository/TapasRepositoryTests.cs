@@ -28,7 +28,7 @@ namespace RotaDasTapas.Unit.Tests.Repository
         public void GetTapaByname_ValidName_ReturnValidModel()
         {
             //Arrange
-            var name = "Esquina";
+            var name = "Name1";
             
             //Act
             var result = _tapasRepository.GetTapaByName(name);
@@ -39,7 +39,7 @@ namespace RotaDasTapas.Unit.Tests.Repository
         }
         
         [TestMethod]
-        public void GetTapaByname_InvalidName_ReturnValidModel()
+        public void GetTapaByname_InvalidName_ReturnNull()
         {
             //Arrange
             var name = "fake";

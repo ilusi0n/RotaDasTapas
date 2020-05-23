@@ -7,5 +7,6 @@ namespace RotaDasTapas.Repository
     {
         IEnumerable<Tapa> GetAllTapas();
         Tapa GetTapaByName(string name);
+        IEnumerable<Tapa> GetTapasByCity(string city);
     }
 }

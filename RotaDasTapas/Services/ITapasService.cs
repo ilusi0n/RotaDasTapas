@@ -7,5 +7,6 @@ namespace RotaDasTapas.Services
     {
         IEnumerable<Tapa> GetAllTapas();
         Tapa GetTapaByName(string name);
+        IEnumerable<Tapa> GetTapaByCity(string city);
     }
 }

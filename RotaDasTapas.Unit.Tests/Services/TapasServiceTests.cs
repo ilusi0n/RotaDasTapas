@@ -60,11 +60,7 @@ namespace RotaDasTapas.Unit.Tests.Services
             var nExpect = 0;
             foreach (var exp in expected)
             {
-                Assert.AreEqual(exp.Address, resultList[nExpect].Address);
-                Assert.AreEqual(exp.Description, resultList[nExpect].Description);
-                Assert.AreEqual(exp.Name, resultList[nExpect].Name);
-                Assert.AreEqual(exp.Title, resultList[nExpect].Title);
-                nExpect++;
+                AssertTests(exp,resultList[nExpect++]);
             }
         }
 
@@ -75,6 +71,7 @@ namespace RotaDasTapas.Unit.Tests.Services
             Assert.AreEqual(expected.Description, result.Description);
             Assert.AreEqual(expected.Name, result.Name);
             Assert.AreEqual(expected.Title, result.Title);
+            Assert.AreEqual(expected.City, result.City);
         }
     }
 }

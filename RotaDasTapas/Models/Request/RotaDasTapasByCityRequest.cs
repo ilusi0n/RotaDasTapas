@@ -2,12 +2,12 @@ using System.ComponentModel.DataAnnotations;
 
 namespace RotaDasTapas.Models.Request
 {
-    public class RotaDasTapasRequest
+    public class RotaDasTapasByCityRequest
     {
         /// <summary>
-        ///     Name of the tapa
+        ///     City location of the tapa
         /// </summary>
         [Required]
-        public string Name { get; set; }
+        public string City { get; set; }
     }
 }

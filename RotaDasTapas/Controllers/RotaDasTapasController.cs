@@ -50,14 +50,29 @@ namespace RotaDasTapas.Controllers
         [TypeFilter(typeof(AuthorizationFilterAttribute))]
         public IActionResult GetTapaByName(
             [FromHeader] RotaDasTapasHeaders rotaDasTapasHeaders,
-            [FromQuery] RotaDasTapasRequest rotaDasTapasRequest)
+            [FromQuery] RotaDasTapasByNameRequest rotaDasTapasByNameRequest)
         {
-            var result = _tapasService.GetTapaByName(rotaDasTapasRequest.Name);
+            var result = _tapasService.GetTapaByName(rotaDasTapasByNameRequest.Name);
             if (result == null)
             {
                 return NotFound(new NotFoundError(ErrorConstants.NotFound));
             }
 
+            return Ok(result);
+        }
+        
+        [HttpGet]
+        [Route("TapasByCity")]
+        [ProducesResponseType(typeof(IEnumerable<Tapa>), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(NotFoundError), StatusCodes.Status404NotFound)]
+        [ProducesResponseType(typeof(InternalServerError), StatusCodes.Status500InternalServerError)]
+        [ProducesResponseType(typeof(UnauthorizedError), StatusCodes.Status401Unauthorized)]
+        [TypeFilter(typeof(AuthorizationFilterAttribute))]
+        public IActionResult GetTapasByCity(
+            [FromHeader] RotaDasTapasHeaders rotaDasTapasHeaders,
+            [FromQuery] RotaDasTapasByCityRequest rotaDasTapasByCityRequest)
+        {
+            var result = _tapasService.GetTapaByCity(rotaDasTapasByCityRequest.City);
             return Ok(result);
         }
     }

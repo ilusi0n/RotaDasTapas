@@ -11,17 +11,23 @@ namespace RotaDasTapas.Repository
 
         public TapasRepository()
         {
-            _listTapas = TapasUtils.Init();
+            //_listTapas = TapasUtils.Init();
+            _listTapas = TapasUtils.InitMock();
         }
 
         public IEnumerable<Tapa> GetAllTapas()
         {
-            return _listTapas;
+            return _listTapas.OrderBy(tapa => tapa.City).ThenBy(tapa => tapa.Name);
         }
         
         public Tapa GetTapaByName(string name)
         {
             return _listTapas.FirstOrDefault(tapa => tapa.Name.Equals(name));
+        }
+
+        public IEnumerable<Tapa> GetTapasByCity(string city)
+        {
+            return _listTapas.Where(tapa => tapa.City.Equals(city)).OrderBy(tapa => tapa.Name);
         }
     }
 }

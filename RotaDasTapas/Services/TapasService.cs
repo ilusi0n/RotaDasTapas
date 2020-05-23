@@ -20,5 +20,10 @@ namespace RotaDasTapas.Services
         {
             return _tapasRepository.GetTapaByName(name);
         }
+
+        public IEnumerable<Tapa> GetTapaByCity(string city)
+        {
+            return _tapasRepository.GetTapasByCity(city);
+        }
     }
 }

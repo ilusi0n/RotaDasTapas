@@ -18,5 +18,10 @@ namespace RotaDasTapas.Models
         ///     Description of the tapa
         /// </summary>
         public string Description { get; set; }
+        
+        /// <summary>
+        ///     Description of the tapa
+        /// </summary>
+        public string City { get; set; }
     }
 }

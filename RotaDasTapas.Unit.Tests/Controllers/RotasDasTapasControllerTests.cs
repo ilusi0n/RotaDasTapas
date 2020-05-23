@@ -75,7 +75,7 @@ namespace RotaDasTapas.Unit.Tests.Controllers
             {
                 ApiKey = "fakekey"
             };
-            var rotaDasTapasRequest = new RotaDasTapasRequest
+            var rotaDasTapasRequest = new RotaDasTapasByNameRequest
             {
                 Name = "name"
             };
@@ -99,7 +99,7 @@ namespace RotaDasTapas.Unit.Tests.Controllers
             {
                 ApiKey = "fakekey"
             };
-            var rotaDasTapasRequest = new RotaDasTapasRequest
+            var rotaDasTapasRequest = new RotaDasTapasByNameRequest
             {
                 Name = "fake"
             };
