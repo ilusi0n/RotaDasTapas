@@ -25,7 +25,7 @@ jobs:
       - name: Generate coverage report
         run: |
           cd ./RotaDasTapas.Unit.Tests/
-          dotnet test /p:CollectCoverage=true /p:CoverletOutput=TestResults/ /p:CoverletOutputFormat=lcov
+          dotnet test /p:CollectCoverage=true /p:CoverletOutput=TestResults/ /p:ThresholdType=line /p:Threshold=100 /p:thresholdStat=total /p:CoverletOutputFormat=lcov
       - name: Publish coverage report to coveralls.io
         uses: coverallsapp/github-action@v1.0.1
         with:
