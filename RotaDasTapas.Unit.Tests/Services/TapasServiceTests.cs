@@ -48,6 +48,7 @@ namespace RotaDasTapas.Unit.Tests.Services
                 Assert.AreEqual(exp.Description, resultList[nExpect].Description);
                 Assert.AreEqual(exp.Name, resultList[nExpect].Name);
                 Assert.AreEqual(exp.Title, resultList[nExpect].Title);
+                nExpect++;
             }
         }
     }
