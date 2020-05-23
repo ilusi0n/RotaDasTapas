@@ -21,17 +21,13 @@ namespace RotaDasTapas.Unit.Tests.Controllers
         public void GetTapas_ValidRequest_ShouldReturnOk()
         {
             //Arrange
-            
             var listTapas = TapasRepositoryMocks.GetListOfTapasSingleOneWithAllFields();
-
             _mockTapasService.Setup(d => d.GetAllTapas()).Returns(listTapas);
             
             //Act
-
             var result = _rotaDasTapasController.GetTapas();
 
             //Assert
-            
             Assert.IsNotNull(result);
         }
     }

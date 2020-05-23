@@ -29,7 +29,7 @@ namespace RotaDasTapas.Controllers
             var result = _tapasService.GetAllTapas();
             if (result == null)
             {
-                return new ObjectResult(new NotFoundError(ErrorConstants.InternalError));
+                return new ObjectResult(new InternalServerError(ErrorConstants.InternalError));
             }
             return Ok(_tapasService.GetAllTapas());
         }
