@@ -79,26 +79,23 @@ namespace RotaDasTapas.Unit.Tests.Controllers
             {
                 ApiKey = "fakekey"
             };
-            var rotaDasTapasRequest = new RotaDasTapasByNameRequest
-            {
-                Name = "name"
-            };
+            const string name = "name";
             
             var tapasResponse = new TapasResponse()
             {
                 Tapas = TapasServiceMocks.GetGetTapaAllFields()
             };
-            _mockTapasService.Setup(d => d.GetTapaByName(rotaDasTapasRequest.Name)).Returns(tapasResponse);
+            _mockTapasService.Setup(d => d.GetTapaByName(name)).Returns(tapasResponse);
 
             //Act
-            var response = _rotaDasTapasController.GetTapaByName(headers, rotaDasTapasRequest) as OkObjectResult;
+            var response = _rotaDasTapasController.GetTapaByName(headers, name) as OkObjectResult;
             var result = response.Value as TapasResponse;
 
             //Assert
             Assert.IsNotNull(result);
             Assert.IsNotNull(result.Tapas);
             Assert.AreEqual(1,result.Tapas.Count());
-            Assert.AreEqual(rotaDasTapasRequest.Name, result.Tapas.First().Name);
+            Assert.AreEqual(name, result.Tapas.First().Name);
         }
 
         [TestMethod]
@@ -109,18 +106,15 @@ namespace RotaDasTapas.Unit.Tests.Controllers
             {
                 ApiKey = "fakekey"
             };
-            var rotaDasTapasRequest = new RotaDasTapasByNameRequest
-            {
-                Name = "fake"
-            };
+            const string name = "fake";
             var tapasResponse = new TapasResponse()
             {
                 Tapas = new List<Tapa>()
             };
-            _mockTapasService.Setup(d => d.GetTapaByName(rotaDasTapasRequest.Name)).Returns(tapasResponse);
+            _mockTapasService.Setup(d => d.GetTapaByName(name)).Returns(tapasResponse);
 
             //Act
-            var response = _rotaDasTapasController.GetTapaByName(headers, rotaDasTapasRequest) as ObjectResult;
+            var response = _rotaDasTapasController.GetTapaByName(headers, name) as ObjectResult;
             var result = response.Value as NotFoundError;
 
             //Assert
@@ -138,19 +132,16 @@ namespace RotaDasTapas.Unit.Tests.Controllers
             {
                 ApiKey = "fakekey"
             };
-            var rotaDasTapasByCityRequest = new RotaDasTapasByCityRequest()
-            {
-                City = "Lisboa"
-            };
             
+            const string city = "Lisboa";
             var tapasResponse = new TapasResponse()
             {
                 Tapas = TapasServiceMocks.GetListOfTapasSingleOneWithAllFields()
             };
-            _mockTapasService.Setup(d => d.GetTapaByCity(rotaDasTapasByCityRequest.City)).Returns(tapasResponse);
+            _mockTapasService.Setup(d => d.GetTapaByCity(city)).Returns(tapasResponse);
 
             //Act
-            var response = _rotaDasTapasController.GetTapasByCity(headers, rotaDasTapasByCityRequest) as ObjectResult;
+            var response = _rotaDasTapasController.GetTapasByCity(headers, city) as ObjectResult;
             var result = response.Value as TapasResponse;
 
             //Assert
@@ -158,7 +149,7 @@ namespace RotaDasTapas.Unit.Tests.Controllers
             Assert.IsNotNull(result.Tapas);
             foreach (var res in result.Tapas)
             {
-                Assert.AreEqual(rotaDasTapasByCityRequest.City,res.City);
+                Assert.AreEqual(city,res.City);
             }
         }
         
@@ -170,19 +161,16 @@ namespace RotaDasTapas.Unit.Tests.Controllers
             {
                 ApiKey = "fakekey"
             };
-            var rotaDasTapasByCityRequest = new RotaDasTapasByCityRequest()
-            {
-                City = "fake"
-            };
-            
+            const string city = "fake";
+
             var tapasResponse = new TapasResponse()
             {
                 Tapas = new List<Tapa>()
             };
-            _mockTapasService.Setup(d => d.GetTapaByCity(rotaDasTapasByCityRequest.City)).Returns(tapasResponse);
+            _mockTapasService.Setup(d => d.GetTapaByCity(city)).Returns(tapasResponse);
 
             //Act
-            var response = _rotaDasTapasController.GetTapasByCity(headers, rotaDasTapasByCityRequest) as ObjectResult;
+            var response = _rotaDasTapasController.GetTapasByCity(headers, city) as ObjectResult;
             var result = response.Value as TapasResponse;
 
             //Assert

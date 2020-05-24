@@ -49,7 +49,7 @@ namespace RotaDasTapas.Controllers
         ///     Returns not found if the tapa doesnt exist
         /// </summary>
         [HttpGet]
-        [Route("TapaByName")]
+        [Route("Tapa/Name/{name}")]
         [ProducesResponseType(typeof(TapasResponse), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(NotFoundError), StatusCodes.Status404NotFound)]
         [ProducesResponseType(typeof(InternalServerError), StatusCodes.Status500InternalServerError)]
@@ -57,9 +57,9 @@ namespace RotaDasTapas.Controllers
         [TypeFilter(typeof(AuthorizationFilterAttribute))]
         public IActionResult GetTapaByName(
             [FromHeader] RotaDasTapasHeaders rotaDasTapasHeaders,
-            [FromQuery] RotaDasTapasByNameRequest rotaDasTapasByNameRequest)
+            string name)
         {
-            var result = _tapasService.GetTapaByName(rotaDasTapasByNameRequest.Name);
+            var result = _tapasService.GetTapaByName(name);
             if (!result.Tapas.Any())
             {
                 return NotFound(new NotFoundError(ErrorConstants.NotFound));
@@ -67,13 +67,13 @@ namespace RotaDasTapas.Controllers
 
             return Ok(result);
         }
-        
+
         /// <summary>
         ///     Get all Tapas ordered by name from that city
         ///     Returns an empty list if there isn't any
         /// </summary>
         [HttpGet]
-        [Route("TapasByCity")]
+        [Route("Tapa/City/{city}")]
         [ProducesResponseType(typeof(TapasResponse), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(NotFoundError), StatusCodes.Status404NotFound)]
         [ProducesResponseType(typeof(InternalServerError), StatusCodes.Status500InternalServerError)]
@@ -81,9 +81,9 @@ namespace RotaDasTapas.Controllers
         [TypeFilter(typeof(AuthorizationFilterAttribute))]
         public IActionResult GetTapasByCity(
             [FromHeader] RotaDasTapasHeaders rotaDasTapasHeaders,
-            [FromQuery] RotaDasTapasByCityRequest rotaDasTapasByCityRequest)
+            string city)
         {
-            var result = _tapasService.GetTapaByCity(rotaDasTapasByCityRequest.City);
+            var result = _tapasService.GetTapaByCity(city);
             return Ok(result);
         }
     }
