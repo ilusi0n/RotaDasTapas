@@ -29,7 +29,7 @@ namespace RotaDasTapas.Utils
                 },
                 new TapaDto
                 {
-                    Name = "Name1",
+                    Name = "Name2",
                     Title = "Title1",
                     Address = "Address",
                     Description = "Description1",
@@ -37,7 +37,7 @@ namespace RotaDasTapas.Utils
                 },
                 new TapaDto
                 {
-                    Name = "Name1",
+                    Name = "Name3",
                     Title = "Title1",
                     Address = "Address",
                     Description = "Description1",
