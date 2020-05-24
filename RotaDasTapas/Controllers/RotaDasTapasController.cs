@@ -24,7 +24,7 @@ namespace RotaDasTapas.Controllers
         }
 
         /// <summary>
-        ///     Get all Tapas ordered by City, Name
+        ///     Get all Tapas ordered by City, Name.
         /// </summary>
         [HttpGet]
         [Route("Tapas")]
@@ -45,8 +45,8 @@ namespace RotaDasTapas.Controllers
         }
 
         /// <summary>
-        ///     Get a Tapa by The name
-        ///     Returns not found if the tapa doesnt exist
+        ///     Get a Tapa by The name.
+        ///     Returns not found if the tapa doesnt exist.
         /// </summary>
         [HttpGet]
         [Route("Tapa/Name/{name}")]
@@ -69,8 +69,8 @@ namespace RotaDasTapas.Controllers
         }
 
         /// <summary>
-        ///     Get all Tapas ordered by name from that city
-        ///     Returns an empty list if there isn't any
+        ///     Get all Tapas ordered by name from that city.
+        ///     Returns an empty list if there isn't any.
         /// </summary>
         [HttpGet]
         [Route("Tapa/City/{city}")]

@@ -13,7 +13,7 @@ namespace RotaDasTapas.Utils
             {
                 new TapaDto
                 {
-                    Name = "Name1",
+                    Name = "ZName1",
                     Title = "Title1",
                     Address = "Address",
                     Description = "Description1",
