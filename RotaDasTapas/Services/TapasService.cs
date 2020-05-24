@@ -1,29 +1,35 @@
-using System.Collections.Generic;
+using System.Linq;
+using AutoMapper;
+using RotaDasTapas.Gateway;
 using RotaDasTapas.Models;
-using RotaDasTapas.Repository;
 
 namespace RotaDasTapas.Services
 {
     public class TapasService : ITapasService
     {
-        private readonly ITapasRepository _tapasRepository;
-        public TapasService(ITapasRepository tapasRepository)
+        private readonly ITapasGateway _tapasGateway;
+        private readonly IMapper _mapper;
+        public TapasService(ITapasGateway tapasGateway, IMapper mapper)
         {
-            _tapasRepository = tapasRepository;
+            _tapasGateway = tapasGateway;
+            _mapper = mapper;
         }
-        public IEnumerable<Tapa> GetAllTapas()
+        public TapasResponse GetAllTapas()
         {
-            return _tapasRepository.GetAllTapas();
-        }
-
-        public Tapa GetTapaByName(string name)
-        {
-            return _tapasRepository.GetTapaByName(name);
+            var result = _tapasGateway.GetAllTapas();
+            return _mapper.Map<TapasResponse>(result);
         }
 
-        public IEnumerable<Tapa> GetTapaByCity(string city)
+        public TapasResponse GetTapaByName(string name)
         {
-            return _tapasRepository.GetTapasByCity(city);
+            var result = _tapasGateway.GetTapaByName(name);
+            return _mapper.Map<TapasResponse>(result);
+        }
+
+        public TapasResponse GetTapaByCity(string city)
+        {
+            var result = _tapasGateway.GetTapasByCity(city);
+            return _mapper.Map<TapasResponse>(result);
         }
     }
 }

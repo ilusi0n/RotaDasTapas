@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+﻿using System.Linq;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using RotaDasTapas.Constants;
@@ -28,7 +28,7 @@ namespace RotaDasTapas.Controllers
         /// </summary>
         [HttpGet]
         [Route("Tapas")]
-        [ProducesResponseType(typeof(IEnumerable<Tapa>), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(TapasResponse), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(InternalServerError), StatusCodes.Status500InternalServerError)]
         [ProducesResponseType(typeof(UnauthorizedError), StatusCodes.Status401Unauthorized)]
         [TypeFilter(typeof(AuthorizationFilterAttribute))]
@@ -50,7 +50,7 @@ namespace RotaDasTapas.Controllers
         /// </summary>
         [HttpGet]
         [Route("TapaByName")]
-        [ProducesResponseType(typeof(Tapa), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(TapasResponse), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(NotFoundError), StatusCodes.Status404NotFound)]
         [ProducesResponseType(typeof(InternalServerError), StatusCodes.Status500InternalServerError)]
         [ProducesResponseType(typeof(UnauthorizedError), StatusCodes.Status401Unauthorized)]
@@ -60,7 +60,7 @@ namespace RotaDasTapas.Controllers
             [FromQuery] RotaDasTapasByNameRequest rotaDasTapasByNameRequest)
         {
             var result = _tapasService.GetTapaByName(rotaDasTapasByNameRequest.Name);
-            if (result == null)
+            if (!result.Tapas.Any())
             {
                 return NotFound(new NotFoundError(ErrorConstants.NotFound));
             }
@@ -74,7 +74,7 @@ namespace RotaDasTapas.Controllers
         /// </summary>
         [HttpGet]
         [Route("TapasByCity")]
-        [ProducesResponseType(typeof(IEnumerable<Tapa>), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(TapasResponse), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(NotFoundError), StatusCodes.Status404NotFound)]
         [ProducesResponseType(typeof(InternalServerError), StatusCodes.Status500InternalServerError)]
         [ProducesResponseType(typeof(UnauthorizedError), StatusCodes.Status401Unauthorized)]

@@ -1,15 +1,16 @@
 using System.Collections.Generic;
 using RotaDasTapas.Models;
+using RotaDasTapas.Models.Gateway;
 
 namespace RotaDasTapas.Unit.Tests.Mocks
 {
-    public static class TapasRepositoryMocks
+    public static class TapasGatewayMocks
     {
-        public static IEnumerable<Tapa> GetListOfTapasSingleOneWithAllFields()
+        public static IEnumerable<TapaDto> GetListOfTapasSingleOneWithAllFields()
         {
-            return new List<Tapa>()
+            return new List<TapaDto>()
             {
-                new Tapa()
+                new TapaDto()
                 {
                     Address = "address",
                     Description = "description",
@@ -20,10 +21,10 @@ namespace RotaDasTapas.Unit.Tests.Mocks
             };
         }
 
-        public static Tapa GetGetTapaAllFields()
+        public static TapaDto GetGetTapaAllFields()
         {
             return
-                new Tapa()
+                new TapaDto()
                 {
                     Address = "address",
                     Description = "description",

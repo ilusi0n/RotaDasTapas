@@ -2,14 +2,16 @@ using System;
 using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Reflection;
+using AutoMapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
+using RotaDasTapas.Gateway;
 using RotaDasTapas.Models.Configuration;
-using RotaDasTapas.Repository;
+using RotaDasTapas.Profiles;
 using RotaDasTapas.Services;
 
 namespace RotaDasTapas
@@ -29,7 +31,7 @@ namespace RotaDasTapas
         {
             services.AddControllers();
             services.AddScoped<ITapasService, TapasService>();
-            services.AddScoped<ITapasRepository, TapasRepository>();
+            services.AddScoped<ITapasGateway, TapasGateway>();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo
@@ -51,6 +53,7 @@ namespace RotaDasTapas
             });
             // Set the comments path for the Swagger JSON and UI.
             SetupRotaDasTapasOptions(services, Configuration);
+            SetupAutoMapper(services);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -77,6 +80,10 @@ namespace RotaDasTapas
         private static void SetupRotaDasTapasOptions(IServiceCollection services, IConfiguration config)
         {
             services.Configure<RotaDasTapasConfiguration>(config.GetSection("RotaDasTapasConfiguration"));
+        }
+        private static void SetupAutoMapper(IServiceCollection services)
+        {
+            services.AddAutoMapper(typeof(TapasResponseProfile));
         }
     }
 }

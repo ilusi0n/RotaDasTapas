@@ -1,17 +1,16 @@
 using System.Linq;
-using System.Runtime.CompilerServices;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using RotaDasTapas.Repository;
+using RotaDasTapas.Gateway;
 
-namespace RotaDasTapas.Unit.Tests.Repository
+namespace RotaDasTapas.Unit.Tests.Gateway
 {
     [TestClass]
     public class TapasRepositoryTests
     {
-        private readonly ITapasRepository _tapasRepository;
+        private readonly ITapasGateway _tapasGateway;
         public TapasRepositoryTests()
         {
-            _tapasRepository = new TapasRepository();
+            _tapasGateway = new TapasGateway();
         }
 
         [TestMethod]
@@ -20,7 +19,7 @@ namespace RotaDasTapas.Unit.Tests.Repository
             //Arrange
             
             //Act
-            var result = _tapasRepository.GetAllTapas();
+            var result = _tapasGateway.GetAllTapas();
 
             //Assert
             Assert.IsNotNull(result);
@@ -34,7 +33,7 @@ namespace RotaDasTapas.Unit.Tests.Repository
             var name = "Name1";
             
             //Act
-            var result = _tapasRepository.GetTapaByName(name);
+            var result = _tapasGateway.GetTapaByName(name);
 
             //Assert
             Assert.IsNotNull(result);
@@ -48,7 +47,7 @@ namespace RotaDasTapas.Unit.Tests.Repository
             var name = "fake";
             
             //Act
-            var result = _tapasRepository.GetTapaByName(name);
+            var result = _tapasGateway.GetTapaByName(name);
 
             //Assert
             Assert.IsNull(result);
@@ -61,7 +60,7 @@ namespace RotaDasTapas.Unit.Tests.Repository
             var city = "Lisboa";
             
             //Act
-            var result = _tapasRepository.GetTapasByCity(city);
+            var result = _tapasGateway.GetTapasByCity(city);
 
             //Assert
             Assert.IsNotNull(result);
@@ -78,7 +77,7 @@ namespace RotaDasTapas.Unit.Tests.Repository
             var city = "fake";
             
             //Act
-            var result = _tapasRepository.GetTapasByCity(city);
+            var result = _tapasGateway.GetTapasByCity(city);
 
             //Assert
             Assert.IsNotNull(result);

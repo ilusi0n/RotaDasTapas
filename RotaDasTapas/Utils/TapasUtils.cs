@@ -1,16 +1,17 @@
 using System.Collections.Generic;
 using RotaDasTapas.Models;
+using RotaDasTapas.Models.Gateway;
 
 namespace RotaDasTapas.Utils
 {
     public static class TapasUtils
     {
 
-        public static IEnumerable<Tapa> InitMock()
+        public static IEnumerable<TapaDto> InitMock()
         {
-            return new List<Tapa>()
+            return new List<TapaDto>()
             {
-                new Tapa
+                new TapaDto
                 {
                     Name = "Name1",
                     Title = "Title1",
@@ -18,7 +19,7 @@ namespace RotaDasTapas.Utils
                     Description = "Description1",
                     City = "Lisboa"
                 },
-                new Tapa
+                new TapaDto
                 {
                     Name = "Name1",
                     Title = "Title1",
@@ -26,7 +27,7 @@ namespace RotaDasTapas.Utils
                     Description = "Description1",
                     City = "Lisboa"
                 },
-                new Tapa
+                new TapaDto
                 {
                     Name = "Name1",
                     Title = "Title1",
@@ -34,7 +35,7 @@ namespace RotaDasTapas.Utils
                     Description = "Description1",
                     City = "Lisboa"
                 },
-                new Tapa
+                new TapaDto
                 {
                     Name = "Name1",
                     Title = "Title1",
@@ -45,11 +46,11 @@ namespace RotaDasTapas.Utils
             };
         }
         
-        public static IEnumerable<Tapa> Init()
+        public static IEnumerable<TapaDto> Init()
         {
-            return new List<Tapa>()
+            return new List<TapaDto>()
             {
-                new Tapa
+                new TapaDto
                 {
                     Name = "Esquina",
                     Title = "Almondega à Esquina",

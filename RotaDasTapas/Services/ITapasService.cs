@@ -5,8 +5,8 @@ namespace RotaDasTapas.Services
 {
     public interface ITapasService
     {
-        IEnumerable<Tapa> GetAllTapas();
-        Tapa GetTapaByName(string name);
-        IEnumerable<Tapa> GetTapaByCity(string city);
+        TapasResponse GetAllTapas();
+        TapasResponse GetTapaByName(string name);
+        TapasResponse GetTapaByCity(string city);
     }
 }
