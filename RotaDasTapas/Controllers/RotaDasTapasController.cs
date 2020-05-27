@@ -49,7 +49,7 @@ namespace RotaDasTapas.Controllers
         ///     Returns not found if the tapa doesnt exist.
         /// </summary>
         [HttpGet]
-        [Route("Tapa/Name/{name}")]
+        [Route("Tapas/Name/{name}")]
         [ProducesResponseType(typeof(TapasResponse), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(NotFoundError), StatusCodes.Status404NotFound)]
         [ProducesResponseType(typeof(InternalServerError), StatusCodes.Status500InternalServerError)]
@@ -73,7 +73,7 @@ namespace RotaDasTapas.Controllers
         ///     Returns an empty list if there isn't any.
         /// </summary>
         [HttpGet]
-        [Route("Tapa/City/{city}")]
+        [Route("Tapas/City/{city}")]
         [ProducesResponseType(typeof(TapasResponse), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(NotFoundError), StatusCodes.Status404NotFound)]
         [ProducesResponseType(typeof(InternalServerError), StatusCodes.Status500InternalServerError)]
