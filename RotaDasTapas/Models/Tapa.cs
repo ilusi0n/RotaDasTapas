@@ -23,5 +23,10 @@ namespace RotaDasTapas.Models
         ///     City of where Tapa is located
         /// </summary>
         public string City { get; set; }
+        
+        /// <summary>
+        ///     City of where Tapa is located
+        /// </summary>
+        public string ImageUrl { get; set; }
     }
 }

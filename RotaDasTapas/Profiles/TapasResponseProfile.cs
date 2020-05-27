@@ -17,7 +17,7 @@ namespace RotaDasTapas.Profiles
                 .ForMember(dest => dest.Tapas, opt => opt.MapFrom(src => src))
                 .AfterMap((foo, dto) =>
                 {
-                    dto.Tapas = dto.Tapas.ToList().OrderBy(tapa => tapa.City).ThenBy(tapa => tapa.Name);
+                    dto.Tapas = dto.Tapas.OrderBy(tapa => tapa.City).ThenBy(tapa => tapa.Name);
                 });
             CreateMap<TapaDto, TapasResponse>().ConvertUsing<TapasResponseTypeConverter>();
         }

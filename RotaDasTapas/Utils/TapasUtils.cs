@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using RotaDasTapas.Models;
 using RotaDasTapas.Models.Gateway;
 
 namespace RotaDasTapas.Utils
@@ -17,7 +16,8 @@ namespace RotaDasTapas.Utils
                     Title = "Title1",
                     Address = "Address",
                     Description = "Description1",
-                    City = "Lisboa"
+                    City = "Lisboa",
+                    ImageUrl = "https://b.zmtcdn.com/data/pictures/chains/9/18618109/fc91d7cf0ff3896fa3b6c4bd904ebd29.jpg"
                 },
                 new TapaDto
                 {
@@ -25,7 +25,8 @@ namespace RotaDasTapas.Utils
                     Title = "Title1",
                     Address = "Address",
                     Description = "Description1",
-                    City = "Lisboa"
+                    City = "Lisboa",
+                    ImageUrl = "https://b.zmtcdn.com/data/pictures/chains/9/18618109/fc91d7cf0ff3896fa3b6c4bd904ebd29.jpg"
                 },
                 new TapaDto
                 {
@@ -33,7 +34,8 @@ namespace RotaDasTapas.Utils
                     Title = "Title1",
                     Address = "Address",
                     Description = "Description1",
-                    City = "Lisboa"
+                    City = "Lisboa",
+                    ImageUrl = "https://b.zmtcdn.com/data/pictures/chains/9/18618109/fc91d7cf0ff3896fa3b6c4bd904ebd29.jpg"
                 },
                 new TapaDto
                 {
@@ -41,7 +43,8 @@ namespace RotaDasTapas.Utils
                     Title = "Title1",
                     Address = "Address",
                     Description = "Description1",
-                    City = "Porto"
+                    City = "Porto",
+                    ImageUrl = "https://b.zmtcdn.com/data/pictures/chains/9/18618109/fc91d7cf0ff3896fa3b6c4bd904ebd29.jpg"
                 }
             };
         }
@@ -56,7 +59,8 @@ namespace RotaDasTapas.Utils
                     Title = "Almondega à Esquina",
                     Address = "Praça Gomes Teixeira, nº26",
                     Description = "Mini hamburger com bacon e queijo em bolo de caco da madeira, barrado com manteiga d'alho e ervas aromáticas",
-                    City = "Lisboa"
+                    City = "Lisboa",
+                    ImageUrl = ""
                 }
             };
         }
