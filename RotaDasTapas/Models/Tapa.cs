@@ -3,6 +3,10 @@ namespace RotaDasTapas.Models
     public class Tapa
     {
         /// <summary>
+        ///     Unique Identifier
+        /// </summary>
+        public string Id { get; set; }
+        /// <summary>
         ///     Name of the tapa
         /// </summary>
         public string Name { get; set; }

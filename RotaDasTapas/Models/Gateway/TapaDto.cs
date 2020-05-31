@@ -2,6 +2,7 @@ namespace RotaDasTapas.Models.Gateway
 {
     public class TapaDto
     {
+        public string Id { get; set; }
         public string Name { get; set; }
         public string Title { get; set; }
         public string Address { get; set; }

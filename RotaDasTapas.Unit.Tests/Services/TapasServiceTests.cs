@@ -123,6 +123,7 @@ namespace RotaDasTapas.Unit.Tests.Services
             Assert.AreEqual(expected.Title, result.Title);
             Assert.AreEqual(expected.City, result.City);
             Assert.AreEqual(expected.ImageUrl, result.ImageUrl);
+            Assert.AreEqual(expected.Id, result.Id);
         }
     }
 }
