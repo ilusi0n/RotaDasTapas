@@ -46,8 +46,8 @@ namespace RotaDasTapas.Utils
         private Path[,] BuildMatrix()
         {
             var tapasByCity = _tapasByCity.OrderBy(el => el.Id).ToList();
-            var adjacencyMatrix = new Path[tapasByCity.Count(), tapasByCity.Count()];
-            for (var a = 0; a < tapasByCity.Count(); a++)
+            var adjacencyMatrix = new Path[tapasByCity.Count, tapasByCity.Count];
+            for (var a = 0; a < tapasByCity.Count; a++)
             {
                 var tapa = tapasByCity[a];
                 tapa.Path = GetSelectedTapasPath(_selectedTapas, tapa);

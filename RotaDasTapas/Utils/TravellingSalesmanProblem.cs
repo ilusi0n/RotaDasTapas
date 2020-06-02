@@ -54,7 +54,7 @@ namespace RotaDasTapas.Utils
             double totalCost = double.MaxValue;
             int i = 0;
             int selectedIdx = i;
-            root.ChildNodes = new Node[set.Count()];
+            root.ChildNodes = new Node[set.Count];
 
             foreach (var destination in set)
             {
