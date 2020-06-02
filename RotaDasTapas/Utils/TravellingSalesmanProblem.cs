@@ -11,15 +11,17 @@ namespace RotaDasTapas.Utils
 
         private readonly Path[,] _adjacencyMatrix;
         private readonly IEnumerable<Vertice> _vertices;
+        private readonly int _startVerticeIndex;
 
         #endregion
 
         #region Constructor
 
-        public TravellingSalesmanProblem(IEnumerable<Vertice> vertices, Path[,] matrix)
+        public TravellingSalesmanProblem(int startVerticeIndex,IEnumerable<Vertice> vertices, Path[,] matrix)
         {
             _vertices = vertices;
             _adjacencyMatrix = matrix;
+            _startVerticeIndex = startVerticeIndex;
         }
 
         #endregion
@@ -28,7 +30,7 @@ namespace RotaDasTapas.Utils
 
         public IEnumerable<Vertice> Solve(out double cost)
         {
-            var startVertex = _vertices.First();//source node is assumed to be the first
+            var startVertex = _vertices.ToList()[_startVerticeIndex];
             var set = new HashSet<Vertice>(_vertices);
             set.Remove(startVertex);
 
@@ -45,8 +47,7 @@ namespace RotaDasTapas.Utils
         {
             if (!set.Any())
             {
-                //source node is assumed to be the first
-                root.ChildNodes = new[] { new Node { Value = _vertices.First(), Selected = true } };
+                root.ChildNodes = new[] { new Node { Value = _vertices.ToList()[_startVerticeIndex], Selected = true } };
                 return _adjacencyMatrix[startVertex.Id, 0].Distance;
             }
 

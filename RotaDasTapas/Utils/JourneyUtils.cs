@@ -7,59 +7,64 @@ namespace RotaDasTapas.Utils
 {
     public class JourneyUtils
     {
-        private readonly IEnumerable<TapaDto> _vertices;
-        private readonly Path[,] _adjacencyMatrix;
+        private readonly TravellingSalesmanProblem _travellingSalesmanProblem;
+        private readonly IEnumerable<TapaDto> _tapasByCity;
 
-        public JourneyUtils(IEnumerable<string> selectedTapas, string city)
+        public JourneyUtils(IEnumerable<string> selectedTapas, string startTapaId,
+            IEnumerable<TapaDto> tapasByCity)
         {
-            _vertices = BuildVertices(selectedTapas,city);
-            _adjacencyMatrix = BuildMatrix();
+            _tapasByCity = tapasByCity;
+            var listTapasDto = GetListTapasDto(selectedTapas);
+            var adjacencyMatrix = BuildMatrix(listTapasDto);
+            var startVertice = listTapasDto.ToList().IndexOf(tapasByCity.First(el => el.Id.Equals(startTapaId)));
+            var vertices = GetVertices(listTapasDto);
+            _travellingSalesmanProblem = new TravellingSalesmanProblem(startVertice, vertices, adjacencyMatrix);
         }
 
-        public Path[,] GetMatrix()
+        public IEnumerable<Vertice> SolveProblem()
         {
-            return _adjacencyMatrix;
+            return _travellingSalesmanProblem.Solve(out _);
         }
 
-        public IEnumerable<Vertice> GetVertices()
+        private IEnumerable<Vertice> GetVertices(IEnumerable<TapaDto> listTapasDto)
         {
             var i = 0;
             var list = new List<Vertice>();
-            foreach (var vertice in _vertices)
+            foreach (var tapa in listTapasDto)
             {
                 list.Add(new Vertice()
                 {
                     Id = i,
-                    TapaId = vertice.Id
+                    TapaDto = tapa
                 });
                 i++;
             }
             return list;
         }
 
-        private Path[,] BuildMatrix()
+        private Path[,] BuildMatrix(IEnumerable<TapaDto> listTapasDto)
         {
-            Path[,] adjacencyMatrix = new Path[_vertices.Count(), _vertices.Count()];
-            for (int a = 0; a < _vertices.Count(); a++)
+            var tapasDto = listTapasDto.ToList();
+            var adjacencyMatrix = new Path[tapasDto.Count(), tapasDto.Count()];
+            for (var a = 0; a < tapasDto.Count(); a++)
             {
-                for (int b = 0; b < _vertices.ToList()[a].Path.Count(); b++)
+                for (var b = 0; b < tapasDto[a].Path.Count(); b++)
                 {
-                    var path = _vertices.ToList()[a].Path.ToList()[b];
-                    adjacencyMatrix[a,b] = path;
+                    var path = tapasDto[a].Path.ToList()[b];
+                    adjacencyMatrix[a, b] = path;
                 }
             }
 
             return adjacencyMatrix;
         }
 
-        private IEnumerable<TapaDto> BuildVertices(IEnumerable<string> selectedTapas, string city)
+        private IEnumerable<TapaDto> GetListTapasDto(IEnumerable<string> selectedTapas)
         {
-            var listTapas = TapasUtils.InitMock().Where(tapa => tapa.City.Equals(city)).ToList();
             var list = new List<TapaDto>();
             foreach (var tapaId in selectedTapas)
             {
-                var tapa = listTapas.First(el => el.Id.Equals(tapaId));
-                var path = GetSelectedTapasPath(selectedTapas,tapa);
+                var tapa = _tapasByCity.First(el => el.Id.Equals(tapaId));
+                var path = GetSelectedTapasPath(selectedTapas, tapa);
                 tapa.Path = path;
                 list.Add(tapa);
             }
@@ -67,7 +72,7 @@ namespace RotaDasTapas.Utils
             return list.OrderBy(el => el.Id);
         }
 
-        private IEnumerable<Path> GetSelectedTapasPath(IEnumerable<string> selectedTapas,TapaDto tapa)
+        private IEnumerable<Path> GetSelectedTapasPath(IEnumerable<string> selectedTapas, TapaDto tapa)
         {
             return tapa.Path.Where(item => selectedTapas.Contains(item.TapaId)).OrderBy(el => el.TapaId).ToList();
         }

@@ -32,17 +32,7 @@ namespace RotaDasTapas.Gateway
 
         public IEnumerable<TapaDto> GetTapasRoute(string city)
         {
-            var list = new List<string>()
-            {
-                "Lisboa_1", "Lisboa_2", "Lisboa_3","Lisboa_4"
-            };
-            var journeyUtils = new JourneyUtils(list, city);
-            var vertices = journeyUtils.GetVertices();
-            var adjacentmatrix = journeyUtils.GetMatrix();
-            var problem = new TravellingSalesmanProblem(vertices, adjacentmatrix);
-            double cost;
-            var hue = problem.Solve(out cost);
-            return new List<TapaDto>();
+            return _listTapas.Where(tapa => tapa.City.Equals(city));
         }
     }
 }
