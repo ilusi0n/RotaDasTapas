@@ -46,7 +46,8 @@ namespace RotaDasTapas.Services
                 "Lisboa_1", "Lisboa_2", "Lisboa_3", "Lisboa_4"
             };
             var journeyUtils = new JourneyUtils(listSelectedTapas, "Lisboa_4", result);
-            var hue = journeyUtils.SolveProblem();
+            var pathToTake = journeyUtils.SolveProblem();
+            pathToTake.ToList().RemoveAt(pathToTake.Count()-1);
 
             return _mapper.Map<TapasResponse>(result);
         }

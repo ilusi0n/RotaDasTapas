@@ -9,15 +9,16 @@ namespace RotaDasTapas.Utils
     {
         private readonly TravellingSalesmanProblem _travellingSalesmanProblem;
         private readonly IEnumerable<TapaDto> _tapasByCity;
+        private readonly IEnumerable<string> _selectedTapas;
 
         public JourneyUtils(IEnumerable<string> selectedTapas, string startTapaId,
             IEnumerable<TapaDto> tapasByCity)
         {
+            _selectedTapas = selectedTapas;
             _tapasByCity = tapasByCity;
-            var listTapasDto = GetListTapasDto(selectedTapas);
-            var adjacencyMatrix = BuildMatrix(listTapasDto);
-            var startVertice = listTapasDto.ToList().IndexOf(tapasByCity.First(el => el.Id.Equals(startTapaId)));
-            var vertices = GetVertices(listTapasDto);
+            var adjacencyMatrix = BuildMatrix();
+            var startVertice = tapasByCity.ToList().IndexOf(tapasByCity.First(el => el.Id.Equals(startTapaId)));
+            var vertices = GetVertices();
             _travellingSalesmanProblem = new TravellingSalesmanProblem(startVertice, vertices, adjacencyMatrix);
         }
 
@@ -26,50 +27,38 @@ namespace RotaDasTapas.Utils
             return _travellingSalesmanProblem.Solve(out _);
         }
 
-        private IEnumerable<Vertice> GetVertices(IEnumerable<TapaDto> listTapasDto)
+        private IEnumerable<Vertice> GetVertices()
         {
             var i = 0;
             var list = new List<Vertice>();
-            foreach (var tapa in listTapasDto)
+            foreach (var tapaId in _selectedTapas)
             {
                 list.Add(new Vertice()
                 {
                     Id = i,
-                    TapaDto = tapa
+                    TapaDto = _tapasByCity.First(el => el.Id.Equals(tapaId))
                 });
                 i++;
             }
             return list;
         }
 
-        private Path[,] BuildMatrix(IEnumerable<TapaDto> listTapasDto)
+        private Path[,] BuildMatrix()
         {
-            var tapasDto = listTapasDto.ToList();
-            var adjacencyMatrix = new Path[tapasDto.Count(), tapasDto.Count()];
-            for (var a = 0; a < tapasDto.Count(); a++)
+            var tapasByCity = _tapasByCity.OrderBy(el => el.Id).ToList();
+            var adjacencyMatrix = new Path[tapasByCity.Count(), tapasByCity.Count()];
+            for (var a = 0; a < tapasByCity.Count(); a++)
             {
-                for (var b = 0; b < tapasDto[a].Path.Count(); b++)
+                var tapa = tapasByCity[a];
+                tapa.Path = GetSelectedTapasPath(_selectedTapas, tapa);
+                for (var b = 0; b < tapasByCity[a].Path.Count(); b++)
                 {
-                    var path = tapasDto[a].Path.ToList()[b];
+                    var path = tapasByCity[a].Path.ToList()[b];
                     adjacencyMatrix[a, b] = path;
                 }
             }
 
             return adjacencyMatrix;
-        }
-
-        private IEnumerable<TapaDto> GetListTapasDto(IEnumerable<string> selectedTapas)
-        {
-            var list = new List<TapaDto>();
-            foreach (var tapaId in selectedTapas)
-            {
-                var tapa = _tapasByCity.First(el => el.Id.Equals(tapaId));
-                var path = GetSelectedTapasPath(selectedTapas, tapa);
-                tapa.Path = path;
-                list.Add(tapa);
-            }
-
-            return list.OrderBy(el => el.Id);
         }
 
         private IEnumerable<Path> GetSelectedTapasPath(IEnumerable<string> selectedTapas, TapaDto tapa)

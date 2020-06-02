@@ -86,10 +86,9 @@ namespace RotaDasTapas.Controllers
             var result = _tapasService.GetTapaByCity(city);
             return Ok(result);
         }
-        
+
         /// <summary>
-        ///     Get all Tapas ordered by name from that city.
-        ///     Returns an empty list if there isn't any.
+        ///     Calculate the optimal path from the selected Tapas
         /// </summary>
         [HttpGet]
         [Route("Tapas/Journey/{city}")]
@@ -98,7 +97,8 @@ namespace RotaDasTapas.Controllers
         [ProducesResponseType(typeof(InternalServerError), StatusCodes.Status500InternalServerError)]
         [ProducesResponseType(typeof(UnauthorizedError), StatusCodes.Status401Unauthorized)]
         [TypeFilter(typeof(AuthorizationFilterAttribute))]
-        public IActionResult GetTapasRoute(string city)
+        public IActionResult GetTapasRoute(
+            [FromHeader] RotaDasTapasHeaders rotaDasTapasHeaders, string city)
         {
             var result = _tapasService.GetTapasRoute(city);
             return Ok(result);
