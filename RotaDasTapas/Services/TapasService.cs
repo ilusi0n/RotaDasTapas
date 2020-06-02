@@ -1,4 +1,4 @@
-using System.Linq;
+using System;
 using AutoMapper;
 using RotaDasTapas.Gateway;
 using RotaDasTapas.Models;
@@ -29,6 +29,12 @@ namespace RotaDasTapas.Services
         public TapasResponse GetTapaByCity(string city)
         {
             var result = _tapasGateway.GetTapasByCity(city);
+            return _mapper.Map<TapasResponse>(result);
+        }
+
+        public TapasResponse GetTapasRoute(string city)
+        {
+            var result = _tapasGateway.GetTapasRoute(city);
             return _mapper.Map<TapasResponse>(result);
         }
     }

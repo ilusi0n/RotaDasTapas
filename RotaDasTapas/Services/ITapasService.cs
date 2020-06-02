@@ -8,5 +8,6 @@ namespace RotaDasTapas.Services
         TapasResponse GetAllTapas();
         TapasResponse GetTapaByName(string name);
         TapasResponse GetTapaByCity(string city);
+        TapasResponse GetTapasRoute(string city);
     }
 }

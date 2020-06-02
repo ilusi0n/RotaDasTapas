@@ -8,5 +8,6 @@ namespace RotaDasTapas.Gateway
         IEnumerable<TapaDto> GetAllTapas();
         TapaDto GetTapaByName(string name);
         IEnumerable<TapaDto> GetTapasByCity(string city);
+        IEnumerable<TapaDto> GetTapasRoute(string city);
     }
 }
