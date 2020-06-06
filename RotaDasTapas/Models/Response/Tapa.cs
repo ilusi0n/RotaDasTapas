@@ -1,4 +1,4 @@
-namespace RotaDasTapas.Models
+namespace RotaDasTapas.Models.Response
 {
     public class Tapa
     {
@@ -29,8 +29,19 @@ namespace RotaDasTapas.Models
         public string City { get; set; }
         
         /// <summary>
-        ///     City of where Tapa is located
+        ///     Imageurl of the tapa
         /// </summary>
         public string ImageUrl { get; set; }
+
+        /// <summary>
+        ///     Current schedule
+        /// </summary>
+        public Schedule Schedule { get; set; }
+    }
+
+    public class Schedule
+    {
+        public string Hours { get; set; }
+        public string Status { get; set; }
     }
 }

@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using AutoMapper;
 using RotaDasTapas.Models;
 using RotaDasTapas.Models.Gateway;
+using RotaDasTapas.Models.Response;
 
 namespace RotaDasTapas.Profiles.TypeConverter
 {

@@ -2,6 +2,7 @@ using System.Linq;
 using AutoMapper;
 using RotaDasTapas.Gateway;
 using RotaDasTapas.Models;
+using RotaDasTapas.Models.Response;
 
 namespace RotaDasTapas.Services
 {

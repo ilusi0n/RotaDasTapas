@@ -4,6 +4,7 @@ using AutoMapper;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using RotaDasTapas.Models;
+using RotaDasTapas.Models.Response;
 using RotaDasTapas.Profiles;
 using RotaDasTapas.Profiles.TypeConverter;
 using RotaDasTapas.Unit.Tests.Mocks;
