@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.Linq;
 using System.Text.RegularExpressions;
 using RotaDasTapas.Constants;
 
@@ -13,7 +14,7 @@ namespace RotaDasTapas.Models.Models
         private readonly List<ScheduleDay> _scheduleDays;
 
         private const string CompressedPattern =
-            @"(?<openHour>[0-9]{2}):(?<openMinutes>[0-9]{2}),(?<closeHour>[0-9]{2}):(?<closeMinutes>[0-9]{2});(?<minDay>[1-7]),(?<maxDay>[1-7])";
+            @"(?<openHour>[0-9]{2}):(?<openMinutes>[0-9]{2}),(?<closeHour>[0-9]{2}):(?<closeMinutes>[0-9]{2});(?<minDay>[0-6]),(?<maxDay>[0-6])";
 
         public BusinessHoursUtils(string businessHours, IDateTimeWrapper dateTime, string locale = "")
         {
@@ -24,9 +25,11 @@ namespace RotaDasTapas.Models.Models
 
         public string GetStatus()
         {
-            var currWeekDay = (int) _dateTime.Now.DayOfWeek;
-            var scheduleDay =
-                _scheduleDays.Find(opt => opt.WeekDay.Min <= currWeekDay && opt.WeekDay.Max >= currWeekDay);
+            if (!_scheduleDays.Any())
+            {
+                return string.Empty;
+            }
+            var scheduleDay = GetCurrentScheduleDay();
 
             if (scheduleDay == null)
             {
@@ -39,9 +42,11 @@ namespace RotaDasTapas.Models.Models
 
         public string GetCurrentSchedule()
         {
-            var currWeekDay = (int) _dateTime.Now.DayOfWeek;
-            var scheduleDay =
-                _scheduleDays.Find(opt => opt.WeekDay.Min <= currWeekDay && opt.WeekDay.Max >= currWeekDay);
+            if (!_scheduleDays.Any())
+            {
+                return string.Empty;
+            }
+            var scheduleDay = GetCurrentScheduleDay();
 
             if (scheduleDay == null)
             {
@@ -55,6 +60,10 @@ namespace RotaDasTapas.Models.Models
         private List<ScheduleDay> GetTimeFromCompressed(string compressed)
         {
             var weekDaysList = new List<ScheduleDay>();
+            if (string.IsNullOrEmpty(compressed))
+            {
+                return weekDaysList;
+            }
             var scheduleByDays = compressed.Split('|');
 
             foreach (var schedule in scheduleByDays)
@@ -87,6 +96,14 @@ namespace RotaDasTapas.Models.Models
                 };
             }
 
+            return scheduleDay;
+        }
+        
+        private ScheduleDay GetCurrentScheduleDay()
+        {
+            var currWeekDay = (int) _dateTime.Now.DayOfWeek;
+            var scheduleDay =
+                _scheduleDays.Find(opt => opt.WeekDay.Min <= currWeekDay && opt.WeekDay.Max >= currWeekDay);
             return scheduleDay;
         }
 

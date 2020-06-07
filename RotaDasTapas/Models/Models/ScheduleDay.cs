@@ -6,8 +6,6 @@ namespace RotaDasTapas.Models.Models
         {
             public Hours Hours { get; set; }
             public WeekDay WeekDay { get; set; }
-            public ScheduleDay Next { get; set; }
-            public bool IsOpen24Hours => Hours.Max - Hours.Min == Hours.Max || Hours.Duration == new TimeSpan(24, 0, 0);
         }
         
         public class WeekDay
@@ -20,6 +18,5 @@ namespace RotaDasTapas.Models.Models
         {
             public TimeSpan Min { get; set; }
             public TimeSpan Max { get; set; }
-            public TimeSpan Duration { get; set; }
         }
 }

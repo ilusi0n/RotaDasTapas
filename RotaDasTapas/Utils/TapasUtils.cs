@@ -20,7 +20,7 @@ namespace RotaDasTapas.Utils
                     Description = "Description1",
                     City = "Lisboa",
                     ImageUrl = "https://b.zmtcdn.com/data/pictures/chains/9/18618109/fc91d7cf0ff3896fa3b6c4bd904ebd29.jpg",
-                    Schedule = "07:00,00:00;1,7"
+                    Schedule = "07:00,00:00;0,6"
                 },
                 new TapaDto
                 {
@@ -31,7 +31,7 @@ namespace RotaDasTapas.Utils
                     Description = "Description2",
                     City = "Lisboa",
                     ImageUrl = "https://b.zmtcdn.com/data/pictures/chains/9/18618109/fc91d7cf0ff3896fa3b6c4bd904ebd29.jpg",
-                    Schedule = "07:00,15:00;1,1|07:00,14:00;7,7"
+                    Schedule = "07:00,15:00;1,1|07:00,14:00;6,6"
                 },
                 new TapaDto
                 {
@@ -42,7 +42,7 @@ namespace RotaDasTapas.Utils
                     Description = "Description3",
                     City = "Lisboa",
                     ImageUrl = "https://b.zmtcdn.com/data/pictures/chains/9/18618109/fc91d7cf0ff3896fa3b6c4bd904ebd29.jpg",
-                    Schedule = "07:00,15:00;1,1|07:00,14:00;7,7"
+                    Schedule = "07:00,15:00;1,1|07:00,14:00;6,6"
                 },
                 new TapaDto
                 {
@@ -53,7 +53,7 @@ namespace RotaDasTapas.Utils
                     Description = "Description1",
                     City = "Porto",
                     ImageUrl = "https://b.zmtcdn.com/data/pictures/chains/9/18618109/fc91d7cf0ff3896fa3b6c4bd904ebd29.jpg",
-                    Schedule = "07:00,15:00;1,1|07:00,14:00;7,7"
+                    Schedule = "07:00,15:00;1,1|07:00,14:00;6,6"
                 }
             };
         }

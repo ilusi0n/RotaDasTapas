@@ -4,6 +4,7 @@ using AutoMapper;
 using RotaDasTapas.Models.Gateway;
 using RotaDasTapas.Models.Response;
 using RotaDasTapas.Profiles.TypeConverter;
+using RotaDasTapas.Profiles.ValueResolver;
 
 namespace RotaDasTapas.Profiles
 {

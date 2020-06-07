@@ -4,9 +4,11 @@ using AutoMapper;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using RotaDasTapas.Models;
+using RotaDasTapas.Models.Models;
 using RotaDasTapas.Models.Response;
 using RotaDasTapas.Profiles;
 using RotaDasTapas.Profiles.TypeConverter;
+using RotaDasTapas.Profiles.ValueResolver;
 using RotaDasTapas.Unit.Tests.Mocks;
 
 namespace RotaDasTapas.Unit.Tests.Profiles
@@ -15,9 +17,11 @@ namespace RotaDasTapas.Unit.Tests.Profiles
     public class TapasResponseProfileTests
     {
         private readonly IMapper _mapper;
+        private Mock<IDateTimeWrapper> _dateTimeWrapperMock;
 
         public TapasResponseProfileTests()
         {
+            _dateTimeWrapperMock = new Mock<IDateTimeWrapper>();
             var serviceProvider = new Mock<IServiceProvider>();
 
             var configuration = new MapperConfiguration(mc =>
@@ -30,6 +34,8 @@ namespace RotaDasTapas.Unit.Tests.Profiles
 
             serviceProvider.Setup(x => x.GetService(typeof(TapasResponseTypeConverter)))
                 .Returns(new TapasResponseTypeConverter(_mapper));
+            serviceProvider.Setup(x => x.GetService(typeof(BusinessHoursResolver)))
+                .Returns(new BusinessHoursResolver(_dateTimeWrapperMock.Object));
         }
 
         [TestMethod]
@@ -88,6 +94,10 @@ namespace RotaDasTapas.Unit.Tests.Profiles
                 Assert.AreEqual(exp.Description, result.Tapas.ToList()[nExpected].Description);
                 Assert.AreEqual(exp.Name, result.Tapas.ToList()[nExpected].Name);
                 Assert.AreEqual(exp.Title, result.Tapas.ToList()[nExpected].Title);
+                Assert.AreEqual(exp.City, result.Tapas.ToList()[nExpected].City);
+                Assert.IsNotNull(result.Tapas.ToList()[nExpected].Schedule);
+                Assert.IsNotNull(result.Tapas.ToList()[nExpected].Schedule.Hours);
+                Assert.IsNotNull(result.Tapas.ToList()[nExpected].Schedule.Status);
                 nExpected++;
             }
         }
