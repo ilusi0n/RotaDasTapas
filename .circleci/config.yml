@@ -7,7 +7,7 @@ jobs:
       - checkout
       - run:
           name: Restore Packages
-          command: dotnet Restore
+          command: dotnet restore
       - run:
           name: build
           command: dotnet build --configuration Release --no-restore
