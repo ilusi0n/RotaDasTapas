@@ -52,6 +52,28 @@ namespace RotaDasTapas.Unit.Tests.Services
             //Assert
             AssertTests(expectedMock, result);
         }
+        
+        [TestMethod]
+        public void GetTapasRoute_LisbonValidIds_ReturnsOk()
+        {
+            //Arrange
+            var expectedListTapas = TapasGatewayMocks.GetAllTapasWithPath();
+            var listSelected = "Lisbon_1|Lisbon_2|Lisbon_3";
+            var expectedMock = new TapasResponse()
+            {
+                Tapas = TapasServiceMocks.GetListOfTapasSingleOneWithAllFields()
+            };
+            _mockMapper.Setup(m =>
+                    m.Map<TapasResponse>(It.IsAny<IEnumerable<TapaDto>>()))
+                .Returns(expectedMock);
+            _tapasGateway.Setup(d => d.GetTapasRoute("Lisbon")).Returns(expectedListTapas);
+
+            //Act
+            var result = _tapasService.GetTapasRoute("Lisbon",listSelected);
+
+            //Assert
+            AssertTests(expectedMock, result);
+        }
 
         private void AssertTests(TapasResponse expected, TapasResponse result)
         {

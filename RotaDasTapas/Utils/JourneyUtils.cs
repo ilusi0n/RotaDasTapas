@@ -5,7 +5,7 @@ using RotaDasTapas.Models.TSP;
 
 namespace RotaDasTapas.Utils
 {
-    public class JourneyUtils
+    public class JourneyUtils : IJourneyUtils
     {
         private readonly TravellingSalesmanProblem _travellingSalesmanProblem;
         private readonly IEnumerable<TapaDto> _tapasByCity;

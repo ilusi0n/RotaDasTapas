@@ -25,5 +25,18 @@ namespace RotaDasTapas.Unit.Tests.Gateway
             Assert.IsNotNull(result);
             Assert.IsTrue(result.Any());
         }
+        
+        [TestMethod]
+        public void GetTapasRoute_NotArgument_ReturnValidModel()
+        {
+            //Arrange
+            
+            //Act
+            var result = _tapasGateway.GetTapasRoute("Lisbon");
+
+            //Assert
+            Assert.IsNotNull(result);
+            Assert.IsTrue(result.Any());
+        }
     }
 }
