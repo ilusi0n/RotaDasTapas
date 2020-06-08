@@ -67,7 +67,7 @@ namespace RotaDasTapas.Utils
                 Address = "Rua 4 de Infantaria, Nº29, B",
                 Description = "Mexilhão panado com molho de sweet, chilli e maionese",
                 City = "Lisbon",
-                ImageUrl = "4https://b.zmtcdn.com/data/pictures/4/8201164/44384b8b6643e6c988f71c1fc7071544.jpg",
+                ImageUrl = "https://b.zmtcdn.com/data/pictures/4/8201164/44384b8b6643e6c988f71c1fc7071544.jpg",
                 Schedule = "19:00,23:00;0,6"
             };
 
