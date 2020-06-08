@@ -23,18 +23,6 @@ namespace RotaDasTapas.Services
             return _mapper.Map<TapasResponse>(result);
         }
 
-        public TapasResponse GetTapaByName(string name)
-        {
-            var result = _tapasGateway.GetTapaByName(name);
-            return _mapper.Map<TapasResponse>(result);
-        }
-
-        public TapasResponse GetTapaByCity(string city)
-        {
-            var result = _tapasGateway.GetTapasByCity(city);
-            return _mapper.Map<TapasResponse>(result);
-        }
-
         public TapasResponse GetTapasRoute(string city, string list)
         {
             var result = _tapasGateway.GetTapasRoute(city);

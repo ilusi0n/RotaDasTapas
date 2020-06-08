@@ -46,55 +46,11 @@ namespace RotaDasTapas.Controllers
         }
 
         /// <summary>
-        ///     Get a Tapa by The name.
-        ///     Returns not found if the tapa doesnt exist.
-        /// </summary>
-        [HttpGet]
-        [Route("Tapas/Name/{name}")]
-        [ProducesResponseType(typeof(TapasResponse), StatusCodes.Status200OK)]
-        [ProducesResponseType(typeof(NotFoundError), StatusCodes.Status404NotFound)]
-        [ProducesResponseType(typeof(InternalServerError), StatusCodes.Status500InternalServerError)]
-        [ProducesResponseType(typeof(UnauthorizedError), StatusCodes.Status401Unauthorized)]
-        [TypeFilter(typeof(AuthorizationFilterAttribute))]
-        public IActionResult GetTapaByName(
-            [FromHeader] RotaDasTapasHeaders rotaDasTapasHeaders,
-            string name)
-        {
-            var result = _tapasService.GetTapaByName(name);
-            if (!result.Tapas.Any())
-            {
-                return NotFound(new NotFoundError(ErrorConstants.NotFound));
-            }
-
-            return Ok(result);
-        }
-
-        /// <summary>
-        ///     Get all Tapas ordered by name from that city.
-        ///     Returns an empty list if there isn't any.
-        /// </summary>
-        [HttpGet]
-        [Route("Tapas/City/{city}")]
-        [ProducesResponseType(typeof(TapasResponse), StatusCodes.Status200OK)]
-        [ProducesResponseType(typeof(NotFoundError), StatusCodes.Status404NotFound)]
-        [ProducesResponseType(typeof(InternalServerError), StatusCodes.Status500InternalServerError)]
-        [ProducesResponseType(typeof(UnauthorizedError), StatusCodes.Status401Unauthorized)]
-        [TypeFilter(typeof(AuthorizationFilterAttribute))]
-        public IActionResult GetTapasByCity(
-            [FromHeader] RotaDasTapasHeaders rotaDasTapasHeaders,
-            string city)
-        {
-            var result = _tapasService.GetTapaByCity(city);
-            return Ok(result);
-        }
-
-        /// <summary>
         ///     Calculate the optimal path from the selected Tapas
         /// </summary>
         [HttpGet]
         [Route("Tapas/Journey/{city}")]
         [ProducesResponseType(typeof(TapasResponse), StatusCodes.Status200OK)]
-        [ProducesResponseType(typeof(NotFoundError), StatusCodes.Status404NotFound)]
         [ProducesResponseType(typeof(InternalServerError), StatusCodes.Status500InternalServerError)]
         [ProducesResponseType(typeof(UnauthorizedError), StatusCodes.Status401Unauthorized)]
         [TypeFilter(typeof(AuthorizationFilterAttribute))]

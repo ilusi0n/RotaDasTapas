@@ -4,7 +4,6 @@ using AutoMapper;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using RotaDasTapas.Gateway;
-using RotaDasTapas.Models;
 using RotaDasTapas.Models.Gateway;
 using RotaDasTapas.Models.Response;
 using RotaDasTapas.Profiles;
@@ -49,54 +48,6 @@ namespace RotaDasTapas.Unit.Tests.Services
 
             //Act
             var result = _tapasService.GetAllTapas();
-
-            //Assert
-            AssertTests(expectedMock, result);
-        }
-
-        [TestMethod]
-        public void GetTapaByName_ValidRequest_ReturnsOk()
-        {
-            //Arrange
-            var name = "name";
-            var expectedTapa = TapasGatewayMocks.GetGetTapaAllFields();
-            
-            var expectedMock = new TapasResponse()
-            {
-                Tapas = TapasServiceMocks.GetGetTapaAllFields()
-            };
-            _mockMapper.Setup(m =>
-                    m.Map<TapasResponse>(It.IsAny<TapaDto>()))
-                .Returns(expectedMock);
-
-            _tapasGateway.Setup(d => d.GetTapaByName(name)).Returns(expectedTapa);
-
-            //Act
-            var result = _tapasService.GetTapaByName(name);
-
-            //Assert
-            AssertTests(expectedMock, result);
-        }
-        
-        [TestMethod]
-        public void GetTapaByCity_ValidRequest_ReturnsOk()
-        {
-            //Arrange
-            var city = "Lisboa";
-            var expectedTapa = TapasGatewayMocks.GetListOfTapasSingleOneWithAllFields();
-            
-            var expectedMock = new TapasResponse()
-            {
-                Tapas = TapasServiceMocks.GetGetTapaAllFields()
-            };
-
-            _mockMapper.Setup(m =>
-                    m.Map<TapasResponse>(It.IsAny<IEnumerable<TapaDto>>()))
-                .Returns(expectedMock);
-            _tapasGateway.Setup(d => d.GetTapasByCity(city)).Returns(expectedTapa);
-
-            //Act
-            var result = _tapasService.GetTapaByCity(city);
 
             //Assert
             AssertTests(expectedMock, result);
