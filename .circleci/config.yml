@@ -17,7 +17,7 @@ jobs:
             cd ./RotaDasTapas.Unit.Tests/
             dotnet test /p:CollectCoverage=true /p:CoverletOutput=TestResults/ /p:ThresholdType=line /p:Threshold=100 /p:thresholdStat=total /p:CoverletOutputFormat=lcov
 
-    build:
+    deploy:
       machine: true
       steps:
         - checkout
