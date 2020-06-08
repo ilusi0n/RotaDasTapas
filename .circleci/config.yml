@@ -1,0 +1,18 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: mcr.microsoft.com/dotnet/core/sdk:3.1
+    steps:
+      - checkout
+      - run:
+          name: Restore Packages
+          command: dotnet Restore
+      - run:
+          name: build
+          command: dotnet build --configuration Release --no-restore
+      - run:
+          name: Run tests
+          command: |
+            cd ./RotaDasTapas.Unit.Tests/
+            dotnet test /p:CollectCoverage=true /p:CoverletOutput=TestResults/ /p:ThresholdType=line /p:Threshold=100 /p:thresholdStat=total /p:CoverletOutputFormat=lcov
