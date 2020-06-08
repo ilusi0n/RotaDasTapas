@@ -7,12 +7,11 @@ namespace RotaDasTapas.Utils
 {
     public class JourneyUtils : IJourneyUtils
     {
-        private readonly TravellingSalesmanProblem _travellingSalesmanProblem;
-        private readonly IEnumerable<TapaDto> _tapasByCity;
-        private readonly IEnumerable<string> _selectedTapas;
+        private TravellingSalesmanProblem _travellingSalesmanProblem;
+        private IEnumerable<TapaDto> _tapasByCity;
+        private IEnumerable<string> _selectedTapas;
 
-        public JourneyUtils(IEnumerable<string> selectedTapas, string startTapaId,
-            IEnumerable<TapaDto> tapasByCity)
+        public void Init(IEnumerable<string> selectedTapas, string startTapaId, IEnumerable<TapaDto> tapasByCity)
         {
             _selectedTapas = selectedTapas;
             _tapasByCity = tapasByCity;

@@ -14,6 +14,7 @@ using RotaDasTapas.Models.Configuration;
 using RotaDasTapas.Models.Models;
 using RotaDasTapas.Profiles;
 using RotaDasTapas.Services;
+using RotaDasTapas.Utils;
 
 namespace RotaDasTapas
 {
@@ -34,6 +35,7 @@ namespace RotaDasTapas
             services.AddScoped<ITapasService, TapasService>();
             services.AddScoped<ITapasGateway, TapasGateway>();
             services.AddScoped<IDateTimeWrapper, DateTimeWrapper>();
+            services.AddScoped<IJourneyUtils,JourneyUtils>();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo

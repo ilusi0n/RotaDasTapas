@@ -22,8 +22,10 @@ namespace RotaDasTapas.Unit.Tests.Utils
             var tapasByCity = TapasGatewayMocks.GetAllTapasWithPath();
 
             //act
-            
-            var result = new JourneyUtils(selectedTapas,startTapaId,tapasByCity).SolveProblem();
+
+            var journeyUtils = new JourneyUtils();
+            journeyUtils.Init(selectedTapas,startTapaId,tapasByCity);
+            var result = journeyUtils.SolveProblem();
             
             //assert
             Assert.IsNotNull(result);
@@ -47,7 +49,9 @@ namespace RotaDasTapas.Unit.Tests.Utils
 
             //act
             
-            var result = new JourneyUtils(selectedTapas,startTapaId,tapasByCity).SolveProblem();
+            var journeyUtils = new JourneyUtils();
+            journeyUtils.Init(selectedTapas,startTapaId,tapasByCity);
+            var result = journeyUtils.SolveProblem();
             
             //assert
             Assert.IsNotNull(result);

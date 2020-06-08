@@ -6,9 +6,11 @@ using Moq;
 using RotaDasTapas.Gateway;
 using RotaDasTapas.Models.Gateway;
 using RotaDasTapas.Models.Response;
+using RotaDasTapas.Models.TSP;
 using RotaDasTapas.Profiles;
 using RotaDasTapas.Services;
 using RotaDasTapas.Unit.Tests.Mocks;
+using RotaDasTapas.Utils;
 
 namespace RotaDasTapas.Unit.Tests.Services
 {
@@ -18,18 +20,17 @@ namespace RotaDasTapas.Unit.Tests.Services
         private readonly ITapasService _tapasService;
         private readonly Mock<ITapasGateway> _tapasGateway;
         private readonly Mock<IMapper> _mockMapper;
+        private readonly Mock<IJourneyUtils> _mockJourneyUtils;
 
         public TapasServiceTests()
         {
             _mockMapper = new Mock<IMapper>();
+            _mockJourneyUtils =new Mock<IJourneyUtils>();
             _mockMapper
                 .Setup(s => s.ConfigurationProvider)
-                .Returns(new MapperConfiguration(mc =>
-                {
-                    mc.AddProfile(new TapasResponseProfile());
-                }));
+                .Returns(new MapperConfiguration(mc => { mc.AddProfile(new TapasResponseProfile()); }));
             _tapasGateway = new Mock<ITapasGateway>();
-            _tapasService = new TapasService(_tapasGateway.Object,_mockMapper.Object);
+            _tapasService = new TapasService(_tapasGateway.Object, _mockMapper.Object, _mockJourneyUtils.Object);
         }
 
         [TestMethod]
@@ -52,7 +53,7 @@ namespace RotaDasTapas.Unit.Tests.Services
             //Assert
             AssertTests(expectedMock, result);
         }
-        
+
         [TestMethod]
         public void GetTapasRoute_LisbonValidIds_ReturnsOk()
         {
@@ -63,13 +64,22 @@ namespace RotaDasTapas.Unit.Tests.Services
             {
                 Tapas = TapasServiceMocks.GetListOfTapasSingleOneWithAllFields()
             };
+
             _mockMapper.Setup(m =>
                     m.Map<TapasResponse>(It.IsAny<IEnumerable<TapaDto>>()))
                 .Returns(expectedMock);
             _tapasGateway.Setup(d => d.GetTapasRoute("Lisbon")).Returns(expectedListTapas);
 
+            _mockJourneyUtils.Setup(m => m.Init(
+                It.IsAny<IEnumerable<string>>(), It.IsAny<string>(), It.IsAny<IEnumerable<TapaDto>>()));
+
+            _mockJourneyUtils.Setup(m => m.SolveProblem()).Returns(new List<Vertice>()
+            {
+                new Vertice()
+            });
+
             //Act
-            var result = _tapasService.GetTapasRoute("Lisbon",listSelected);
+            var result = _tapasService.GetTapasRoute("Lisbon", listSelected);
 
             //Assert
             AssertTests(expectedMock, result);
@@ -84,7 +94,7 @@ namespace RotaDasTapas.Unit.Tests.Services
             var nExpect = 0;
             foreach (var exp in expected.Tapas)
             {
-                AssertTests(exp,resultList[nExpect++]);
+                AssertTests(exp, resultList[nExpect++]);
             }
         }
 

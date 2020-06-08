@@ -10,11 +10,13 @@ namespace RotaDasTapas.Services
     {
         private readonly ITapasGateway _tapasGateway;
         private readonly IMapper _mapper;
+        private readonly IJourneyUtils _journeyUtils;
 
-        public TapasService(ITapasGateway tapasGateway, IMapper mapper)
+        public TapasService(ITapasGateway tapasGateway, IMapper mapper, IJourneyUtils journeyUtils)
         {
             _tapasGateway = tapasGateway;
             _mapper = mapper;
+            _journeyUtils = journeyUtils;
         }
 
         public TapasResponse GetAllTapas()
@@ -27,8 +29,8 @@ namespace RotaDasTapas.Services
         {
             var result = _tapasGateway.GetTapasRoute(city);
             var listSelectedTapas = list.Split("|");
-            var journeyUtils = new JourneyUtils(listSelectedTapas, listSelectedTapas.First(), result);
-            var pathToTake = journeyUtils.SolveProblem();
+            _journeyUtils.Init(listSelectedTapas, listSelectedTapas.First(), result);
+            var pathToTake = _journeyUtils.SolveProblem();
             pathToTake.ToList().RemoveAt(pathToTake.Count()-1);
 
             return _mapper.Map<TapasResponse>(result);
