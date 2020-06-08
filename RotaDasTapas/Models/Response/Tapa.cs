@@ -1,3 +1,5 @@
+using RotaDasTapas.Constants;
+
 namespace RotaDasTapas.Models.Response
 {
     public class Tapa
@@ -43,5 +45,6 @@ namespace RotaDasTapas.Models.Response
     {
         public string Hours { get; set; }
         public string Status { get; set; }
+        public bool Disable => Status == BusinessHoursConstants.Closed;
     }
 }

@@ -12,6 +12,7 @@ namespace RotaDasTapas.Models.Models
         private readonly string _locale;
         private readonly IDateTimeWrapper _dateTime;
         private readonly List<ScheduleDay> _scheduleDays;
+        private readonly TimeSpan _margin;
 
         private const string CompressedPattern =
             @"(?<openHour>[0-9]{2}):(?<openMinutes>[0-9]{2}),(?<closeHour>[0-9]{2}):(?<closeMinutes>[0-9]{2});(?<minDay>[0-6]),(?<maxDay>[0-6])";
@@ -21,6 +22,8 @@ namespace RotaDasTapas.Models.Models
             _locale = locale.Replace("_", "-");
             _dateTime = dateTime;
             _scheduleDays = GetTimeFromCompressed(businessHours);
+            _margin = new TimeSpan(0,30,0);
+            
         }
 
         public string GetStatus()
@@ -33,11 +36,25 @@ namespace RotaDasTapas.Models.Models
 
             if (scheduleDay == null)
             {
-                return BusinessHoursConstants.Closed;
+                return BusinessHoursConstants.ClosedToday;
             }
 
-            var isClosingSoon = scheduleDay.Hours.Max - _dateTime.Now.TimeOfDay > new TimeSpan(0,30,0);
-            return isClosingSoon ? BusinessHoursConstants.Open : BusinessHoursConstants.ClosingSoon;
+            var isClosingSoon = IsPlaceClosingSoon(scheduleDay);
+            var isOpeningSoon = IsPlaceOpeningSoon(scheduleDay);
+            var isClosed = scheduleDay.Hours.Min > _dateTime.Now.TimeOfDay &&
+                           scheduleDay.Hours.Max < _dateTime.Now.TimeOfDay;
+
+            if (isClosingSoon)
+            {
+                return BusinessHoursConstants.ClosingSoon;
+            }
+
+            if (isOpeningSoon)
+            {
+                return BusinessHoursConstants.OpeningSoon;
+            }
+
+            return isClosed ? BusinessHoursConstants.Closed : BusinessHoursConstants.Open;
         }
 
         public string GetCurrentSchedule()
@@ -56,6 +73,18 @@ namespace RotaDasTapas.Models.Models
             return string.Join("-", GetTimespanToString(scheduleDay.Hours.Min),
                 GetTimespanToString(scheduleDay.Hours.Max));
         }
+        
+        private bool IsPlaceOpeningSoon(ScheduleDay scheduleDay)
+        {
+            var timeDeference = scheduleDay.Hours.Min - _dateTime.Now.TimeOfDay;
+            return timeDeference <= _margin && timeDeference >= new TimeSpan(0,0,0);
+        }
+        
+        private bool IsPlaceClosingSoon(ScheduleDay scheduleDay)
+        {
+            var timeDeference=scheduleDay.Hours.Max - _dateTime.Now.TimeOfDay;
+            return timeDeference <= _margin && timeDeference >= new TimeSpan(0,0,0);
+        }
 
         private List<ScheduleDay> GetTimeFromCompressed(string compressed)
         {
@@ -68,7 +97,12 @@ namespace RotaDasTapas.Models.Models
 
             foreach (var schedule in scheduleByDays)
             {
-                weekDaysList.Add(GetTimeFromPatternCompressed(schedule));
+                var weekday = GetTimeFromPatternCompressed(schedule);
+                if (weekday == null)
+                {
+                    return new List<ScheduleDay>();
+                }
+                weekDaysList.Add(weekday);
             }
 
             return weekDaysList;
@@ -94,9 +128,9 @@ namespace RotaDasTapas.Models.Models
                     Min = int.Parse(match.Groups["minDay"].Value),
                     Max = int.Parse(match.Groups["maxDay"].Value)
                 };
+                return scheduleDay;
             }
-
-            return scheduleDay;
+            return default;
         }
         
         private ScheduleDay GetCurrentScheduleDay()
