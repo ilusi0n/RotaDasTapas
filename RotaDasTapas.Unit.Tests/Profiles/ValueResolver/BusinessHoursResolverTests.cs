@@ -39,16 +39,16 @@ namespace RotaDasTapas.Unit.Tests.Profiles.ValueResolver
             {
                 Schedule = null
             };
-            
+
             //act
             var result = _businessHoursResolver.Resolve(tapaDto, _destination, _destMember, _context);
-            
+
             //assert
             Assert.IsNotNull(result);
-            Assert.AreEqual(string.Empty,result.Hours);
-            Assert.AreEqual(string.Empty,result.Status);
+            Assert.AreEqual(string.Empty, result.Hours);
+            Assert.AreEqual(string.Empty, result.Status);
         }
-        
+
         [TestMethod]
         public void Resolve_InvalidBusinessHours_ReturnsEmpty()
         {
@@ -58,14 +58,14 @@ namespace RotaDasTapas.Unit.Tests.Profiles.ValueResolver
             {
                 Schedule = "08:00,24:00;7,7"
             };
-            
+
             //act
             var result = _businessHoursResolver.Resolve(tapaDto, _destination, _destMember, _context);
-            
+
             //assert
             Assert.IsNotNull(result);
-            Assert.AreEqual(string.Empty,result.Hours);
-            Assert.AreEqual(string.Empty,result.Status);
+            Assert.AreEqual(string.Empty, result.Hours);
+            Assert.AreEqual(string.Empty, result.Status);
         }
 
         [TestMethod]
@@ -78,23 +78,23 @@ namespace RotaDasTapas.Unit.Tests.Profiles.ValueResolver
             {
                 Schedule = "08:00,24:00;0,6"
             };
-            
-            var expected  = new Schedule
+
+            var expected = new Schedule
             {
                 Hours = "08:00-00:00",
                 Status = BusinessHoursConstants.Open
             };
-            
+
             //act
             var result = _businessHoursResolver.Resolve(tapaDto, _destination, _destMember, _context);
-            
+
             //assert
             Assert.IsNotNull(result);
-            Assert.AreEqual(expected.Hours,result.Hours);
-            Assert.AreEqual(expected.Status,result.Status);
+            Assert.AreEqual(expected.Hours, result.Hours);
+            Assert.AreEqual(expected.Status, result.Status);
             Assert.IsFalse(result.Disable);
         }
-        
+
         [TestMethod]
         public void Resolve_ValidBusinessHours_ReturnsClosedAndIsNotEnable()
         {
@@ -105,23 +105,23 @@ namespace RotaDasTapas.Unit.Tests.Profiles.ValueResolver
             {
                 Schedule = "08:00,24:00;3,3"
             };
-            
-            var expected  = new Schedule
+
+            var expected = new Schedule
             {
                 Hours = string.Empty,
                 Status = BusinessHoursConstants.ClosedToday,
             };
-            
+
             //act
             var result = _businessHoursResolver.Resolve(tapaDto, _destination, _destMember, _context);
-            
+
             //assert
             Assert.IsNotNull(result);
-            Assert.AreEqual(expected.Hours,result.Hours);
-            Assert.AreEqual(expected.Status,result.Status);
+            Assert.AreEqual(expected.Hours, result.Hours);
+            Assert.AreEqual(expected.Status, result.Status);
             Assert.IsFalse(result.Disable);
         }
-        
+
         [TestMethod]
         public void Resolve_ValidBusinessHours_ReturnsOpeningSoonAndIsEnable()
         {
@@ -132,23 +132,23 @@ namespace RotaDasTapas.Unit.Tests.Profiles.ValueResolver
             {
                 Schedule = "11:15,24:00;0,0"
             };
-            
-            var expected  = new Schedule
+
+            var expected = new Schedule
             {
                 Hours = "11:15-00:00",
                 Status = BusinessHoursConstants.OpeningSoon,
             };
-            
+
             //act
             var result = _businessHoursResolver.Resolve(tapaDto, _destination, _destMember, _context);
-            
+
             //assert
             Assert.IsNotNull(result);
-            Assert.AreEqual(expected.Hours,result.Hours);
-            Assert.AreEqual(expected.Status,result.Status);
+            Assert.AreEqual(expected.Hours, result.Hours);
+            Assert.AreEqual(expected.Status, result.Status);
             Assert.IsFalse(result.Disable);
         }
-        
+
         [TestMethod]
         public void Resolve_ValidBusinessHours_ReturnsClosingSoonAndIsEnable()
         {
@@ -159,20 +159,20 @@ namespace RotaDasTapas.Unit.Tests.Profiles.ValueResolver
             {
                 Schedule = "10:45,16:00;0,0"
             };
-            
-            var expected  = new Schedule
+
+            var expected = new Schedule
             {
                 Hours = "10:45-16:00",
                 Status = BusinessHoursConstants.ClosingSoon,
             };
-            
+
             //act
             var result = _businessHoursResolver.Resolve(tapaDto, _destination, _destMember, _context);
-            
+
             //assert
             Assert.IsNotNull(result);
-            Assert.AreEqual(expected.Hours,result.Hours);
-            Assert.AreEqual(expected.Status,result.Status);
+            Assert.AreEqual(expected.Hours, result.Hours);
+            Assert.AreEqual(expected.Status, result.Status);
             Assert.IsFalse(result.Disable);
         }
     }

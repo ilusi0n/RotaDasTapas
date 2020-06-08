@@ -31,7 +31,7 @@ namespace RotaDasTapas.Services
             var listSelectedTapas = list.Split("|");
             _journeyUtils.Init(listSelectedTapas, listSelectedTapas.First(), result);
             var pathToTake = _journeyUtils.SolveProblem();
-            pathToTake.ToList().RemoveAt(pathToTake.Count()-1);
+            pathToTake.ToList().RemoveAt(pathToTake.Count() - 1);
 
             return _mapper.Map<TapasResponse>(result);
         }

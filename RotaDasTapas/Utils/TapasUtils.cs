@@ -17,7 +17,8 @@ namespace RotaDasTapas.Utils
                 Address = "Praça São João Bosco, nº554",
                 Description = "Rosbife, pão, batata-doce com bacon ou cogumelos",
                 City = "Lisbon",
-                ImageUrl = "https://b.zmtcdn.com/data/reviews_photos/457/3a067bf6486868b3e5f4691067e39457_1506688864.jpg",
+                ImageUrl =
+                    "https://b.zmtcdn.com/data/reviews_photos/457/3a067bf6486868b3e5f4691067e39457_1506688864.jpg",
                 Schedule = "15:00,21:00;1,5|12:00,21:30;0,0|12:00,21:30;6,6"
             };
             var LisboaTapa2 = new TapaDto
@@ -28,7 +29,8 @@ namespace RotaDasTapas.Utils
                 Address = "Rua Francisco Metrass, nº18, B",
                 Description = "Farinheira assada na brasa com alface francesa",
                 City = "Lisbon",
-                ImageUrl = "https://b.zmtcdn.com/data/reviews_photos/3d8/f9db351dec4e65052a00f9e0364d13d8_1491355337.jpg",
+                ImageUrl =
+                    "https://b.zmtcdn.com/data/reviews_photos/3d8/f9db351dec4e65052a00f9e0364d13d8_1491355337.jpg",
                 Schedule = "13:00,23:00;1,6"
             };
 
@@ -40,7 +42,8 @@ namespace RotaDasTapas.Utils
                 Address = "Rua Tenente Ferreira Durão, Nº 55, A",
                 Description = "Guisado de Choco, acompanhado com pão dourado e coentros",
                 City = "Lisbon",
-                ImageUrl = "https://b.zmtcdn.com/data/reviews_photos/b30/49a3e35fe3e566cd8b1fcda57bf94b30_1545936190.jpg",
+                ImageUrl =
+                    "https://b.zmtcdn.com/data/reviews_photos/b30/49a3e35fe3e566cd8b1fcda57bf94b30_1545936190.jpg",
                 Schedule = "18:00,21:30;1,6"
             };
 
@@ -55,7 +58,7 @@ namespace RotaDasTapas.Utils
                 ImageUrl = "https://b.zmtcdn.com/data/pictures/chains/1/8211481/3ed9649189f68527a20c9c8aba75ea51.jpg",
                 Schedule = "12:30,14:30;2,6|12:30,14:30;0,0|18:45,22:30;2,6|18:45,22:30;0,0"
             };
-            
+
             var LisboaTapa5 = new TapaDto
             {
                 Id = string.Join(Separators.Underscore, "Lisbon", 5),
@@ -67,7 +70,7 @@ namespace RotaDasTapas.Utils
                 ImageUrl = "4https://b.zmtcdn.com/data/pictures/4/8201164/44384b8b6643e6c988f71c1fc7071544.jpg",
                 Schedule = "19:00,23:00;0,6"
             };
-            
+
             var LisboaTapa6 = new TapaDto
             {
                 Id = string.Join(Separators.Underscore, "Lisbon", 6),

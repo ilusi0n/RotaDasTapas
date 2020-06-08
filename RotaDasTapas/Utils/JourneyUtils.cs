@@ -39,6 +39,7 @@ namespace RotaDasTapas.Utils
                 });
                 i++;
             }
+
             return list;
         }
 

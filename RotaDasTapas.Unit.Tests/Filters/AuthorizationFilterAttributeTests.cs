@@ -21,6 +21,7 @@ namespace RotaDasTapas.Unit.Tests.Filters
     {
         private readonly AuthorizationFilterContext _context;
         private readonly Mock<IOptions<RotaDasTapasConfiguration>> _mockSearchConfiguration;
+
         public AuthorizationFilterAttributeTests()
         {
             var modelState = new ModelStateDictionary();
@@ -35,11 +36,11 @@ namespace RotaDasTapas.Unit.Tests.Filters
                 actionDescriptor,
                 modelState
             );
-            
+
             _context = new AuthorizationFilterContext(
                 actionContext,
                 new List<IFilterMetadata>()
-                );
+            );
         }
 
         [TestMethod]
@@ -56,7 +57,7 @@ namespace RotaDasTapas.Unit.Tests.Filters
                 );
             var filter = new AuthorizationFilterAttribute(_mockSearchConfiguration.Object);
             _context.HttpContext.Request.Headers["ApiKey"] = "123";
-            
+
             //Act
             filter.OnAuthorization(_context);
             var response = _context.Result as ObjectResult;
@@ -68,7 +69,7 @@ namespace RotaDasTapas.Unit.Tests.Filters
             Assert.AreEqual(HttpStatusCode.Unauthorized.ToString(), result.StatusDescription);
             Assert.AreEqual(ErrorConstants.UnauthorizedError, result.Message);
         }
-        
+
         [TestMethod]
         public void OnAuthorization_Valid_NullResult()
         {
@@ -83,7 +84,7 @@ namespace RotaDasTapas.Unit.Tests.Filters
                 );
             var filter = new AuthorizationFilterAttribute(_mockSearchConfiguration.Object);
             _context.HttpContext.Request.Headers["ApiKey"] = "123";
-            
+
             //Act
             filter.OnAuthorization(_context);
             var result = _context.Result;
@@ -91,7 +92,7 @@ namespace RotaDasTapas.Unit.Tests.Filters
             //Assert
             Assert.IsNull(result);
         }
-        
+
         [TestMethod]
         public void OnAuthorization_NoKey_VoidResult()
         {

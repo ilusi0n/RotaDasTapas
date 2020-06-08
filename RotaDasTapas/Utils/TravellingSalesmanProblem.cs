@@ -17,7 +17,7 @@ namespace RotaDasTapas.Utils
 
         #region Constructor
 
-        public TravellingSalesmanProblem(int startVerticeIndex,IEnumerable<Vertice> vertices, Path[,] matrix)
+        public TravellingSalesmanProblem(int startVerticeIndex, IEnumerable<Vertice> vertices, Path[,] matrix)
         {
             _vertices = vertices;
             _adjacencyMatrix = matrix;
@@ -47,7 +47,7 @@ namespace RotaDasTapas.Utils
         {
             if (!set.Any())
             {
-                root.ChildNodes = new[] { new Node { Value = _vertices.ToList()[_startVerticeIndex], Selected = true } };
+                root.ChildNodes = new[] {new Node {Value = _vertices.ToList()[_startVerticeIndex], Selected = true}};
                 return _adjacencyMatrix[startVertex.Id, 0].Distance;
             }
 
@@ -58,7 +58,7 @@ namespace RotaDasTapas.Utils
 
             foreach (var destination in set)
             {
-                root.ChildNodes[i] = new Node { Value = destination };
+                root.ChildNodes[i] = new Node {Value = destination};
 
                 var costOfVistingCurrentNode = _adjacencyMatrix[startVertex.Id, destination.Id];
 
@@ -79,7 +79,6 @@ namespace RotaDasTapas.Utils
             root.ChildNodes[selectedIdx].Selected = true;
 
             return totalCost;
-
         }
 
         private IEnumerable<Vertice> TraverseTree(Node root, Vertice startint)

@@ -25,7 +25,7 @@ namespace RotaDasTapas.Unit.Tests.Services
         public TapasServiceTests()
         {
             _mockMapper = new Mock<IMapper>();
-            _mockJourneyUtils =new Mock<IJourneyUtils>();
+            _mockJourneyUtils = new Mock<IJourneyUtils>();
             _mockMapper
                 .Setup(s => s.ConfigurationProvider)
                 .Returns(new MapperConfiguration(mc => { mc.AddProfile(new TapasResponseProfile()); }));

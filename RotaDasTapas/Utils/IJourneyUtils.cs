@@ -8,6 +8,7 @@ namespace RotaDasTapas.Utils
     {
         void Init(IEnumerable<string> selectedTapas, string startTapaId,
             IEnumerable<TapaDto> tapasByCity);
+
         IEnumerable<Vertice> SolveProblem();
     }
 }

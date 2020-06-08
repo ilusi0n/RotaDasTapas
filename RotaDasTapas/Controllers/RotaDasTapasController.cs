@@ -55,7 +55,7 @@ namespace RotaDasTapas.Controllers
         public IActionResult GetTapasRoute(
             [FromHeader] RotaDasTapasHeaders rotaDasTapasHeaders, string city, string list)
         {
-            var result = _tapasService.GetTapasRoute(city,list);
+            var result = _tapasService.GetTapasRoute(city, list);
             return Ok(result);
         }
     }

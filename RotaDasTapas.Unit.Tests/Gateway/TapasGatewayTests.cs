@@ -8,6 +8,7 @@ namespace RotaDasTapas.Unit.Tests.Gateway
     public class TapasRepositoryTests
     {
         private readonly ITapasGateway _tapasGateway;
+
         public TapasRepositoryTests()
         {
             _tapasGateway = new TapasGateway();
@@ -17,7 +18,7 @@ namespace RotaDasTapas.Unit.Tests.Gateway
         public void GetAllTapas_NotArgument_ReturnValidModel()
         {
             //Arrange
-            
+
             //Act
             var result = _tapasGateway.GetAllTapas();
 
@@ -25,12 +26,12 @@ namespace RotaDasTapas.Unit.Tests.Gateway
             Assert.IsNotNull(result);
             Assert.IsTrue(result.Any());
         }
-        
+
         [TestMethod]
         public void GetTapasRoute_NotArgument_ReturnValidModel()
         {
             //Arrange
-            
+
             //Act
             var result = _tapasGateway.GetTapasRoute("Lisbon");
 

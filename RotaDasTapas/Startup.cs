@@ -35,7 +35,7 @@ namespace RotaDasTapas
             services.AddScoped<ITapasService, TapasService>();
             services.AddScoped<ITapasGateway, TapasGateway>();
             services.AddScoped<IDateTimeWrapper, DateTimeWrapper>();
-            services.AddScoped<IJourneyUtils,JourneyUtils>();
+            services.AddScoped<IJourneyUtils, JourneyUtils>();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo
@@ -85,6 +85,7 @@ namespace RotaDasTapas
         {
             services.Configure<RotaDasTapasConfiguration>(config.GetSection("RotaDasTapasConfiguration"));
         }
+
         private static void SetupAutoMapper(IServiceCollection services)
         {
             services.AddAutoMapper(typeof(TapasResponseProfile));
