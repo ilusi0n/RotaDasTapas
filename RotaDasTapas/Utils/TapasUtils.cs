@@ -97,35 +97,54 @@ namespace RotaDasTapas.Utils
                 CreatePath(LisboaTapa1.Id, 0),
                 CreatePath(LisboaTapa2.Id, 5),
                 CreatePath(LisboaTapa3.Id, 1),
-                CreatePath(LisboaTapa4.Id, 500)
+                CreatePath(LisboaTapa4.Id, 500),
+                CreatePath(LisboaTapa5.Id, 200),
+                CreatePath(LisboaTapa6.Id, 120)
             };
             LisboaTapa2.Path = new List<Path>
             {
                 CreatePath(LisboaTapa1.Id, LisboaTapa1.Path.ToList()[1].Distance),
                 CreatePath(LisboaTapa2.Id, 0),
                 CreatePath(LisboaTapa3.Id, 40),
-                CreatePath(LisboaTapa4.Id, 50)
+                CreatePath(LisboaTapa4.Id, 50),
+                CreatePath(LisboaTapa5.Id, 300),
+                CreatePath(LisboaTapa6.Id, 520)
             };
             LisboaTapa3.Path = new List<Path>
             {
                 CreatePath(LisboaTapa1.Id, LisboaTapa1.Path.ToList()[2].Distance),
                 CreatePath(LisboaTapa2.Id, LisboaTapa2.Path.ToList()[2].Distance),
                 CreatePath(LisboaTapa3.Id, 0),
-                CreatePath(LisboaTapa4.Id, 500)
+                CreatePath(LisboaTapa4.Id, 500),
+                CreatePath(LisboaTapa5.Id, 700),
+                CreatePath(LisboaTapa6.Id, 220)
             };
             LisboaTapa4.Path = new List<Path>
             {
                 CreatePath(LisboaTapa1.Id, LisboaTapa1.Path.ToList()[3].Distance),
                 CreatePath(LisboaTapa2.Id, LisboaTapa2.Path.ToList()[3].Distance),
                 CreatePath(LisboaTapa3.Id, LisboaTapa3.Path.ToList()[3].Distance),
-                CreatePath(LisboaTapa4.Id, 0)
+                CreatePath(LisboaTapa4.Id, 0),
+                CreatePath(LisboaTapa5.Id, 800),
+                CreatePath(LisboaTapa6.Id, 1220)
             };
             LisboaTapa5.Path = new List<Path>
             {
-                CreatePath(LisboaTapa1.Id, LisboaTapa1.Path.ToList()[3].Distance),
-                CreatePath(LisboaTapa2.Id, LisboaTapa2.Path.ToList()[3].Distance),
-                CreatePath(LisboaTapa3.Id, LisboaTapa3.Path.ToList()[3].Distance),
-                CreatePath(LisboaTapa4.Id, 0)
+                CreatePath(LisboaTapa1.Id, LisboaTapa1.Path.ToList()[4].Distance),
+                CreatePath(LisboaTapa2.Id, LisboaTapa2.Path.ToList()[4].Distance),
+                CreatePath(LisboaTapa3.Id, LisboaTapa3.Path.ToList()[4].Distance),
+                CreatePath(LisboaTapa4.Id, LisboaTapa3.Path.ToList()[4].Distance),
+                CreatePath(LisboaTapa5.Id, 0),
+                CreatePath(LisboaTapa6.Id, 6520)
+            };
+            LisboaTapa6.Path = new List<Path>
+            {
+                CreatePath(LisboaTapa1.Id, LisboaTapa1.Path.ToList()[5].Distance),
+                CreatePath(LisboaTapa2.Id, LisboaTapa2.Path.ToList()[5].Distance),
+                CreatePath(LisboaTapa3.Id, LisboaTapa3.Path.ToList()[5].Distance),
+                CreatePath(LisboaTapa4.Id, LisboaTapa3.Path.ToList()[5].Distance),
+                CreatePath(LisboaTapa5.Id, LisboaTapa3.Path.ToList()[5].Distance),
+                CreatePath(LisboaTapa6.Id, 0)
             };
 
             return new List<TapaDto>

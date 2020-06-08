@@ -99,9 +99,9 @@ namespace RotaDasTapas.Controllers
         [ProducesResponseType(typeof(UnauthorizedError), StatusCodes.Status401Unauthorized)]
         [TypeFilter(typeof(AuthorizationFilterAttribute))]
         public IActionResult GetTapasRoute(
-            [FromHeader] RotaDasTapasHeaders rotaDasTapasHeaders, string city)
+            [FromHeader] RotaDasTapasHeaders rotaDasTapasHeaders, string city, string list)
         {
-            var result = _tapasService.GetTapasRoute(city);
+            var result = _tapasService.GetTapasRoute(city,list);
             return Ok(result);
         }
     }

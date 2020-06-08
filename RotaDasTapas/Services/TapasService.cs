@@ -1,11 +1,8 @@
-using System.Collections.Generic;
 using System.Linq;
 using AutoMapper;
-using Microsoft.AspNetCore.Builder;
 using RotaDasTapas.Gateway;
-using RotaDasTapas.Models;
-using RotaDasTapas.Utils;
 using RotaDasTapas.Models.Response;
+using RotaDasTapas.Utils;
 
 namespace RotaDasTapas.Services
 {
@@ -38,15 +35,11 @@ namespace RotaDasTapas.Services
             return _mapper.Map<TapasResponse>(result);
         }
 
-        public TapasResponse GetTapasRoute(string city)
+        public TapasResponse GetTapasRoute(string city, string list)
         {
             var result = _tapasGateway.GetTapasRoute(city);
-
-            var listSelectedTapas = new List<string>()
-            {
-                "Lisboa_1", "Lisboa_2", "Lisboa_3", "Lisboa_4"
-            };
-            var journeyUtils = new JourneyUtils(listSelectedTapas, "Lisboa_4", result);
+            var listSelectedTapas = list.Split("|");
+            var journeyUtils = new JourneyUtils(listSelectedTapas, listSelectedTapas.First(), result);
             var pathToTake = journeyUtils.SolveProblem();
             pathToTake.ToList().RemoveAt(pathToTake.Count()-1);
 
