@@ -46,6 +46,29 @@ namespace RotaDasTapas.Unit.Tests.Controllers
             Assert.IsNotNull(result);
             Assert.AreEqual(tapasResponse, result);
         }
+        
+        [TestMethod]
+        public void GetTapasRoute_ValidRequest_ShouldReturnOk()
+        {
+            //Arrange
+            var headers = new RotaDasTapasHeaders
+            {
+                ApiKey = "fakekey"
+            };
+            var tapasResponse = new TapasResponse()
+            {
+                Tapas = TapasServiceMocks.GetListOfTapasSingleOneWithAllFields()
+            };
+            _mockTapasService.Setup(d => d.GetTapasRoute(It.IsAny<string>(),It.IsAny<string>())).Returns(tapasResponse);
+
+            //Act
+            var response = _rotaDasTapasController.GetTapasRoute(headers,"city","list") as OkObjectResult;
+            var result = response.Value as TapasResponse;
+
+            //Assert
+            Assert.IsNotNull(result);
+            Assert.AreEqual(tapasResponse, result);
+        }
 
         [TestMethod]
         public void GetTapas_ListTapasNull_ShouldReturnInternalServerError()

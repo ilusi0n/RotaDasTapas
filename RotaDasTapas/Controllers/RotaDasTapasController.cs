@@ -1,10 +1,8 @@
-﻿using System.Linq;
-using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using RotaDasTapas.Constants;
 using RotaDasTapas.Errors;
 using RotaDasTapas.Filters;
-using RotaDasTapas.Models;
 using RotaDasTapas.Models.Request;
 using RotaDasTapas.Models.Response;
 using RotaDasTapas.Services;
