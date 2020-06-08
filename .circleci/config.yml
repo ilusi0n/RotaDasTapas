@@ -19,20 +19,12 @@ jobs:
             cd ./RotaDasTapas.Unit.Tests/
             dotnet test /p:CollectCoverage=true /p:CoverletOutput=TestResults/ /p:ThresholdType=line /p:Threshold=100 /p:thresholdStat=total /p:CoverletOutputFormat=lcov
 
-  deploy:
-    executor: heroku/default
-    steps:
-      - checkout
-      - heroku/install
-      - run:
-          command: heroku/deploy-via-git
-
 workflows:
   version: 2
   build-and-deploy:
     jobs:
       - build
-      - deploy:
+      - heroku/deploy-via-git:
           requires:
             - build
           filters:
