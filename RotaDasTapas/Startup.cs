@@ -11,6 +11,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using RotaDasTapas.Gateway;
 using RotaDasTapas.Models.Configuration;
+using RotaDasTapas.Models.Models;
 using RotaDasTapas.Profiles;
 using RotaDasTapas.Services;
 
@@ -32,6 +33,7 @@ namespace RotaDasTapas
             services.AddControllers();
             services.AddScoped<ITapasService, TapasService>();
             services.AddScoped<ITapasGateway, TapasGateway>();
+            services.AddScoped<IDateTimeWrapper, DateTimeWrapper>();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo

@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace RotaDasTapas.Models
+namespace RotaDasTapas.Models.Response
 {
     public class TapasResponse
     {

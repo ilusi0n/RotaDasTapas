@@ -6,6 +6,7 @@ using RotaDasTapas.Errors;
 using RotaDasTapas.Filters;
 using RotaDasTapas.Models;
 using RotaDasTapas.Models.Request;
+using RotaDasTapas.Models.Response;
 using RotaDasTapas.Services;
 
 namespace RotaDasTapas.Controllers

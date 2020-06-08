@@ -24,12 +24,16 @@ namespace RotaDasTapas.Unit.Tests.Mocks
         public static TapaDto GetGetTapaAllFields()
         {
             return
-                new TapaDto()
+                new TapaDto
                 {
+                    Id = "Id_lisboa",
                     Address = "address",
                     Description = "description",
                     Name = "name",
-                    Title = "title"
+                    Title = "title",
+                    ImageUrl = "imageurl",
+                    City = "city",
+                    Schedule = "08:00,24:00;0,6"
                 };
         }
     }

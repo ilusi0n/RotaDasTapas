@@ -6,6 +6,7 @@ using Moq;
 using RotaDasTapas.Gateway;
 using RotaDasTapas.Models;
 using RotaDasTapas.Models.Gateway;
+using RotaDasTapas.Models.Response;
 using RotaDasTapas.Profiles;
 using RotaDasTapas.Services;
 using RotaDasTapas.Unit.Tests.Mocks;

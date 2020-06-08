@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Builder;
 using RotaDasTapas.Gateway;
 using RotaDasTapas.Models;
 using RotaDasTapas.Utils;
+using RotaDasTapas.Models.Response;
 
 namespace RotaDasTapas.Services
 {

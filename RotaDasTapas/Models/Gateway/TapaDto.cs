@@ -12,5 +12,6 @@ namespace RotaDasTapas.Models.Gateway
         public string City { get; set; }
         public string ImageUrl { get; set; }
         public IEnumerable<Path> Path { get; set; }
+        public string Schedule { get; set; }
     }
 }

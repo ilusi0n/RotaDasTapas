@@ -17,7 +17,8 @@ namespace RotaDasTapas.Utils
                 Address = "Address",
                 Description = "Description1",
                 City = "Lisboa",
-                ImageUrl = "https://b.zmtcdn.com/data/pictures/chains/9/18618109/fc91d7cf0ff3896fa3b6c4bd904ebd29.jpg"
+                ImageUrl = "https://b.zmtcdn.com/data/pictures/chains/9/18618109/fc91d7cf0ff3896fa3b6c4bd904ebd29.jpg",
+                Schedule = "07:00,15:00;1,1|07:00,14:00;6,6"
             };
             var tapa2 = new TapaDto
             {
@@ -27,7 +28,8 @@ namespace RotaDasTapas.Utils
                 Address = "Address",
                 Description = "Description2",
                 City = "Lisboa",
-                ImageUrl = "https://b.zmtcdn.com/data/pictures/chains/9/18618109/fc91d7cf0ff3896fa3b6c4bd904ebd29.jpg"
+                ImageUrl = "https://b.zmtcdn.com/data/pictures/chains/9/18618109/fc91d7cf0ff3896fa3b6c4bd904ebd29.jpg",
+                Schedule = "07:00,15:00;1,1|07:00,14:00;6,6"
             };
 
             var tapa3 = new TapaDto
@@ -38,9 +40,10 @@ namespace RotaDasTapas.Utils
                 Address = "Address",
                 Description = "Description3",
                 City = "Lisboa",
-                ImageUrl = "https://b.zmtcdn.com/data/pictures/chains/9/18618109/fc91d7cf0ff3896fa3b6c4bd904ebd29.jpg"
+                ImageUrl = "https://b.zmtcdn.com/data/pictures/chains/9/18618109/fc91d7cf0ff3896fa3b6c4bd904ebd29.jpg",
+                Schedule = "07:00,15:00;1,1|07:00,14:00;6,6"
             };
-            
+
             var tapa4 = new TapaDto
             {
                 Id = string.Join(Separators.Underscore, "Lisboa", 4),
@@ -49,7 +52,8 @@ namespace RotaDasTapas.Utils
                 Address = "Address",
                 Description = "Description1",
                 City = "Lisboa",
-                ImageUrl = "https://b.zmtcdn.com/data/pictures/chains/9/18618109/fc91d7cf0ff3896fa3b6c4bd904ebd29.jpg"
+                ImageUrl = "https://b.zmtcdn.com/data/pictures/chains/9/18618109/fc91d7cf0ff3896fa3b6c4bd904ebd29.jpg",
+                Schedule = "07:00,15:00;1,1|07:00,14:00;6,6"
             };
 
             var tapa5 = new TapaDto
@@ -60,7 +64,8 @@ namespace RotaDasTapas.Utils
                 Address = "Address",
                 Description = "Description1",
                 City = "Porto",
-                ImageUrl = "https://b.zmtcdn.com/data/pictures/chains/9/18618109/fc91d7cf0ff3896fa3b6c4bd904ebd29.jpg"
+                ImageUrl = "https://b.zmtcdn.com/data/pictures/chains/9/18618109/fc91d7cf0ff3896fa3b6c4bd904ebd29.jpg",
+                Schedule = "07:00,15:00;1,1|07:00,14:00;6,6"
             };
 
             tapa1.Path = new List<Path>

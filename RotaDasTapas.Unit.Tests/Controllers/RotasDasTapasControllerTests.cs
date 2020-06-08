@@ -9,6 +9,7 @@ using RotaDasTapas.Controllers;
 using RotaDasTapas.Errors;
 using RotaDasTapas.Models;
 using RotaDasTapas.Models.Request;
+using RotaDasTapas.Models.Response;
 using RotaDasTapas.Services;
 using RotaDasTapas.Unit.Tests.Mocks;
 
