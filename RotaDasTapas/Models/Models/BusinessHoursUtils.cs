@@ -22,8 +22,7 @@ namespace RotaDasTapas.Models.Models
             _locale = locale.Replace("_", "-");
             _dateTime = dateTime;
             _scheduleDays = GetTimeFromCompressed(businessHours);
-            _margin = new TimeSpan(0,30,0);
-            
+            _margin = new TimeSpan(0, 30, 0);
         }
 
         public string GetStatus()
@@ -32,6 +31,7 @@ namespace RotaDasTapas.Models.Models
             {
                 return string.Empty;
             }
+
             var scheduleDay = GetCurrentScheduleDay();
 
             if (scheduleDay == null)
@@ -63,6 +63,7 @@ namespace RotaDasTapas.Models.Models
             {
                 return string.Empty;
             }
+
             var scheduleDay = GetCurrentScheduleDay();
 
             if (scheduleDay == null)
@@ -73,17 +74,17 @@ namespace RotaDasTapas.Models.Models
             return string.Join("-", GetTimespanToString(scheduleDay.Hours.Min),
                 GetTimespanToString(scheduleDay.Hours.Max));
         }
-        
+
         private bool IsPlaceOpeningSoon(ScheduleDay scheduleDay)
         {
             var timeDeference = scheduleDay.Hours.Min - _dateTime.Now.TimeOfDay;
-            return timeDeference <= _margin && timeDeference >= new TimeSpan(0,0,0);
+            return timeDeference <= _margin && timeDeference >= new TimeSpan(0, 0, 0);
         }
-        
+
         private bool IsPlaceClosingSoon(ScheduleDay scheduleDay)
         {
-            var timeDeference=scheduleDay.Hours.Max - _dateTime.Now.TimeOfDay;
-            return timeDeference <= _margin && timeDeference >= new TimeSpan(0,0,0);
+            var timeDeference = scheduleDay.Hours.Max - _dateTime.Now.TimeOfDay;
+            return timeDeference <= _margin && timeDeference >= new TimeSpan(0, 0, 0);
         }
 
         private List<ScheduleDay> GetTimeFromCompressed(string compressed)
@@ -93,6 +94,7 @@ namespace RotaDasTapas.Models.Models
             {
                 return weekDaysList;
             }
+
             var scheduleByDays = compressed.Split('|');
 
             foreach (var schedule in scheduleByDays)
@@ -102,6 +104,7 @@ namespace RotaDasTapas.Models.Models
                 {
                     return new List<ScheduleDay>();
                 }
+
                 weekDaysList.Add(weekday);
             }
 
@@ -130,9 +133,10 @@ namespace RotaDasTapas.Models.Models
                 };
                 return scheduleDay;
             }
+
             return default;
         }
-        
+
         private ScheduleDay GetCurrentScheduleDay()
         {
             var currWeekDay = (int) _dateTime.Now.DayOfWeek;

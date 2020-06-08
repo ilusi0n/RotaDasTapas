@@ -4,12 +4,13 @@ using AutoMapper;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using RotaDasTapas.Gateway;
-using RotaDasTapas.Models;
 using RotaDasTapas.Models.Gateway;
 using RotaDasTapas.Models.Response;
+using RotaDasTapas.Models.TSP;
 using RotaDasTapas.Profiles;
 using RotaDasTapas.Services;
 using RotaDasTapas.Unit.Tests.Mocks;
+using RotaDasTapas.Utils;
 
 namespace RotaDasTapas.Unit.Tests.Services
 {
@@ -19,18 +20,17 @@ namespace RotaDasTapas.Unit.Tests.Services
         private readonly ITapasService _tapasService;
         private readonly Mock<ITapasGateway> _tapasGateway;
         private readonly Mock<IMapper> _mockMapper;
+        private readonly Mock<IJourneyUtils> _mockJourneyUtils;
 
         public TapasServiceTests()
         {
             _mockMapper = new Mock<IMapper>();
+            _mockJourneyUtils = new Mock<IJourneyUtils>();
             _mockMapper
                 .Setup(s => s.ConfigurationProvider)
-                .Returns(new MapperConfiguration(mc =>
-                {
-                    mc.AddProfile(new TapasResponseProfile());
-                }));
+                .Returns(new MapperConfiguration(mc => { mc.AddProfile(new TapasResponseProfile()); }));
             _tapasGateway = new Mock<ITapasGateway>();
-            _tapasService = new TapasService(_tapasGateway.Object,_mockMapper.Object);
+            _tapasService = new TapasService(_tapasGateway.Object, _mockMapper.Object, _mockJourneyUtils.Object);
         }
 
         [TestMethod]
@@ -55,48 +55,31 @@ namespace RotaDasTapas.Unit.Tests.Services
         }
 
         [TestMethod]
-        public void GetTapaByName_ValidRequest_ReturnsOk()
+        public void GetTapasRoute_LisbonValidIds_ReturnsOk()
         {
             //Arrange
-            var name = "name";
-            var expectedTapa = TapasGatewayMocks.GetGetTapaAllFields();
-            
+            var expectedListTapas = TapasGatewayMocks.GetAllTapasWithPath();
+            var listSelected = "Lisbon_1|Lisbon_2|Lisbon_3";
             var expectedMock = new TapasResponse()
             {
-                Tapas = TapasServiceMocks.GetGetTapaAllFields()
-            };
-            _mockMapper.Setup(m =>
-                    m.Map<TapasResponse>(It.IsAny<TapaDto>()))
-                .Returns(expectedMock);
-
-            _tapasGateway.Setup(d => d.GetTapaByName(name)).Returns(expectedTapa);
-
-            //Act
-            var result = _tapasService.GetTapaByName(name);
-
-            //Assert
-            AssertTests(expectedMock, result);
-        }
-        
-        [TestMethod]
-        public void GetTapaByCity_ValidRequest_ReturnsOk()
-        {
-            //Arrange
-            var city = "Lisboa";
-            var expectedTapa = TapasGatewayMocks.GetListOfTapasSingleOneWithAllFields();
-            
-            var expectedMock = new TapasResponse()
-            {
-                Tapas = TapasServiceMocks.GetGetTapaAllFields()
+                Tapas = TapasServiceMocks.GetListOfTapasSingleOneWithAllFields()
             };
 
             _mockMapper.Setup(m =>
                     m.Map<TapasResponse>(It.IsAny<IEnumerable<TapaDto>>()))
                 .Returns(expectedMock);
-            _tapasGateway.Setup(d => d.GetTapasByCity(city)).Returns(expectedTapa);
+            _tapasGateway.Setup(d => d.GetTapasRoute("Lisbon")).Returns(expectedListTapas);
+
+            _mockJourneyUtils.Setup(m => m.Init(
+                It.IsAny<IEnumerable<string>>(), It.IsAny<string>(), It.IsAny<IEnumerable<TapaDto>>()));
+
+            _mockJourneyUtils.Setup(m => m.SolveProblem()).Returns(new List<Vertice>()
+            {
+                new Vertice()
+            });
 
             //Act
-            var result = _tapasService.GetTapaByCity(city);
+            var result = _tapasService.GetTapasRoute("Lisbon", listSelected);
 
             //Assert
             AssertTests(expectedMock, result);
@@ -111,7 +94,7 @@ namespace RotaDasTapas.Unit.Tests.Services
             var nExpect = 0;
             foreach (var exp in expected.Tapas)
             {
-                AssertTests(exp,resultList[nExpect++]);
+                AssertTests(exp, resultList[nExpect++]);
             }
         }
 

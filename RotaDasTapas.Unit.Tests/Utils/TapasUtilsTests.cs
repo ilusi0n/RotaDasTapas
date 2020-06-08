@@ -10,10 +10,10 @@ namespace RotaDasTapas.Unit.Tests.Utils
         public void Init_ValidModel_ReturnValidModel()
         {
             //Arrange
-            
+
             //Act
             var result = TapasUtils.Init();
-            
+
             //Assert
             Assert.IsNotNull(result);
         }

@@ -12,10 +12,12 @@ namespace RotaDasTapas.Filters
     public class AuthorizationFilterAttribute : Attribute, IAuthorizationFilter
     {
         private readonly IOptions<RotaDasTapasConfiguration> _rotaDasTapasConfiguration;
+
         public AuthorizationFilterAttribute(IOptions<RotaDasTapasConfiguration> rotaDasTapasConfiguration)
         {
             _rotaDasTapasConfiguration = rotaDasTapasConfiguration;
         }
+
         public void OnAuthorization(AuthorizationFilterContext context)
         {
             var apiKey = context.HttpContext.Request.Headers["ApiKey"];

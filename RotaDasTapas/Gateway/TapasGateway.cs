@@ -19,13 +19,8 @@ namespace RotaDasTapas.Gateway
         {
             return _listTapas;
         }
-        
-        public TapaDto GetTapaByName(string name)
-        {
-            return _listTapas.FirstOrDefault(tapa => tapa.Name.Equals(name));
-        }
 
-        public IEnumerable<TapaDto> GetTapasByCity(string city)
+        public IEnumerable<TapaDto> GetTapasRoute(string city)
         {
             return _listTapas.Where(tapa => tapa.City.Equals(city));
         }
