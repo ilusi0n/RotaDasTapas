@@ -1,0 +1,46 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: mcr.microsoft.com/dotnet/core/sdk:3.1
+    steps:
+      - checkout
+      - run:
+          name: Restore Packages
+          command: dotnet restore
+      - run:
+          name: build
+          command: dotnet build --configuration Release --no-restore
+      - run:
+          name: Run tests
+          command: |
+            cd ./RotaDasTapas.Unit.Tests/
+            dotnet test /p:CollectCoverage=true /p:CoverletOutput=TestResults/ /p:ThresholdType=line /p:Threshold=100 /p:thresholdStat=total /p:CoverletOutputFormat=lcov
+
+    deploy:
+      machine: true
+      steps:
+        - checkout
+        # build image
+        - run: |
+            docker info
+            docker build -t aspnetapp -f Dockerfile .
+        # deploy the image
+        - run: |
+            docker login --username=$HEROKU_USERNAME --password=$HEROKU_API_KEY registry.heroku.com
+            docker tag aspnetapp registry.heroku.com/$HEROKU_APP_NAME/web
+            docker push registry.heroku.com/$HEROKU_APP_NAME/web                
+            curl https://cli-assets.heroku.com/install.sh | sh
+            heroku container:release web -a $HEROKU_APP_NAME
+
+workflows:
+  version: 2
+  build-and-deploy:
+    jobs:
+      - build
+      - deploy:
+          requires:
+            - build
+          filters:
+            branches:
+              only: develop

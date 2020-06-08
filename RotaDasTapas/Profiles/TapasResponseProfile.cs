@@ -1,10 +1,10 @@
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using AutoMapper;
-using RotaDasTapas.Models;
 using RotaDasTapas.Models.Gateway;
+using RotaDasTapas.Models.Response;
 using RotaDasTapas.Profiles.TypeConverter;
+using RotaDasTapas.Profiles.ValueResolver;
 
 namespace RotaDasTapas.Profiles
 {
@@ -12,7 +12,8 @@ namespace RotaDasTapas.Profiles
     {
         public TapasResponseProfile()
         {
-            CreateMap<TapaDto, Tapa>();
+            CreateMap<TapaDto, Tapa>()
+                .ForMember(dest => dest.Schedule, opt => opt.MapFrom<BusinessHoursResolver>());
             CreateMap<IEnumerable<TapaDto>, TapasResponse>()
                 .ForMember(dest => dest.Tapas, opt => opt.MapFrom(src => src))
                 .AfterMap((foo, dto) =>
