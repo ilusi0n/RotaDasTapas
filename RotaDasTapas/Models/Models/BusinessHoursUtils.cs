@@ -97,7 +97,12 @@ namespace RotaDasTapas.Models.Models
 
             foreach (var schedule in scheduleByDays)
             {
-                weekDaysList.Add(GetTimeFromPatternCompressed(schedule));
+                var weekday = GetTimeFromPatternCompressed(schedule);
+                if (weekday == null)
+                {
+                    return new List<ScheduleDay>();
+                }
+                weekDaysList.Add(weekday);
             }
 
             return weekDaysList;
@@ -123,9 +128,9 @@ namespace RotaDasTapas.Models.Models
                     Min = int.Parse(match.Groups["minDay"].Value),
                     Max = int.Parse(match.Groups["maxDay"].Value)
                 };
+                return scheduleDay;
             }
-
-            return scheduleDay;
+            return default;
         }
         
         private ScheduleDay GetCurrentScheduleDay()

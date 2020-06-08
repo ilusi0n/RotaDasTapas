@@ -50,6 +50,25 @@ namespace RotaDasTapas.Unit.Tests.Profiles.ValueResolver
         }
         
         [TestMethod]
+        public void Resolve_InvalidBusinessHours_ReturnsEmpty()
+        {
+            //arrange
+            _dateTimeWrapperMock.Setup(x => x.Now).Returns(new DateTime(1993, 1, 1));
+            var tapaDto = new TapaDto
+            {
+                Schedule = "08:00,24:00;7,7"
+            };
+            
+            //act
+            var result = _businessHoursResolver.Resolve(tapaDto, _destination, _destMember, _context);
+            
+            //assert
+            Assert.IsNotNull(result);
+            Assert.AreEqual(string.Empty,result.Hours);
+            Assert.AreEqual(string.Empty,result.Status);
+        }
+
+        [TestMethod]
         public void Resolve_ValidBusinessHours_ReturnsOpenAndEnable()
         {
             //arrange

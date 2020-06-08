@@ -1,6 +1,6 @@
 namespace RotaDasTapas.Constants
 {
-    public class Separators
+    public static class Separators
     {
         public const string Underscore = "_";
     }
