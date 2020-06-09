@@ -32,10 +32,10 @@ namespace RotaDasTapas
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers()
-                .AddFluentValidation(s => 
-                { 
-                    s.RegisterValidatorsFromAssemblyContaining<Startup>(); 
-                    s.RunDefaultMvcValidationAfterFluentValidationExecutes = false; 
+                .AddFluentValidation(s =>
+                {
+                    s.RegisterValidatorsFromAssemblyContaining<Startup>();
+                    s.RunDefaultMvcValidationAfterFluentValidationExecutes = false;
                 });
             services.AddScoped<ITapasService, TapasService>();
             services.AddScoped<ITapasGateway, TapasGateway>();

@@ -70,7 +70,7 @@ namespace RotaDasTapas.Unit.Tests.Services
             {
                 Tapas = TapasServiceMocks.GetListOfTapasSingleOneWithAllFields()
             };
-            
+
             var journeyparameters = new JourneyParameters
             {
                 City = "Lisbon",

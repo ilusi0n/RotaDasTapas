@@ -60,7 +60,7 @@ namespace RotaDasTapas.Unit.Tests.Controllers
             {
                 ApiKey = "fakekey"
             };
-            var journeyParameters =  new JourneyParameters()
+            var journeyParameters = new JourneyParameters
             {
                 City = "city",
                 ListSelectedTapas = "list"

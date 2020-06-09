@@ -5,7 +5,7 @@ using RotaDasTapas.Models.Request;
 
 namespace RotaDasTapas.Validators
 {
-    public class TapasParametersValidator: AbstractValidator<TapasParameters>
+    public class TapasParametersValidator : AbstractValidator<TapasParameters>
     {
         public TapasParametersValidator()
         {
@@ -17,7 +17,7 @@ namespace RotaDasTapas.Validators
 
         private bool CheckValidDate(string value)
         {
-            return DateTime.TryParse(value,out _);
+            return DateTime.TryParse(value, out _);
         }
     }
 }

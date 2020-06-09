@@ -7,6 +7,6 @@ namespace RotaDasTapas.Constants
         public const string InvalidDatetime = "Datetime provided is not valid";
         public const string InvalidCountry = "Country invalid or not supported";
         public const string InvalidLengthJourney = "Should have at least 3 Tapas to calculate the journey";
-        public const string InvalidListFormat= "Invalid format";
+        public const string InvalidListFormat = "Invalid format";
     }
 }

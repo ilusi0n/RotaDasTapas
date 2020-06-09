@@ -7,7 +7,7 @@ using RotaDasTapas.Utils;
 
 namespace RotaDasTapas.Validators
 {
-    public class JourneyParametersValidator  : AbstractValidator<JourneyParameters>
+    public class JourneyParametersValidator : AbstractValidator<JourneyParameters>
     {
         public JourneyParametersValidator()
         {
@@ -34,17 +34,17 @@ namespace RotaDasTapas.Validators
 
         private bool CheckList(string list)
         {
-            return list.Split(Separators.Pipe).Length>1;
+            return list.Split(Separators.Pipe).Length > 1;
         }
 
         private bool CheckLengthList(string list)
         {
             return list.Split(Separators.Pipe).Length > 2;
         }
-        
+
         private bool CheckValidDate(string value)
         {
-            return DateTime.TryParse(value,out _);
+            return DateTime.TryParse(value, out _);
         }
     }
 }
