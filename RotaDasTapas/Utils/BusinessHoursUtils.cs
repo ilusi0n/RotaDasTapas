@@ -4,8 +4,9 @@ using System.Globalization;
 using System.Linq;
 using System.Text.RegularExpressions;
 using RotaDasTapas.Constants;
+using RotaDasTapas.Models.Models;
 
-namespace RotaDasTapas.Models.Models
+namespace RotaDasTapas.Utils
 {
     public class BusinessHoursUtils
     {
@@ -41,7 +42,7 @@ namespace RotaDasTapas.Models.Models
 
             var isClosingSoon = IsPlaceClosingSoon(scheduleDay);
             var isOpeningSoon = IsPlaceOpeningSoon(scheduleDay);
-            var isClosed = scheduleDay.Hours.Min > _dateTime.Now.TimeOfDay &&
+            var isOpen = scheduleDay.Hours.Min > _dateTime.Now.TimeOfDay &&
                            scheduleDay.Hours.Max < _dateTime.Now.TimeOfDay;
 
             if (isClosingSoon)
@@ -54,7 +55,7 @@ namespace RotaDasTapas.Models.Models
                 return BusinessHoursConstants.OpeningSoon;
             }
 
-            return isClosed ? BusinessHoursConstants.Closed : BusinessHoursConstants.Open;
+            return isOpen ? BusinessHoursConstants.Open : BusinessHoursConstants.Closed;
         }
 
         public string GetCurrentSchedule()

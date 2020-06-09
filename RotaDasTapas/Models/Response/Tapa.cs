@@ -49,6 +49,6 @@ namespace RotaDasTapas.Models.Response
     {
         public string Hours { get; set; }
         public string Status { get; set; }
-        public bool Disable => Status == BusinessHoursConstants.Closed;
+        public bool Disable => Status == BusinessHoursConstants.ClosedToday;
     }
 }

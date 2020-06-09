@@ -2,6 +2,7 @@ using AutoMapper;
 using RotaDasTapas.Models.Gateway;
 using RotaDasTapas.Models.Models;
 using RotaDasTapas.Models.Response;
+using RotaDasTapas.Utils;
 
 namespace RotaDasTapas.Profiles.ValueResolver
 {
