@@ -4,22 +4,23 @@ using System.Globalization;
 using System.Linq;
 using System.Text.RegularExpressions;
 using RotaDasTapas.Constants;
+using RotaDasTapas.Models.Models;
 
-namespace RotaDasTapas.Models.Models
+namespace RotaDasTapas.Utils
 {
     public class BusinessHoursUtils
     {
-        private readonly string _locale;
-        private readonly IDateTimeWrapper _dateTime;
-        private readonly List<ScheduleDay> _scheduleDays;
-        private readonly TimeSpan _margin;
-
         private const string CompressedPattern =
             @"(?<openHour>[0-9]{2}):(?<openMinutes>[0-9]{2}),(?<closeHour>[0-9]{2}):(?<closeMinutes>[0-9]{2});(?<minDay>[0-6]),(?<maxDay>[0-6])";
 
-        public BusinessHoursUtils(string businessHours, IDateTimeWrapper dateTime, string locale = "")
+        private readonly DateTime _dateTime;
+        private readonly string _locale;
+        private readonly TimeSpan _margin;
+        private readonly List<ScheduleDay> _scheduleDays;
+
+        public BusinessHoursUtils(string businessHours, DateTime dateTime)
         {
-            _locale = locale.Replace("_", "-");
+            _locale = "pt-pt";
             _dateTime = dateTime;
             _scheduleDays = GetTimeFromCompressed(businessHours);
             _margin = new TimeSpan(0, 30, 0);
@@ -27,49 +28,31 @@ namespace RotaDasTapas.Models.Models
 
         public string GetStatus()
         {
-            if (!_scheduleDays.Any())
-            {
-                return string.Empty;
-            }
+            if (!_scheduleDays.Any()) return string.Empty;
 
             var scheduleDay = GetCurrentScheduleDay();
 
-            if (scheduleDay == null)
-            {
-                return BusinessHoursConstants.ClosedToday;
-            }
+            if (scheduleDay == null) return BusinessHoursConstants.ClosedToday;
 
             var isClosingSoon = IsPlaceClosingSoon(scheduleDay);
             var isOpeningSoon = IsPlaceOpeningSoon(scheduleDay);
-            var isClosed = scheduleDay.Hours.Min > _dateTime.Now.TimeOfDay &&
-                           scheduleDay.Hours.Max < _dateTime.Now.TimeOfDay;
+            var isOpen = scheduleDay.Hours.Min < _dateTime.TimeOfDay &&
+                         scheduleDay.Hours.Max > _dateTime.TimeOfDay;
 
-            if (isClosingSoon)
-            {
-                return BusinessHoursConstants.ClosingSoon;
-            }
+            if (isClosingSoon) return BusinessHoursConstants.ClosingSoon;
 
-            if (isOpeningSoon)
-            {
-                return BusinessHoursConstants.OpeningSoon;
-            }
+            if (isOpeningSoon) return BusinessHoursConstants.OpeningSoon;
 
-            return isClosed ? BusinessHoursConstants.Closed : BusinessHoursConstants.Open;
+            return isOpen ? BusinessHoursConstants.Open : BusinessHoursConstants.Closed;
         }
 
         public string GetCurrentSchedule()
         {
-            if (!_scheduleDays.Any())
-            {
-                return string.Empty;
-            }
+            if (!_scheduleDays.Any()) return string.Empty;
 
             var scheduleDay = GetCurrentScheduleDay();
 
-            if (scheduleDay == null)
-            {
-                return string.Empty;
-            }
+            if (scheduleDay == null) return string.Empty;
 
             return string.Join("-", GetTimespanToString(scheduleDay.Hours.Min),
                 GetTimespanToString(scheduleDay.Hours.Max));
@@ -77,33 +60,27 @@ namespace RotaDasTapas.Models.Models
 
         private bool IsPlaceOpeningSoon(ScheduleDay scheduleDay)
         {
-            var timeDeference = scheduleDay.Hours.Min - _dateTime.Now.TimeOfDay;
+            var timeDeference = scheduleDay.Hours.Min - _dateTime.TimeOfDay;
             return timeDeference <= _margin && timeDeference >= new TimeSpan(0, 0, 0);
         }
 
         private bool IsPlaceClosingSoon(ScheduleDay scheduleDay)
         {
-            var timeDeference = scheduleDay.Hours.Max - _dateTime.Now.TimeOfDay;
+            var timeDeference = scheduleDay.Hours.Max - _dateTime.TimeOfDay;
             return timeDeference <= _margin && timeDeference >= new TimeSpan(0, 0, 0);
         }
 
         private List<ScheduleDay> GetTimeFromCompressed(string compressed)
         {
             var weekDaysList = new List<ScheduleDay>();
-            if (string.IsNullOrEmpty(compressed))
-            {
-                return weekDaysList;
-            }
+            if (string.IsNullOrEmpty(compressed)) return weekDaysList;
 
             var scheduleByDays = compressed.Split('|');
 
             foreach (var schedule in scheduleByDays)
             {
                 var weekday = GetTimeFromPatternCompressed(schedule);
-                if (weekday == null)
-                {
-                    return new List<ScheduleDay>();
-                }
+                if (weekday == null) return new List<ScheduleDay>();
 
                 weekDaysList.Add(weekday);
             }
@@ -119,14 +96,14 @@ namespace RotaDasTapas.Models.Models
 
             if (match.Success)
             {
-                scheduleDay.Hours = new Hours()
+                scheduleDay.Hours = new Hours
                 {
                     Min = new TimeSpan(int.Parse(match.Groups["openHour"].Value),
                         int.Parse(match.Groups["openMinutes"].Value), 0),
                     Max = new TimeSpan(int.Parse(match.Groups["closeHour"].Value),
-                        int.Parse(match.Groups["closeMinutes"].Value), 0),
+                        int.Parse(match.Groups["closeMinutes"].Value), 0)
                 };
-                scheduleDay.WeekDay = new WeekDay()
+                scheduleDay.WeekDay = new WeekDay
                 {
                     Min = int.Parse(match.Groups["minDay"].Value),
                     Max = int.Parse(match.Groups["maxDay"].Value)
@@ -139,7 +116,7 @@ namespace RotaDasTapas.Models.Models
 
         private ScheduleDay GetCurrentScheduleDay()
         {
-            var currWeekDay = (int) _dateTime.Now.DayOfWeek;
+            var currWeekDay = (int) _dateTime.DayOfWeek;
             var scheduleDay =
                 _scheduleDays.Find(opt => opt.WeekDay.Min <= currWeekDay && opt.WeekDay.Max >= currWeekDay);
             return scheduleDay;

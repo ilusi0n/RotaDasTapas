@@ -7,9 +7,9 @@ namespace RotaDasTapas.Utils
 {
     public class JourneyUtils : IJourneyUtils
     {
-        private TravellingSalesmanProblem _travellingSalesmanProblem;
-        private IEnumerable<TapaDto> _tapasByCity;
         private IEnumerable<string> _selectedTapas;
+        private IEnumerable<TapaDto> _tapasByCity;
+        private TravellingSalesmanProblem _travellingSalesmanProblem;
 
         public void Init(IEnumerable<string> selectedTapas, string startTapaId, IEnumerable<TapaDto> tapasByCity)
         {
@@ -32,7 +32,7 @@ namespace RotaDasTapas.Utils
             var list = new List<Vertice>();
             foreach (var tapaId in _selectedTapas)
             {
-                list.Add(new Vertice()
+                list.Add(new Vertice
                 {
                     Id = i,
                     TapaDto = _tapasByCity.First(el => el.Id.Equals(tapaId))

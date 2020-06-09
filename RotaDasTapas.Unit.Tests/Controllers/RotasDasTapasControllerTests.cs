@@ -1,3 +1,4 @@
+using System;
 using System.Net;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -15,8 +16,8 @@ namespace RotaDasTapas.Unit.Tests.Controllers
     [TestClass]
     public class RotasDasTapasControllerTests
     {
-        private readonly RotaDasTapasController _rotaDasTapasController;
         private readonly Mock<ITapasService> _mockTapasService;
+        private readonly RotaDasTapasController _rotaDasTapasController;
 
         public RotasDasTapasControllerTests()
         {
@@ -32,14 +33,18 @@ namespace RotaDasTapas.Unit.Tests.Controllers
             {
                 ApiKey = "fakekey"
             };
-            var tapasResponse = new TapasResponse()
+            var rotaDasTapasParameters = new TapasParameters
+            {
+                Localtime = DateTime.Now.ToString()
+            };
+            var tapasResponse = new TapasResponse
             {
                 Tapas = TapasServiceMocks.GetListOfTapasSingleOneWithAllFields()
             };
-            _mockTapasService.Setup(d => d.GetAllTapas()).Returns(tapasResponse);
+            _mockTapasService.Setup(d => d.GetAllTapas(It.IsAny<TapasParameters>())).Returns(tapasResponse);
 
             //Act
-            var response = _rotaDasTapasController.GetTapas(headers) as OkObjectResult;
+            var response = _rotaDasTapasController.GetTapas(headers, rotaDasTapasParameters) as OkObjectResult;
             var result = response.Value as TapasResponse;
 
             //Assert
@@ -55,15 +60,20 @@ namespace RotaDasTapas.Unit.Tests.Controllers
             {
                 ApiKey = "fakekey"
             };
-            var tapasResponse = new TapasResponse()
+            var journeyParameters = new JourneyParameters
+            {
+                City = "city",
+                ListSelectedTapas = "list"
+            };
+            var tapasResponse = new TapasResponse
             {
                 Tapas = TapasServiceMocks.GetListOfTapasSingleOneWithAllFields()
             };
-            _mockTapasService.Setup(d => d.GetTapasRoute(It.IsAny<string>(), It.IsAny<string>()))
+            _mockTapasService.Setup(d => d.GetTapasRoute(It.IsAny<JourneyParameters>()))
                 .Returns(tapasResponse);
 
             //Act
-            var response = _rotaDasTapasController.GetTapasRoute(headers, "city", "list") as OkObjectResult;
+            var response = _rotaDasTapasController.GetTapasRoute(headers, journeyParameters) as OkObjectResult;
             var result = response.Value as TapasResponse;
 
             //Assert
@@ -79,11 +89,15 @@ namespace RotaDasTapas.Unit.Tests.Controllers
             {
                 ApiKey = "fakekey"
             };
+            var rotaDasTapasParameters = new TapasParameters
+            {
+                Localtime = DateTime.Now.ToString()
+            };
             TapasResponse tapasResponse = null;
-            _mockTapasService.Setup(d => d.GetAllTapas()).Returns(tapasResponse);
+            _mockTapasService.Setup(d => d.GetAllTapas(It.IsAny<TapasParameters>())).Returns(tapasResponse);
 
             //Act
-            var response = _rotaDasTapasController.GetTapas(headers) as ObjectResult;
+            var response = _rotaDasTapasController.GetTapas(headers, rotaDasTapasParameters) as ObjectResult;
             var result = response.Value as InternalServerError;
 
             //Assert

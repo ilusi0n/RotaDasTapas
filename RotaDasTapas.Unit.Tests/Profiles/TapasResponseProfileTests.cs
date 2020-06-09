@@ -1,10 +1,10 @@
 using System;
+using System.Globalization;
 using System.Linq;
 using AutoMapper;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
-using RotaDasTapas.Models;
-using RotaDasTapas.Models.Models;
+using RotaDasTapas.Models.Request;
 using RotaDasTapas.Models.Response;
 using RotaDasTapas.Profiles;
 using RotaDasTapas.Profiles.TypeConverter;
@@ -17,11 +17,9 @@ namespace RotaDasTapas.Unit.Tests.Profiles
     public class TapasResponseProfileTests
     {
         private readonly IMapper _mapper;
-        private Mock<IDateTimeWrapper> _dateTimeWrapperMock;
 
         public TapasResponseProfileTests()
         {
-            _dateTimeWrapperMock = new Mock<IDateTimeWrapper>();
             var serviceProvider = new Mock<IServiceProvider>();
 
             var configuration = new MapperConfiguration(mc =>
@@ -35,7 +33,7 @@ namespace RotaDasTapas.Unit.Tests.Profiles
             serviceProvider.Setup(x => x.GetService(typeof(TapasResponseTypeConverter)))
                 .Returns(new TapasResponseTypeConverter(_mapper));
             serviceProvider.Setup(x => x.GetService(typeof(BusinessHoursResolver)))
-                .Returns(new BusinessHoursResolver(_dateTimeWrapperMock.Object));
+                .Returns(new BusinessHoursResolver());
         }
 
         [TestMethod]
@@ -50,6 +48,10 @@ namespace RotaDasTapas.Unit.Tests.Profiles
         public void MapTapaDtoToTapasResponse_ValidModel_ReturnNotNullAllParametersAreEqual()
         {
             //Arrange
+            var rotaDasTapasParameters = new TapasParameters
+            {
+                Localtime = DateTime.Now.ToString(CultureInfo.InvariantCulture)
+            };
             var tapaDto = TapasGatewayMocks.GetGetTapaAllFields();
             var expected = new TapasResponse
             {
@@ -58,7 +60,8 @@ namespace RotaDasTapas.Unit.Tests.Profiles
             };
 
             //Act
-            var result = _mapper.Map<TapasResponse>(tapaDto);
+            var result = _mapper.Map<TapasResponse>(tapaDto,
+                options => options.Items["localtime"] = rotaDasTapasParameters.Localtime);
 
             //Assert
             AssertAllFields(expected, result);
@@ -68,6 +71,10 @@ namespace RotaDasTapas.Unit.Tests.Profiles
         public void MapIEnumerableTapaDtoToTapasResponse_ValidModel_ReturnNotNullAllParametersAreEqual()
         {
             //Arrange
+            var rotaDasTapasParameters = new TapasParameters
+            {
+                Localtime = DateTime.Now.ToString(CultureInfo.InvariantCulture)
+            };
             var listTapasDto = TapasGatewayMocks.GetListOfTapasSingleOneWithAllFields();
             var expected = new TapasResponse
             {
@@ -75,7 +82,8 @@ namespace RotaDasTapas.Unit.Tests.Profiles
             };
 
             //Act
-            var result = _mapper.Map<TapasResponse>(listTapasDto);
+            var result = _mapper.Map<TapasResponse>(listTapasDto,
+                options => options.Items["localtime"] = rotaDasTapasParameters.Localtime);
 
             //Assert
             AssertAllFields(expected, result);

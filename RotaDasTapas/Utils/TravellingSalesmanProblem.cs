@@ -7,14 +7,6 @@ namespace RotaDasTapas.Utils
 {
     public class TravellingSalesmanProblem
     {
-        #region Member Variables
-
-        private readonly Path[,] _adjacencyMatrix;
-        private readonly IEnumerable<Vertice> _vertices;
-        private readonly int _startVerticeIndex;
-
-        #endregion
-
         #region Constructor
 
         public TravellingSalesmanProblem(int startVerticeIndex, IEnumerable<Vertice> vertices, Path[,] matrix)
@@ -41,6 +33,14 @@ namespace RotaDasTapas.Utils
 
         #endregion
 
+        #region Member Variables
+
+        private readonly Path[,] _adjacencyMatrix;
+        private readonly IEnumerable<Vertice> _vertices;
+        private readonly int _startVerticeIndex;
+
+        #endregion
+
         #region Private Methods
 
         private double GetMinimumCostRoute(Vertice startVertex, HashSet<Vertice> set, Node root)
@@ -51,9 +51,9 @@ namespace RotaDasTapas.Utils
                 return _adjacencyMatrix[startVertex.Id, 0].Distance;
             }
 
-            double totalCost = double.MaxValue;
-            int i = 0;
-            int selectedIdx = i;
+            var totalCost = double.MaxValue;
+            var i = 0;
+            var selectedIdx = i;
             root.ChildNodes = new Node[set.Count];
 
             foreach (var destination in set)
@@ -91,19 +91,14 @@ namespace RotaDasTapas.Utils
 
         private void TraverseTreeUtil(Node root, Queue<Vertice> vertices)
         {
-            if (root.ChildNodes == null)
-            {
-                return;
-            }
+            if (root.ChildNodes == null) return;
 
             foreach (var child in root.ChildNodes)
-            {
                 if (child.Selected)
                 {
                     vertices.Enqueue(child.Value);
                     TraverseTreeUtil(child, vertices);
                 }
-            }
         }
 
         #endregion

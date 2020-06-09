@@ -1,10 +1,13 @@
+using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using AutoMapper;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using RotaDasTapas.Gateway;
 using RotaDasTapas.Models.Gateway;
+using RotaDasTapas.Models.Request;
 using RotaDasTapas.Models.Response;
 using RotaDasTapas.Models.TSP;
 using RotaDasTapas.Profiles;
@@ -17,10 +20,10 @@ namespace RotaDasTapas.Unit.Tests.Services
     [TestClass]
     public class TapasServiceTests
     {
-        private readonly ITapasService _tapasService;
-        private readonly Mock<ITapasGateway> _tapasGateway;
-        private readonly Mock<IMapper> _mockMapper;
         private readonly Mock<IJourneyUtils> _mockJourneyUtils;
+        private readonly Mock<IMapper> _mockMapper;
+        private readonly Mock<ITapasGateway> _tapasGateway;
+        private readonly ITapasService _tapasService;
 
         public TapasServiceTests()
         {
@@ -37,18 +40,23 @@ namespace RotaDasTapas.Unit.Tests.Services
         public void GetAllTapas_NoArgument_ReturnsOk()
         {
             //Arrange
+            var rotaDasTapasParameters = new TapasParameters
+            {
+                Localtime = DateTime.Now.ToString(CultureInfo.InvariantCulture)
+            };
             var expectedListTapas = TapasGatewayMocks.GetListOfTapasSingleOneWithAllFields();
-            var expectedMock = new TapasResponse()
+            var expectedMock = new TapasResponse
             {
                 Tapas = TapasServiceMocks.GetListOfTapasSingleOneWithAllFields()
             };
             _mockMapper.Setup(m =>
-                    m.Map<TapasResponse>(It.IsAny<IEnumerable<TapaDto>>()))
+                    m.Map<TapasResponse>(It.IsAny<IEnumerable<TapaDto>>(),
+                        It.IsAny<Action<IMappingOperationOptions>>()))
                 .Returns(expectedMock);
             _tapasGateway.Setup(d => d.GetAllTapas()).Returns(expectedListTapas);
 
             //Act
-            var result = _tapasService.GetAllTapas();
+            var result = _tapasService.GetAllTapas(rotaDasTapasParameters);
 
             //Assert
             AssertTests(expectedMock, result);
@@ -59,10 +67,15 @@ namespace RotaDasTapas.Unit.Tests.Services
         {
             //Arrange
             var expectedListTapas = TapasGatewayMocks.GetAllTapasWithPath();
-            var listSelected = "Lisbon_1|Lisbon_2|Lisbon_3";
-            var expectedMock = new TapasResponse()
+            var expectedMock = new TapasResponse
             {
                 Tapas = TapasServiceMocks.GetListOfTapasSingleOneWithAllFields()
+            };
+
+            var journeyparameters = new JourneyParameters
+            {
+                City = "Lisbon",
+                ListSelectedTapas = "Lisbon_1|Lisbon_2|Lisbon_3"
             };
 
             _mockMapper.Setup(m =>
@@ -73,13 +86,13 @@ namespace RotaDasTapas.Unit.Tests.Services
             _mockJourneyUtils.Setup(m => m.Init(
                 It.IsAny<IEnumerable<string>>(), It.IsAny<string>(), It.IsAny<IEnumerable<TapaDto>>()));
 
-            _mockJourneyUtils.Setup(m => m.SolveProblem()).Returns(new List<Vertice>()
+            _mockJourneyUtils.Setup(m => m.SolveProblem()).Returns(new List<Vertice>
             {
                 new Vertice()
             });
 
             //Act
-            var result = _tapasService.GetTapasRoute("Lisbon", listSelected);
+            var result = _tapasService.GetTapasRoute(journeyparameters);
 
             //Assert
             AssertTests(expectedMock, result);
@@ -92,10 +105,7 @@ namespace RotaDasTapas.Unit.Tests.Services
             Assert.IsNotNull(result.Tapas);
             Assert.AreEqual(expected.Tapas.Count(), result.Tapas.Count());
             var nExpect = 0;
-            foreach (var exp in expected.Tapas)
-            {
-                AssertTests(exp, resultList[nExpect++]);
-            }
+            foreach (var exp in expected.Tapas) AssertTests(exp, resultList[nExpect++]);
         }
 
         private void AssertTests(Tapa expected, Tapa result)

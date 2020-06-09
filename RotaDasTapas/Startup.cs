@@ -3,6 +3,7 @@ using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Reflection;
 using AutoMapper;
+using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -11,7 +12,6 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using RotaDasTapas.Gateway;
 using RotaDasTapas.Models.Configuration;
-using RotaDasTapas.Models.Models;
 using RotaDasTapas.Profiles;
 using RotaDasTapas.Services;
 using RotaDasTapas.Utils;
@@ -31,10 +31,14 @@ namespace RotaDasTapas
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllers();
+            services.AddControllers()
+                .AddFluentValidation(s =>
+                {
+                    s.RegisterValidatorsFromAssemblyContaining<Startup>();
+                    s.RunDefaultMvcValidationAfterFluentValidationExecutes = false;
+                });
             services.AddScoped<ITapasService, TapasService>();
             services.AddScoped<ITapasGateway, TapasGateway>();
-            services.AddScoped<IDateTimeWrapper, DateTimeWrapper>();
             services.AddScoped<IJourneyUtils, JourneyUtils>();
             services.AddSwaggerGen(c =>
             {
@@ -47,8 +51,8 @@ namespace RotaDasTapas
                     {
                         Name = "Hugo Cabrita",
                         Email = string.Empty,
-                        Url = new Uri("https://github.com/ilusi0n"),
-                    },
+                        Url = new Uri("https://github.com/ilusi0n")
+                    }
                 });
                 //activate xml comments in swagger
                 var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
@@ -63,10 +67,7 @@ namespace RotaDasTapas
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            if (env.IsDevelopment())
-            {
-                app.UseDeveloperExceptionPage();
-            }
+            if (env.IsDevelopment()) app.UseDeveloperExceptionPage();
 
             app.UseStaticFiles();
             app.UseSwagger();
