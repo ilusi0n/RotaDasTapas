@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using AutoMapper;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -41,7 +42,7 @@ namespace RotaDasTapas.Unit.Tests.Services
             //Arrange
             var rotaDasTapasParameters = new TapasParameters
             {
-                Localtime = DateTime.Now.ToString()
+                Localtime = DateTime.Now.ToString(CultureInfo.InvariantCulture)
             };
             var expectedListTapas = TapasGatewayMocks.GetListOfTapasSingleOneWithAllFields();
             var expectedMock = new TapasResponse
