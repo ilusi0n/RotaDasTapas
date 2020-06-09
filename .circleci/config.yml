@@ -15,7 +15,7 @@ jobs:
           name: Run tests
           command: |
             cd ./RotaDasTapas.Unit.Tests/
-            dotnet test /p:CollectCoverage=true /p:CoverletOutput=TestResults/ /p:ThresholdType=line /p:Threshold=100 /p:thresholdStat=total /p:CoverletOutputFormat=lcov
+            dotnet test /p:CollectCoverage=true /p:CoverletOutput=TestResults/ /p:ThresholdType=line /p:Threshold=99.5 /p:thresholdStat=total /p:CoverletOutputFormat=lcov
 
 workflows:
   version: 2
