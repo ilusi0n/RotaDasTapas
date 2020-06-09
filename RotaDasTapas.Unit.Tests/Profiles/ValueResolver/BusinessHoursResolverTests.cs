@@ -1,10 +1,11 @@
 using System;
+using System.Collections.Generic;
+using System.Globalization;
 using AutoMapper;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using RotaDasTapas.Constants;
 using RotaDasTapas.Models.Gateway;
-using RotaDasTapas.Models.Models;
 using RotaDasTapas.Models.Response;
 using RotaDasTapas.Profiles.ValueResolver;
 
@@ -14,31 +15,32 @@ namespace RotaDasTapas.Unit.Tests.Profiles.ValueResolver
     public class BusinessHoursResolverTests
     {
         private readonly BusinessHoursResolver _businessHoursResolver;
-        private readonly Mock<IDateTimeWrapper> _dateTimeWrapperMock;
         private readonly ResolutionContext _context;
         private readonly Tapa _destination;
         private readonly Schedule _destMember;
+        private readonly Mock<IMappingOperationOptions> _mappingOperationOptions;
 
         public BusinessHoursResolverTests()
         {
             _destination = new Tapa();
             _destMember = new Schedule();
-            _dateTimeWrapperMock = new Mock<IDateTimeWrapper>();
-            _businessHoursResolver = new BusinessHoursResolver(_dateTimeWrapperMock.Object);
+            _businessHoursResolver = new BusinessHoursResolver();
             var runtimeMapperMock = new Mock<IRuntimeMapper>();
-            var mappingOperationOptions = new Mock<IMappingOperationOptions>();
-            _context = new ResolutionContext(mappingOperationOptions.Object, runtimeMapperMock.Object);
+            _mappingOperationOptions = new Mock<IMappingOperationOptions>();
+            _context = new ResolutionContext(_mappingOperationOptions.Object, runtimeMapperMock.Object);
         }
 
         [TestMethod]
         public void Resolve_NullBusinessHours_ReturnsEmptyString()
         {
             //arrange
-            _dateTimeWrapperMock.Setup(x => x.Now).Returns(new DateTime(1993, 1, 1));
             var tapaDto = new TapaDto
             {
                 Schedule = null
             };
+            
+            var itemsDictionary = new Dictionary<string, object> {{"localtime", DateTime.Now.ToString(CultureInfo.InvariantCulture)}};
+            _mappingOperationOptions.Setup(dest => dest.Items).Returns(itemsDictionary);
 
             //act
             var result = _businessHoursResolver.Resolve(tapaDto, _destination, _destMember, _context);
@@ -53,11 +55,13 @@ namespace RotaDasTapas.Unit.Tests.Profiles.ValueResolver
         public void Resolve_InvalidBusinessHours_ReturnsEmpty()
         {
             //arrange
-            _dateTimeWrapperMock.Setup(x => x.Now).Returns(new DateTime(1993, 1, 1));
             var tapaDto = new TapaDto
             {
                 Schedule = "08:00,24:00;7,7"
             };
+            
+            var itemsDictionary = new Dictionary<string, object> {{"localtime", DateTime.Now.ToString(CultureInfo.InvariantCulture)}};
+            _mappingOperationOptions.Setup(dest => dest.Items).Returns(itemsDictionary);
 
             //act
             var result = _businessHoursResolver.Resolve(tapaDto, _destination, _destMember, _context);
@@ -73,7 +77,8 @@ namespace RotaDasTapas.Unit.Tests.Profiles.ValueResolver
         {
             //arrange
             var sundayMorning = new DateTime(2019, 12, 22, 11, 00, 00);
-            _dateTimeWrapperMock.Setup(x => x.Now).Returns(sundayMorning);
+            var itemsDictionary = new Dictionary<string, object> {{"localtime", sundayMorning.ToString(CultureInfo.InvariantCulture)}};
+            _mappingOperationOptions.Setup(dest => dest.Items).Returns(itemsDictionary);
             var tapaDto = new TapaDto
             {
                 Schedule = "08:00,24:00;0,6"
@@ -100,7 +105,8 @@ namespace RotaDasTapas.Unit.Tests.Profiles.ValueResolver
         {
             //arrange
             var sundayMorning = new DateTime(2019, 12, 22, 11, 00, 00);
-            _dateTimeWrapperMock.Setup(x => x.Now).Returns(sundayMorning);
+            var itemsDictionary = new Dictionary<string, object> {{"localtime", sundayMorning.ToString(CultureInfo.InvariantCulture)}};
+            _mappingOperationOptions.Setup(dest => dest.Items).Returns(itemsDictionary);
             var tapaDto = new TapaDto
             {
                 Schedule = "08:00,24:00;3,3"
@@ -119,7 +125,7 @@ namespace RotaDasTapas.Unit.Tests.Profiles.ValueResolver
             Assert.IsNotNull(result);
             Assert.AreEqual(expected.Hours, result.Hours);
             Assert.AreEqual(expected.Status, result.Status);
-            Assert.IsFalse(result.Disable);
+            Assert.IsTrue(result.Disable);
         }
 
         [TestMethod]
@@ -127,7 +133,8 @@ namespace RotaDasTapas.Unit.Tests.Profiles.ValueResolver
         {
             //arrange
             var sundayMorning = new DateTime(2020, 6, 7, 11, 00, 00);
-            _dateTimeWrapperMock.Setup(x => x.Now).Returns(sundayMorning);
+            var itemsDictionary = new Dictionary<string, object> {{"localtime", sundayMorning.ToString(CultureInfo.InvariantCulture)}};
+            _mappingOperationOptions.Setup(dest => dest.Items).Returns(itemsDictionary);
             var tapaDto = new TapaDto
             {
                 Schedule = "11:15,24:00;0,0"
@@ -154,7 +161,8 @@ namespace RotaDasTapas.Unit.Tests.Profiles.ValueResolver
         {
             //arrange
             var sundayMorning = new DateTime(2020, 6, 7, 15, 45, 00);
-            _dateTimeWrapperMock.Setup(x => x.Now).Returns(sundayMorning);
+            var itemsDictionary = new Dictionary<string, object> {{"localtime", sundayMorning.ToString(CultureInfo.InvariantCulture)}};
+            _mappingOperationOptions.Setup(dest => dest.Items).Returns(itemsDictionary);
             var tapaDto = new TapaDto
             {
                 Schedule = "10:45,16:00;0,0"

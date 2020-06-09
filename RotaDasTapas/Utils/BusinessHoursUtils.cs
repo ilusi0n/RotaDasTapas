@@ -11,16 +11,16 @@ namespace RotaDasTapas.Utils
     public class BusinessHoursUtils
     {
         private readonly string _locale;
-        private readonly IDateTimeWrapper _dateTime;
+        private readonly DateTime _dateTime;
         private readonly List<ScheduleDay> _scheduleDays;
         private readonly TimeSpan _margin;
 
         private const string CompressedPattern =
             @"(?<openHour>[0-9]{2}):(?<openMinutes>[0-9]{2}),(?<closeHour>[0-9]{2}):(?<closeMinutes>[0-9]{2});(?<minDay>[0-6]),(?<maxDay>[0-6])";
 
-        public BusinessHoursUtils(string businessHours, IDateTimeWrapper dateTime, string locale = "")
+        public BusinessHoursUtils(string businessHours, DateTime dateTime)
         {
-            _locale = locale.Replace("_", "-");
+            _locale = "pt-pt";
             _dateTime = dateTime;
             _scheduleDays = GetTimeFromCompressed(businessHours);
             _margin = new TimeSpan(0, 30, 0);
@@ -42,8 +42,8 @@ namespace RotaDasTapas.Utils
 
             var isClosingSoon = IsPlaceClosingSoon(scheduleDay);
             var isOpeningSoon = IsPlaceOpeningSoon(scheduleDay);
-            var isOpen = scheduleDay.Hours.Min > _dateTime.Now.TimeOfDay &&
-                           scheduleDay.Hours.Max < _dateTime.Now.TimeOfDay;
+            var isOpen = scheduleDay.Hours.Min < _dateTime.TimeOfDay &&
+                           scheduleDay.Hours.Max > _dateTime.TimeOfDay;
 
             if (isClosingSoon)
             {
@@ -78,13 +78,13 @@ namespace RotaDasTapas.Utils
 
         private bool IsPlaceOpeningSoon(ScheduleDay scheduleDay)
         {
-            var timeDeference = scheduleDay.Hours.Min - _dateTime.Now.TimeOfDay;
+            var timeDeference = scheduleDay.Hours.Min - _dateTime.TimeOfDay;
             return timeDeference <= _margin && timeDeference >= new TimeSpan(0, 0, 0);
         }
 
         private bool IsPlaceClosingSoon(ScheduleDay scheduleDay)
         {
-            var timeDeference = scheduleDay.Hours.Max - _dateTime.Now.TimeOfDay;
+            var timeDeference = scheduleDay.Hours.Max - _dateTime.TimeOfDay;
             return timeDeference <= _margin && timeDeference >= new TimeSpan(0, 0, 0);
         }
 
@@ -140,7 +140,7 @@ namespace RotaDasTapas.Utils
 
         private ScheduleDay GetCurrentScheduleDay()
         {
-            var currWeekDay = (int) _dateTime.Now.DayOfWeek;
+            var currWeekDay = (int) _dateTime.DayOfWeek;
             var scheduleDay =
                 _scheduleDays.Find(opt => opt.WeekDay.Min <= currWeekDay && opt.WeekDay.Max >= currWeekDay);
             return scheduleDay;

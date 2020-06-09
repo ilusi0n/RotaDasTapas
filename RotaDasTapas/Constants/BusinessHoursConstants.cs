@@ -7,5 +7,6 @@ namespace RotaDasTapas.Constants
         public const string ClosingSoon = "Closing soon";
         public const string OpeningSoon = "Opening soon";
         public const string ClosedToday = "Closed today";
+        public const string Locale = "en-gb";
     }
 }

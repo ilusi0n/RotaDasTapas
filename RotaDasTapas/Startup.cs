@@ -34,7 +34,6 @@ namespace RotaDasTapas
             services.AddControllers();
             services.AddScoped<ITapasService, TapasService>();
             services.AddScoped<ITapasGateway, TapasGateway>();
-            services.AddScoped<IDateTimeWrapper, DateTimeWrapper>();
             services.AddScoped<IJourneyUtils, JourneyUtils>();
             services.AddSwaggerGen(c =>
             {

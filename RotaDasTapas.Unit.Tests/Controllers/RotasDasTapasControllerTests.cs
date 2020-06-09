@@ -1,3 +1,4 @@
+using System;
 using System.Net;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -32,14 +33,18 @@ namespace RotaDasTapas.Unit.Tests.Controllers
             {
                 ApiKey = "fakekey"
             };
-            var tapasResponse = new TapasResponse()
+            var rotaDasTapasParameters = new RotaDasTapasParameters
+            {
+                Localtime = DateTime.Now.ToString()
+            };
+            var tapasResponse = new TapasResponse
             {
                 Tapas = TapasServiceMocks.GetListOfTapasSingleOneWithAllFields()
             };
-            _mockTapasService.Setup(d => d.GetAllTapas()).Returns(tapasResponse);
+            _mockTapasService.Setup(d => d.GetAllTapas(It.IsAny<RotaDasTapasParameters>())).Returns(tapasResponse);
 
             //Act
-            var response = _rotaDasTapasController.GetTapas(headers) as OkObjectResult;
+            var response = _rotaDasTapasController.GetTapas(headers,rotaDasTapasParameters) as OkObjectResult;
             var result = response.Value as TapasResponse;
 
             //Assert
@@ -79,11 +84,15 @@ namespace RotaDasTapas.Unit.Tests.Controllers
             {
                 ApiKey = "fakekey"
             };
+            var rotaDasTapasParameters = new RotaDasTapasParameters
+            {
+                Localtime = DateTime.Now.ToString()
+            };
             TapasResponse tapasResponse = null;
-            _mockTapasService.Setup(d => d.GetAllTapas()).Returns(tapasResponse);
+            _mockTapasService.Setup(d => d.GetAllTapas(It.IsAny<RotaDasTapasParameters>())).Returns(tapasResponse);
 
             //Act
-            var response = _rotaDasTapasController.GetTapas(headers) as ObjectResult;
+            var response = _rotaDasTapasController.GetTapas(headers,rotaDasTapasParameters) as ObjectResult;
             var result = response.Value as InternalServerError;
 
             //Assert

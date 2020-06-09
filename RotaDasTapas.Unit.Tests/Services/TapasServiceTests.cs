@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using AutoMapper;
@@ -5,6 +6,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using RotaDasTapas.Gateway;
 using RotaDasTapas.Models.Gateway;
+using RotaDasTapas.Models.Request;
 using RotaDasTapas.Models.Response;
 using RotaDasTapas.Models.TSP;
 using RotaDasTapas.Profiles;
@@ -37,18 +39,22 @@ namespace RotaDasTapas.Unit.Tests.Services
         public void GetAllTapas_NoArgument_ReturnsOk()
         {
             //Arrange
+            var rotaDasTapasParameters = new RotaDasTapasParameters
+            {
+                Localtime = DateTime.Now.ToString()
+            };
             var expectedListTapas = TapasGatewayMocks.GetListOfTapasSingleOneWithAllFields();
             var expectedMock = new TapasResponse()
             {
                 Tapas = TapasServiceMocks.GetListOfTapasSingleOneWithAllFields()
             };
             _mockMapper.Setup(m =>
-                    m.Map<TapasResponse>(It.IsAny<IEnumerable<TapaDto>>()))
+                    m.Map<TapasResponse>(It.IsAny<IEnumerable<TapaDto>>(),It.IsAny<Action<IMappingOperationOptions>>()))
                 .Returns(expectedMock);
             _tapasGateway.Setup(d => d.GetAllTapas()).Returns(expectedListTapas);
 
             //Act
-            var result = _tapasService.GetAllTapas();
+            var result = _tapasService.GetAllTapas(rotaDasTapasParameters);
 
             //Assert
             AssertTests(expectedMock, result);

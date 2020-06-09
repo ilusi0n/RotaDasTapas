@@ -17,7 +17,10 @@ namespace RotaDasTapas.Profiles.TypeConverter
 
         public TapasResponse Convert(TapaDto source, TapasResponse destination, ResolutionContext context)
         {
-            var tapa = _mapper.Map<Tapa>(source);
+            var tapa = _mapper.Map<Tapa>(source,opts =>
+            {
+                opts.Items["localtime"] =(string) context.Items["localtime"];
+            });
             var tapaResponse = new TapasResponse()
             {
                 Tapas = new List<Tapa> {tapa}
