@@ -11,7 +11,6 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using RotaDasTapas.Gateway;
 using RotaDasTapas.Models.Configuration;
-using RotaDasTapas.Models.Models;
 using RotaDasTapas.Profiles;
 using RotaDasTapas.Services;
 using RotaDasTapas.Utils;
@@ -46,8 +45,8 @@ namespace RotaDasTapas
                     {
                         Name = "Hugo Cabrita",
                         Email = string.Empty,
-                        Url = new Uri("https://github.com/ilusi0n"),
-                    },
+                        Url = new Uri("https://github.com/ilusi0n")
+                    }
                 });
                 //activate xml comments in swagger
                 var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
@@ -62,10 +61,7 @@ namespace RotaDasTapas
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            if (env.IsDevelopment())
-            {
-                app.UseDeveloperExceptionPage();
-            }
+            if (env.IsDevelopment()) app.UseDeveloperExceptionPage();
 
             app.UseStaticFiles();
             app.UseSwagger();

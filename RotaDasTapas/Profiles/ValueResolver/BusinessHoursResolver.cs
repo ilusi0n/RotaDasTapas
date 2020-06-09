@@ -16,7 +16,7 @@ namespace RotaDasTapas.Profiles.ValueResolver
             return new Schedule
             {
                 Status = businessHours.GetStatus(),
-                Hours = businessHours.GetCurrentSchedule(),
+                Hours = businessHours.GetCurrentSchedule()
             };
         }
     }

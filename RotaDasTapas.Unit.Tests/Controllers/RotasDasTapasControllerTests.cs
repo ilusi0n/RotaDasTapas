@@ -16,8 +16,8 @@ namespace RotaDasTapas.Unit.Tests.Controllers
     [TestClass]
     public class RotasDasTapasControllerTests
     {
-        private readonly RotaDasTapasController _rotaDasTapasController;
         private readonly Mock<ITapasService> _mockTapasService;
+        private readonly RotaDasTapasController _rotaDasTapasController;
 
         public RotasDasTapasControllerTests()
         {
@@ -44,7 +44,7 @@ namespace RotaDasTapas.Unit.Tests.Controllers
             _mockTapasService.Setup(d => d.GetAllTapas(It.IsAny<RotaDasTapasParameters>())).Returns(tapasResponse);
 
             //Act
-            var response = _rotaDasTapasController.GetTapas(headers,rotaDasTapasParameters) as OkObjectResult;
+            var response = _rotaDasTapasController.GetTapas(headers, rotaDasTapasParameters) as OkObjectResult;
             var result = response.Value as TapasResponse;
 
             //Assert
@@ -60,7 +60,7 @@ namespace RotaDasTapas.Unit.Tests.Controllers
             {
                 ApiKey = "fakekey"
             };
-            var tapasResponse = new TapasResponse()
+            var tapasResponse = new TapasResponse
             {
                 Tapas = TapasServiceMocks.GetListOfTapasSingleOneWithAllFields()
             };
@@ -92,7 +92,7 @@ namespace RotaDasTapas.Unit.Tests.Controllers
             _mockTapasService.Setup(d => d.GetAllTapas(It.IsAny<RotaDasTapasParameters>())).Returns(tapasResponse);
 
             //Act
-            var response = _rotaDasTapasController.GetTapas(headers,rotaDasTapasParameters) as ObjectResult;
+            var response = _rotaDasTapasController.GetTapas(headers, rotaDasTapasParameters) as ObjectResult;
             var result = response.Value as InternalServerError;
 
             //Assert

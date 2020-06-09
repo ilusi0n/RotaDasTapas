@@ -13,7 +13,7 @@ namespace RotaDasTapas.Unit.Tests.Utils
         public void Solve_ValidSelectedTapasStartLisboa_2_ReturnOptimalJourney()
         {
             //arrange
-            var selectedTapas = new List<string>()
+            var selectedTapas = new List<string>
             {
                 "Lisbon_1", "Lisbon_2", "Lisbon_3"
             };
@@ -39,7 +39,7 @@ namespace RotaDasTapas.Unit.Tests.Utils
         public void Solve_ValidSelectedTapasStartLisbon_2_ReturnOptimalJourney()
         {
             //arrange
-            var selectedTapas = new List<string>()
+            var selectedTapas = new List<string>
             {
                 "Lisbon_1", "Lisbon_2", "Lisbon_3"
             };

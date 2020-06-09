@@ -1,5 +1,3 @@
-using System.Collections.Generic;
-using RotaDasTapas.Models;
 using RotaDasTapas.Models.Request;
 using RotaDasTapas.Models.Response;
 

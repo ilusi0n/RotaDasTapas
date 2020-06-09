@@ -4,8 +4,6 @@ using System.Linq;
 using AutoMapper;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
-using RotaDasTapas.Models;
-using RotaDasTapas.Models.Models;
 using RotaDasTapas.Models.Request;
 using RotaDasTapas.Models.Response;
 using RotaDasTapas.Profiles;
@@ -62,7 +60,8 @@ namespace RotaDasTapas.Unit.Tests.Profiles
             };
 
             //Act
-            var result = _mapper.Map<TapasResponse>(tapaDto,options => options.Items["localtime"]=rotaDasTapasParameters.Localtime);
+            var result = _mapper.Map<TapasResponse>(tapaDto,
+                options => options.Items["localtime"] = rotaDasTapasParameters.Localtime);
 
             //Assert
             AssertAllFields(expected, result);
@@ -83,7 +82,8 @@ namespace RotaDasTapas.Unit.Tests.Profiles
             };
 
             //Act
-            var result = _mapper.Map<TapasResponse>(listTapasDto, options => options.Items["localtime"]=rotaDasTapasParameters.Localtime);
+            var result = _mapper.Map<TapasResponse>(listTapasDto,
+                options => options.Items["localtime"] = rotaDasTapasParameters.Localtime);
 
             //Assert
             AssertAllFields(expected, result);

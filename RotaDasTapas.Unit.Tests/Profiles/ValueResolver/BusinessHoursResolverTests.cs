@@ -38,8 +38,9 @@ namespace RotaDasTapas.Unit.Tests.Profiles.ValueResolver
             {
                 Schedule = null
             };
-            
-            var itemsDictionary = new Dictionary<string, object> {{"localtime", DateTime.Now.ToString(CultureInfo.InvariantCulture)}};
+
+            var itemsDictionary = new Dictionary<string, object>
+                {{"localtime", DateTime.Now.ToString(CultureInfo.InvariantCulture)}};
             _mappingOperationOptions.Setup(dest => dest.Items).Returns(itemsDictionary);
 
             //act
@@ -59,8 +60,9 @@ namespace RotaDasTapas.Unit.Tests.Profiles.ValueResolver
             {
                 Schedule = "08:00,24:00;7,7"
             };
-            
-            var itemsDictionary = new Dictionary<string, object> {{"localtime", DateTime.Now.ToString(CultureInfo.InvariantCulture)}};
+
+            var itemsDictionary = new Dictionary<string, object>
+                {{"localtime", DateTime.Now.ToString(CultureInfo.InvariantCulture)}};
             _mappingOperationOptions.Setup(dest => dest.Items).Returns(itemsDictionary);
 
             //act
@@ -77,7 +79,8 @@ namespace RotaDasTapas.Unit.Tests.Profiles.ValueResolver
         {
             //arrange
             var sundayMorning = new DateTime(2019, 12, 22, 11, 00, 00);
-            var itemsDictionary = new Dictionary<string, object> {{"localtime", sundayMorning.ToString(CultureInfo.InvariantCulture)}};
+            var itemsDictionary = new Dictionary<string, object>
+                {{"localtime", sundayMorning.ToString(CultureInfo.InvariantCulture)}};
             _mappingOperationOptions.Setup(dest => dest.Items).Returns(itemsDictionary);
             var tapaDto = new TapaDto
             {
@@ -105,7 +108,8 @@ namespace RotaDasTapas.Unit.Tests.Profiles.ValueResolver
         {
             //arrange
             var sundayMorning = new DateTime(2019, 12, 22, 11, 00, 00);
-            var itemsDictionary = new Dictionary<string, object> {{"localtime", sundayMorning.ToString(CultureInfo.InvariantCulture)}};
+            var itemsDictionary = new Dictionary<string, object>
+                {{"localtime", sundayMorning.ToString(CultureInfo.InvariantCulture)}};
             _mappingOperationOptions.Setup(dest => dest.Items).Returns(itemsDictionary);
             var tapaDto = new TapaDto
             {
@@ -115,7 +119,7 @@ namespace RotaDasTapas.Unit.Tests.Profiles.ValueResolver
             var expected = new Schedule
             {
                 Hours = string.Empty,
-                Status = BusinessHoursConstants.ClosedToday,
+                Status = BusinessHoursConstants.ClosedToday
             };
 
             //act
@@ -133,7 +137,8 @@ namespace RotaDasTapas.Unit.Tests.Profiles.ValueResolver
         {
             //arrange
             var sundayMorning = new DateTime(2020, 6, 7, 11, 00, 00);
-            var itemsDictionary = new Dictionary<string, object> {{"localtime", sundayMorning.ToString(CultureInfo.InvariantCulture)}};
+            var itemsDictionary = new Dictionary<string, object>
+                {{"localtime", sundayMorning.ToString(CultureInfo.InvariantCulture)}};
             _mappingOperationOptions.Setup(dest => dest.Items).Returns(itemsDictionary);
             var tapaDto = new TapaDto
             {
@@ -143,7 +148,7 @@ namespace RotaDasTapas.Unit.Tests.Profiles.ValueResolver
             var expected = new Schedule
             {
                 Hours = "11:15-00:00",
-                Status = BusinessHoursConstants.OpeningSoon,
+                Status = BusinessHoursConstants.OpeningSoon
             };
 
             //act
@@ -161,7 +166,8 @@ namespace RotaDasTapas.Unit.Tests.Profiles.ValueResolver
         {
             //arrange
             var sundayMorning = new DateTime(2020, 6, 7, 15, 45, 00);
-            var itemsDictionary = new Dictionary<string, object> {{"localtime", sundayMorning.ToString(CultureInfo.InvariantCulture)}};
+            var itemsDictionary = new Dictionary<string, object>
+                {{"localtime", sundayMorning.ToString(CultureInfo.InvariantCulture)}};
             _mappingOperationOptions.Setup(dest => dest.Items).Returns(itemsDictionary);
             var tapaDto = new TapaDto
             {
@@ -171,7 +177,7 @@ namespace RotaDasTapas.Unit.Tests.Profiles.ValueResolver
             var expected = new Schedule
             {
                 Hours = "10:45-16:00",
-                Status = BusinessHoursConstants.ClosingSoon,
+                Status = BusinessHoursConstants.ClosingSoon
             };
 
             //act

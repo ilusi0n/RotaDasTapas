@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using RotaDasTapas.Constants;
-using RotaDasTapas.Models;
 using RotaDasTapas.Models.Response;
 
 namespace RotaDasTapas.Unit.Tests.Mocks
@@ -9,9 +8,9 @@ namespace RotaDasTapas.Unit.Tests.Mocks
     {
         public static IEnumerable<Tapa> GetListOfTapasSingleOneWithAllFields()
         {
-            return new List<Tapa>()
+            return new List<Tapa>
             {
-                new Tapa()
+                new Tapa
                 {
                     Address = "address",
                     Description = "description",

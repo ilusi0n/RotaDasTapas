@@ -25,9 +25,7 @@ namespace RotaDasTapas.Filters
 
             if (!apiKey.Any()) return;
             if (!apiKey.Equals(herokuKey))
-            {
                 context.Result = new ObjectResult(new UnauthorizedError(ErrorConstants.UnauthorizedError));
-            }
         }
     }
 }

@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using RotaDasTapas.Models;
 using RotaDasTapas.Models.Gateway;
 
 namespace RotaDasTapas.Unit.Tests.Mocks
@@ -8,9 +7,9 @@ namespace RotaDasTapas.Unit.Tests.Mocks
     {
         public static IEnumerable<TapaDto> GetListOfTapasSingleOneWithAllFields()
         {
-            return new List<TapaDto>()
+            return new List<TapaDto>
             {
-                new TapaDto()
+                new TapaDto
                 {
                     Address = "address",
                     Description = "description",
@@ -41,7 +40,7 @@ namespace RotaDasTapas.Unit.Tests.Mocks
         {
             return new List<TapaDto>
             {
-                new TapaDto()
+                new TapaDto
                 {
                     Id = "Lisbon_1",
                     Path = new List<Path>
@@ -63,7 +62,7 @@ namespace RotaDasTapas.Unit.Tests.Mocks
                         }
                     }
                 },
-                new TapaDto()
+                new TapaDto
                 {
                     Id = "Lisbon_2",
                     Path = new List<Path>
@@ -85,7 +84,7 @@ namespace RotaDasTapas.Unit.Tests.Mocks
                         }
                     }
                 },
-                new TapaDto()
+                new TapaDto
                 {
                     Id = "Lisbon_3",
                     Path = new List<Path>

@@ -19,10 +19,10 @@ namespace RotaDasTapas.Unit.Tests.Services
     [TestClass]
     public class TapasServiceTests
     {
-        private readonly ITapasService _tapasService;
-        private readonly Mock<ITapasGateway> _tapasGateway;
-        private readonly Mock<IMapper> _mockMapper;
         private readonly Mock<IJourneyUtils> _mockJourneyUtils;
+        private readonly Mock<IMapper> _mockMapper;
+        private readonly Mock<ITapasGateway> _tapasGateway;
+        private readonly ITapasService _tapasService;
 
         public TapasServiceTests()
         {
@@ -44,12 +44,13 @@ namespace RotaDasTapas.Unit.Tests.Services
                 Localtime = DateTime.Now.ToString()
             };
             var expectedListTapas = TapasGatewayMocks.GetListOfTapasSingleOneWithAllFields();
-            var expectedMock = new TapasResponse()
+            var expectedMock = new TapasResponse
             {
                 Tapas = TapasServiceMocks.GetListOfTapasSingleOneWithAllFields()
             };
             _mockMapper.Setup(m =>
-                    m.Map<TapasResponse>(It.IsAny<IEnumerable<TapaDto>>(),It.IsAny<Action<IMappingOperationOptions>>()))
+                    m.Map<TapasResponse>(It.IsAny<IEnumerable<TapaDto>>(),
+                        It.IsAny<Action<IMappingOperationOptions>>()))
                 .Returns(expectedMock);
             _tapasGateway.Setup(d => d.GetAllTapas()).Returns(expectedListTapas);
 
@@ -66,7 +67,7 @@ namespace RotaDasTapas.Unit.Tests.Services
             //Arrange
             var expectedListTapas = TapasGatewayMocks.GetAllTapasWithPath();
             var listSelected = "Lisbon_1|Lisbon_2|Lisbon_3";
-            var expectedMock = new TapasResponse()
+            var expectedMock = new TapasResponse
             {
                 Tapas = TapasServiceMocks.GetListOfTapasSingleOneWithAllFields()
             };
@@ -79,7 +80,7 @@ namespace RotaDasTapas.Unit.Tests.Services
             _mockJourneyUtils.Setup(m => m.Init(
                 It.IsAny<IEnumerable<string>>(), It.IsAny<string>(), It.IsAny<IEnumerable<TapaDto>>()));
 
-            _mockJourneyUtils.Setup(m => m.SolveProblem()).Returns(new List<Vertice>()
+            _mockJourneyUtils.Setup(m => m.SolveProblem()).Returns(new List<Vertice>
             {
                 new Vertice()
             });
@@ -98,10 +99,7 @@ namespace RotaDasTapas.Unit.Tests.Services
             Assert.IsNotNull(result.Tapas);
             Assert.AreEqual(expected.Tapas.Count(), result.Tapas.Count());
             var nExpect = 0;
-            foreach (var exp in expected.Tapas)
-            {
-                AssertTests(exp, resultList[nExpect++]);
-            }
+            foreach (var exp in expected.Tapas) AssertTests(exp, resultList[nExpect++]);
         }
 
         private void AssertTests(Tapa expected, Tapa result)

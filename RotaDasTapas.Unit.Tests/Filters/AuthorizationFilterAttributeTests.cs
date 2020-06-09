@@ -50,7 +50,7 @@ namespace RotaDasTapas.Unit.Tests.Filters
             _mockSearchConfiguration
                 .Setup(mock => mock.Value)
                 .Returns(
-                    new RotaDasTapasConfiguration()
+                    new RotaDasTapasConfiguration
                     {
                         ApiKey = "fakeKey"
                     }
@@ -77,7 +77,7 @@ namespace RotaDasTapas.Unit.Tests.Filters
             _mockSearchConfiguration
                 .Setup(mock => mock.Value)
                 .Returns(
-                    new RotaDasTapasConfiguration()
+                    new RotaDasTapasConfiguration
                     {
                         ApiKey = "123"
                     }
@@ -100,7 +100,7 @@ namespace RotaDasTapas.Unit.Tests.Filters
             _mockSearchConfiguration
                 .Setup(mock => mock.Value)
                 .Returns(
-                    new RotaDasTapasConfiguration()
+                    new RotaDasTapasConfiguration
                     {
                         ApiKey = null
                     }

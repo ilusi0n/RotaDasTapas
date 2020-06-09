@@ -10,9 +10,9 @@ namespace RotaDasTapas.Services
 {
     public class TapasService : ITapasService
     {
-        private readonly ITapasGateway _tapasGateway;
-        private readonly IMapper _mapper;
         private readonly IJourneyUtils _journeyUtils;
+        private readonly IMapper _mapper;
+        private readonly ITapasGateway _tapasGateway;
 
         public TapasService(ITapasGateway tapasGateway, IMapper mapper, IJourneyUtils journeyUtils)
         {
@@ -25,10 +25,7 @@ namespace RotaDasTapas.Services
         {
             var result = _tapasGateway.GetAllTapas();
             return _mapper.Map<TapasResponse>(result,
-                opts =>
-                {
-                    opts.Items["localtime"] = rotaDasTapasParameters.Localtime;
-                });
+                opts => { opts.Items["localtime"] = rotaDasTapasParameters.Localtime; });
         }
 
         public TapasResponse GetTapasRoute(string city, string list)

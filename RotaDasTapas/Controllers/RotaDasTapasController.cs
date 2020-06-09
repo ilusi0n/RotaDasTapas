@@ -1,5 +1,4 @@
-﻿using System;
-using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using RotaDasTapas.Constants;
 using RotaDasTapas.Errors;
@@ -37,10 +36,7 @@ namespace RotaDasTapas.Controllers
             [FromQuery] RotaDasTapasParameters rotaDasTapasParameters)
         {
             var result = _tapasService.GetAllTapas(rotaDasTapasParameters);
-            if (result == null)
-            {
-                return new ObjectResult(new InternalServerError(ErrorConstants.InternalError));
-            }
+            if (result == null) return new ObjectResult(new InternalServerError(ErrorConstants.InternalError));
 
             return Ok(_tapasService.GetAllTapas(rotaDasTapasParameters));
         }
