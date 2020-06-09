@@ -5,7 +5,7 @@ namespace RotaDasTapas.Services
 {
     public interface ITapasService
     {
-        TapasResponse GetAllTapas(RotaDasTapasParameters rotaDasTapasParameters);
-        TapasResponse GetTapasRoute(string city, string list);
+        TapasResponse GetAllTapas(TapasParameters tapasParameters);
+        TapasResponse GetTapasRoute(JourneyParameters journeyParameters);
     }
 }

@@ -33,12 +33,12 @@ namespace RotaDasTapas.Controllers
         [TypeFilter(typeof(AuthorizationFilterAttribute))]
         public IActionResult GetTapas(
             [FromHeader] RotaDasTapasHeaders rotaDasTapasHeaders,
-            [FromQuery] RotaDasTapasParameters rotaDasTapasParameters)
+            [FromQuery] TapasParameters tapasParameters)
         {
-            var result = _tapasService.GetAllTapas(rotaDasTapasParameters);
+            var result = _tapasService.GetAllTapas(tapasParameters);
             if (result == null) return new ObjectResult(new InternalServerError(ErrorConstants.InternalError));
 
-            return Ok(_tapasService.GetAllTapas(rotaDasTapasParameters));
+            return Ok(_tapasService.GetAllTapas(tapasParameters));
         }
 
         /// <summary>
@@ -51,9 +51,10 @@ namespace RotaDasTapas.Controllers
         [ProducesResponseType(typeof(UnauthorizedError), StatusCodes.Status401Unauthorized)]
         [TypeFilter(typeof(AuthorizationFilterAttribute))]
         public IActionResult GetTapasRoute(
-            [FromHeader] RotaDasTapasHeaders rotaDasTapasHeaders, string city, string list)
+            [FromHeader] RotaDasTapasHeaders rotaDasTapasHeaders,
+            [FromQuery] JourneyParameters journeyParameters)
         {
-            var result = _tapasService.GetTapasRoute(city, list);
+            var result = _tapasService.GetTapasRoute(journeyParameters);
             return Ok(result);
         }
     }

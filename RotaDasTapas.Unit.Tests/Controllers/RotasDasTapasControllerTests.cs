@@ -33,7 +33,7 @@ namespace RotaDasTapas.Unit.Tests.Controllers
             {
                 ApiKey = "fakekey"
             };
-            var rotaDasTapasParameters = new RotaDasTapasParameters
+            var rotaDasTapasParameters = new TapasParameters
             {
                 Localtime = DateTime.Now.ToString()
             };
@@ -41,7 +41,7 @@ namespace RotaDasTapas.Unit.Tests.Controllers
             {
                 Tapas = TapasServiceMocks.GetListOfTapasSingleOneWithAllFields()
             };
-            _mockTapasService.Setup(d => d.GetAllTapas(It.IsAny<RotaDasTapasParameters>())).Returns(tapasResponse);
+            _mockTapasService.Setup(d => d.GetAllTapas(It.IsAny<TapasParameters>())).Returns(tapasResponse);
 
             //Act
             var response = _rotaDasTapasController.GetTapas(headers, rotaDasTapasParameters) as OkObjectResult;
@@ -60,15 +60,20 @@ namespace RotaDasTapas.Unit.Tests.Controllers
             {
                 ApiKey = "fakekey"
             };
+            var journeyParameters =  new JourneyParameters()
+            {
+                City = "city",
+                ListSelectedTapas = "list"
+            };
             var tapasResponse = new TapasResponse
             {
                 Tapas = TapasServiceMocks.GetListOfTapasSingleOneWithAllFields()
             };
-            _mockTapasService.Setup(d => d.GetTapasRoute(It.IsAny<string>(), It.IsAny<string>()))
+            _mockTapasService.Setup(d => d.GetTapasRoute(It.IsAny<JourneyParameters>()))
                 .Returns(tapasResponse);
 
             //Act
-            var response = _rotaDasTapasController.GetTapasRoute(headers, "city", "list") as OkObjectResult;
+            var response = _rotaDasTapasController.GetTapasRoute(headers, journeyParameters) as OkObjectResult;
             var result = response.Value as TapasResponse;
 
             //Assert
@@ -84,12 +89,12 @@ namespace RotaDasTapas.Unit.Tests.Controllers
             {
                 ApiKey = "fakekey"
             };
-            var rotaDasTapasParameters = new RotaDasTapasParameters
+            var rotaDasTapasParameters = new TapasParameters
             {
                 Localtime = DateTime.Now.ToString()
             };
             TapasResponse tapasResponse = null;
-            _mockTapasService.Setup(d => d.GetAllTapas(It.IsAny<RotaDasTapasParameters>())).Returns(tapasResponse);
+            _mockTapasService.Setup(d => d.GetAllTapas(It.IsAny<TapasParameters>())).Returns(tapasResponse);
 
             //Act
             var response = _rotaDasTapasController.GetTapas(headers, rotaDasTapasParameters) as ObjectResult;

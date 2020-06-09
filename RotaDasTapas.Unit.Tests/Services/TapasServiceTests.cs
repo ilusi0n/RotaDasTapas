@@ -39,7 +39,7 @@ namespace RotaDasTapas.Unit.Tests.Services
         public void GetAllTapas_NoArgument_ReturnsOk()
         {
             //Arrange
-            var rotaDasTapasParameters = new RotaDasTapasParameters
+            var rotaDasTapasParameters = new TapasParameters
             {
                 Localtime = DateTime.Now.ToString()
             };
@@ -66,10 +66,15 @@ namespace RotaDasTapas.Unit.Tests.Services
         {
             //Arrange
             var expectedListTapas = TapasGatewayMocks.GetAllTapasWithPath();
-            var listSelected = "Lisbon_1|Lisbon_2|Lisbon_3";
             var expectedMock = new TapasResponse
             {
                 Tapas = TapasServiceMocks.GetListOfTapasSingleOneWithAllFields()
+            };
+            
+            var journeyparameters = new JourneyParameters
+            {
+                City = "Lisbon",
+                ListSelectedTapas = "Lisbon_1|Lisbon_2|Lisbon_3"
             };
 
             _mockMapper.Setup(m =>
@@ -86,7 +91,7 @@ namespace RotaDasTapas.Unit.Tests.Services
             });
 
             //Act
-            var result = _tapasService.GetTapasRoute("Lisbon", listSelected);
+            var result = _tapasService.GetTapasRoute(journeyparameters);
 
             //Assert
             AssertTests(expectedMock, result);

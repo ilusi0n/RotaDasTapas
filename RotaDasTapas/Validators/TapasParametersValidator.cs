@@ -1,17 +1,18 @@
 using System;
 using FluentValidation;
+using RotaDasTapas.Constants;
 using RotaDasTapas.Models.Request;
 
 namespace RotaDasTapas.Validators
 {
-    public class RotaDasTapasParametersValidator: AbstractValidator<RotaDasTapasParameters>
+    public class TapasParametersValidator: AbstractValidator<TapasParameters>
     {
-        public RotaDasTapasParametersValidator()
+        public TapasParametersValidator()
         {
             RuleFor(s => s.Localtime)
                 .Cascade(CascadeMode.StopOnFirstFailure)
                 .NotEmpty()
-                .Must(CheckValidDate).WithMessage("DateTime provided is not valid");
+                .Must(CheckValidDate).WithMessage(ErrorConstants.InvalidDatetime);
         }
 
         private bool CheckValidDate(string value)

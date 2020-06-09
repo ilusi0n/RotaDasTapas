@@ -48,7 +48,7 @@ namespace RotaDasTapas.Unit.Tests.Profiles
         public void MapTapaDtoToTapasResponse_ValidModel_ReturnNotNullAllParametersAreEqual()
         {
             //Arrange
-            var rotaDasTapasParameters = new RotaDasTapasParameters
+            var rotaDasTapasParameters = new TapasParameters
             {
                 Localtime = DateTime.Now.ToString(CultureInfo.InvariantCulture)
             };
@@ -71,7 +71,7 @@ namespace RotaDasTapas.Unit.Tests.Profiles
         public void MapIEnumerableTapaDtoToTapasResponse_ValidModel_ReturnNotNullAllParametersAreEqual()
         {
             //Arrange
-            var rotaDasTapasParameters = new RotaDasTapasParameters
+            var rotaDasTapasParameters = new TapasParameters
             {
                 Localtime = DateTime.Now.ToString(CultureInfo.InvariantCulture)
             };

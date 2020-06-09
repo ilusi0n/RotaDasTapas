@@ -1,6 +1,6 @@
 namespace RotaDasTapas.Models.Request
 {
-    public class RotaDasTapasParameters
+    public class TapasParameters
     {
         public string Localtime { get; set; }
     }
