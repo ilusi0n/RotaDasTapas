@@ -15,9 +15,9 @@ namespace RotaDasTapas.Utils
         {
             _selectedTapas = selectedTapas;
             _tapasByCity = tapasByCity;
-            var adjacencyMatrix = BuildMatrix();
-            var startVertice = tapasByCity.ToList().IndexOf(tapasByCity.First(el => el.Id.Equals(startTapaId)));
+            var startVertice = selectedTapas.ToList().IndexOf(startTapaId);
             var vertices = GetVertices();
+            var adjacencyMatrix = BuildMatrix(vertices);
             _travellingSalesmanProblem = new TravellingSalesmanProblem(startVertice, vertices, adjacencyMatrix);
         }
 
@@ -43,17 +43,17 @@ namespace RotaDasTapas.Utils
             return list;
         }
 
-        private Path[,] BuildMatrix()
+        private Path[,] BuildMatrix(IEnumerable<Vertice> vertices)
         {
-            var tapasByCity = _tapasByCity.OrderBy(el => el.Id).ToList();
-            var adjacencyMatrix = new Path[tapasByCity.Count, tapasByCity.Count];
-            for (var a = 0; a < tapasByCity.Count; a++)
+            var list = vertices.ToList();
+            var adjacencyMatrix = new Path[list.Count, list.Count];
+            for (var a = 0; a < list.Count; a++)
             {
-                var tapa = tapasByCity[a];
+                var tapa = list[a].TapaDto;
                 tapa.Path = GetSelectedTapasPath(_selectedTapas, tapa);
-                for (var b = 0; b < tapasByCity[a].Path.Count(); b++)
+                for (var b = 0; b < list[a].TapaDto.Path.Count(); b++)
                 {
-                    var path = tapasByCity[a].Path.ToList()[b];
+                    var path = list[a].TapaDto.Path.ToList()[b];
                     adjacencyMatrix[a, b] = path;
                 }
             }
