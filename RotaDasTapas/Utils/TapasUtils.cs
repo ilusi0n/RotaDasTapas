@@ -79,7 +79,8 @@ namespace RotaDasTapas.Utils
                 Address = "Rua 4 de Infantaria, Nº32, A",
                 Description = "Porção de quatro quibes de lentihas fritos",
                 City = "Lisbon",
-                ImageUrl = "https://b.zmtcdn.com/data/reviews_photos/873/45fb4c16be35545f40c6e209df0f5873_1514990123.jpg",
+                ImageUrl =
+                    "https://b.zmtcdn.com/data/reviews_photos/873/45fb4c16be35545f40c6e209df0f5873_1514990123.jpg",
                 Schedule = "15:00,21:00;2,6|15:00,21:00;0,0"
             };
 
