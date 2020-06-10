@@ -45,7 +45,7 @@ namespace RotaDasTapas.Controllers
         ///     Calculate the optimal path from the selected Tapas
         /// </summary>
         [HttpGet]
-        [Route("Tapas/Journey/{city}")]
+        [Route("Journey")]
         [ProducesResponseType(typeof(TapasResponse), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(InternalServerError), StatusCodes.Status500InternalServerError)]
         [ProducesResponseType(typeof(UnauthorizedError), StatusCodes.Status401Unauthorized)]
