@@ -9,7 +9,7 @@ namespace RotaDasTapas.Utils
     [ExcludeFromCodeCoverage]
     public static class TapasUtils
     {
-        public static IEnumerable<TapaDto> InitMock()
+        public static IEnumerable<TapaDto> Init()
         {
             var LisboaTapa1 = new TapaDto
             {
@@ -86,18 +86,6 @@ namespace RotaDasTapas.Utils
                 Schedule = "15:00,21:00;2,6|15:00,21:00;0,0"
             };
 
-            var PortoTapa1 = new TapaDto
-            {
-                Id = string.Join(Separators.Underscore, "Porto", 1),
-                Name = "Name1",
-                Title = "Title1",
-                Address = "Address",
-                Description = "Description1",
-                City = "Porto",
-                ImageUrl = "https://b.zmtcdn.com/data/pictures/chains/9/18618109/fc91d7cf0ff3896fa3b6c4bd904ebd29.jpg",
-                Schedule = "07:00,15:00;1,1|07:00,14:00;6,6"
-            };
-
             LisboaTapa1.Path = new List<Path>
             {
                 CreatePath(LisboaTapa1.Id, 0),
@@ -170,23 +158,6 @@ namespace RotaDasTapas.Utils
             {
                 TapaId = id,
                 Distance = distance
-            };
-        }
-
-        public static IEnumerable<TapaDto> Init()
-        {
-            return new List<TapaDto>
-            {
-                new TapaDto
-                {
-                    Name = "Esquina",
-                    Title = "Almondega à Esquina",
-                    Address = "Praça Gomes Teixeira, nº26",
-                    Description =
-                        "Mini hamburger com bacon e queijo em bolo de caco da madeira, barrado com manteiga d'alho e ervas aromáticas",
-                    City = "Lisboa",
-                    ImageUrl = ""
-                }
             };
         }
     }

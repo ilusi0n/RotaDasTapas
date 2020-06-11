@@ -11,8 +11,7 @@ namespace RotaDasTapas.Gateway
 
         public TapasGateway()
         {
-            //_listTapas = TapasUtils.Init();
-            _listTapas = TapasUtils.InitMock();
+            _listTapas = TapasUtils.Init();
         }
 
         public IEnumerable<TapaDto> GetAllTapas()
