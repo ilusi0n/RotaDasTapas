@@ -7,7 +7,7 @@ namespace RotaDasTapas.Utils
     public interface IJourneyUtils
     {
         /// <summary>
-        /// Instantiate all the variables needed to calculate the optimal path 
+        ///     Instantiate all the variables needed to calculate the optimal path
         /// </summary>
         /// <param name="selectedTapas">List of selected tapas for the optimal path</param>
         /// <param name="startTapaId">Starting point</param>

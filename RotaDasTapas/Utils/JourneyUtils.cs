@@ -7,9 +7,9 @@ namespace RotaDasTapas.Utils
 {
     public class JourneyUtils : IJourneyUtils
     {
+        private readonly ITravellingSalesmanProblem _travellingSalesmanProblem;
         private IEnumerable<string> _selectedTapas;
         private IEnumerable<TapaDto> _tapasByCity;
-        private readonly ITravellingSalesmanProblem _travellingSalesmanProblem;
 
         public JourneyUtils(ITravellingSalesmanProblem travellingSalesmanProblem)
         {

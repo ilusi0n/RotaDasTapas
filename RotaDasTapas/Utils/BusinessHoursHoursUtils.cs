@@ -8,15 +8,15 @@ using RotaDasTapas.Models.Models;
 
 namespace RotaDasTapas.Utils
 {
-    public class BusinessHoursHoursUtils :  IBusinessHoursUtils
+    public class BusinessHoursHoursUtils : IBusinessHoursUtils
     {
         private const string CompressedPattern =
             @"(?<openHour>[0-9]{2}):(?<openMinutes>[0-9]{2}),(?<closeHour>[0-9]{2}):(?<closeMinutes>[0-9]{2});(?<minDay>[0-6]),(?<maxDay>[0-6])";
 
-        private  DateTime _dateTime;
-        private  string _locale;
-        private  TimeSpan _margin;
-        private  List<ScheduleDay> _scheduleDays;
+        private DateTime _dateTime;
+        private string _locale;
+        private TimeSpan _margin;
+        private List<ScheduleDay> _scheduleDays;
 
         public void Init(string businessHours, DateTime dateTime)
         {

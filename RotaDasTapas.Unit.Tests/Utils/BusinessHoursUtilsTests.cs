@@ -10,11 +10,12 @@ namespace RotaDasTapas.Unit.Tests.Utils
     public class BusinessHoursUtilsTests
     {
         private readonly IBusinessHoursUtils _businessHoursUtils;
+
         public BusinessHoursUtilsTests()
         {
             _businessHoursUtils = new BusinessHoursHoursUtils();
         }
-        
+
         [TestMethod]
         public void GetStatus_ValidBusinessHours_ReturnsClosingSoon()
         {
@@ -33,9 +34,9 @@ namespace RotaDasTapas.Unit.Tests.Utils
 
             //assert
             Assert.IsNotNull(result);
-            Assert.AreEqual(expected.Status,result);
+            Assert.AreEqual(expected.Status, result);
         }
-        
+
         [TestMethod]
         public void GetCurrentSchedule_ValidBusinessHours_ReturnsCurrentBusinessHours()
         {
@@ -44,7 +45,7 @@ namespace RotaDasTapas.Unit.Tests.Utils
             var businessHours = "10:45,16:00;0,0";
             var expected = new Schedule
             {
-                Hours = "10:45-16:00",
+                Hours = "10:45-16:00"
             };
 
             //act
@@ -53,9 +54,9 @@ namespace RotaDasTapas.Unit.Tests.Utils
 
             //assert
             Assert.IsNotNull(result);
-            Assert.AreEqual(expected.Hours,result);
+            Assert.AreEqual(expected.Hours, result);
         }
-        
+
         [TestMethod]
         public void GetStatus_ValidBusinessHours_ReturnsClosed()
         {
@@ -74,9 +75,9 @@ namespace RotaDasTapas.Unit.Tests.Utils
 
             //assert
             Assert.IsNotNull(result);
-            Assert.AreEqual(expected.Status,result);
+            Assert.AreEqual(expected.Status, result);
         }
-        
+
         [TestMethod]
         public void GetCurrentSchedule_ValidBusinessHours_ReturnsEmptyd()
         {
@@ -86,7 +87,7 @@ namespace RotaDasTapas.Unit.Tests.Utils
 
             var expected = new Schedule
             {
-                Hours = string.Empty,
+                Hours = string.Empty
             };
 
             //act
@@ -95,9 +96,9 @@ namespace RotaDasTapas.Unit.Tests.Utils
 
             //assert
             Assert.IsNotNull(result);
-            Assert.AreEqual(expected.Hours,result);
+            Assert.AreEqual(expected.Hours, result);
         }
-        
+
         [TestMethod]
         public void GetStatus_ValidBusinessHours_ReturnsOpen()
         {
@@ -116,9 +117,9 @@ namespace RotaDasTapas.Unit.Tests.Utils
 
             //assert
             Assert.IsNotNull(result);
-            Assert.AreEqual(expected.Status,result);
+            Assert.AreEqual(expected.Status, result);
         }
-        
+
         [TestMethod]
         public void GetCurrentSchedule_ValidBusinessHours_ReturnsOpen()
         {
@@ -137,9 +138,9 @@ namespace RotaDasTapas.Unit.Tests.Utils
 
             //assert
             Assert.IsNotNull(result);
-            Assert.AreEqual(expected.Hours,result);
+            Assert.AreEqual(expected.Hours, result);
         }
-        
+
         [TestMethod]
         public void GetStatus_InvalidBusinessHours_ReturnsEmpty()
         {
@@ -153,9 +154,9 @@ namespace RotaDasTapas.Unit.Tests.Utils
 
             //assert
             Assert.IsNotNull(result);
-            Assert.AreEqual(string.Empty,result);
+            Assert.AreEqual(string.Empty, result);
         }
-        
+
         [TestMethod]
         public void GetCurrentSchedule_InvalidBusinessHours_ReturnsEmpty()
         {
@@ -169,9 +170,9 @@ namespace RotaDasTapas.Unit.Tests.Utils
 
             //assert
             Assert.IsNotNull(result);
-            Assert.AreEqual(string.Empty,result);
+            Assert.AreEqual(string.Empty, result);
         }
-        
+
         [TestMethod]
         public void GetCurrentSchedule_NullBusinessHours_ReturnsEmpty()
         {
@@ -185,9 +186,9 @@ namespace RotaDasTapas.Unit.Tests.Utils
 
             //assert
             Assert.IsNotNull(result);
-            Assert.AreEqual(string.Empty,result);
+            Assert.AreEqual(string.Empty, result);
         }
-        
+
         [TestMethod]
         public void GetCurrentSchedule_ValidBusinessHours_ReturnsBusinessHours()
         {
@@ -206,7 +207,7 @@ namespace RotaDasTapas.Unit.Tests.Utils
 
             //assert
             Assert.IsNotNull(result);
-            Assert.AreEqual(expected.Hours,result);
+            Assert.AreEqual(expected.Hours, result);
         }
 
         [TestMethod]
@@ -214,7 +215,7 @@ namespace RotaDasTapas.Unit.Tests.Utils
         {
             //arrange
             var sundayMorning = new DateTime(2020, 6, 7, 11, 00, 00);
-            var businessHours = "11:15,24:00;0,0";
+            const string businessHours = "11:15,24:00;0,0";
 
             var expected = new Schedule
             {
@@ -228,7 +229,7 @@ namespace RotaDasTapas.Unit.Tests.Utils
 
             //assert
             Assert.IsNotNull(result);
-            Assert.AreEqual(expected.Status,result);
+            Assert.AreEqual(expected.Status, result);
         }
     }
 }
