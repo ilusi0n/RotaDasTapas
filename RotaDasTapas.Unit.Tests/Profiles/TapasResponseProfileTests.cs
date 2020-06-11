@@ -116,6 +116,7 @@ namespace RotaDasTapas.Unit.Tests.Profiles
                 Assert.IsNotNull(result.Tapas.ToList()[nExpected].Schedule);
                 Assert.IsNotNull(result.Tapas.ToList()[nExpected].Schedule.Hours);
                 Assert.IsNotNull(result.Tapas.ToList()[nExpected].Schedule.Status);
+                Assert.IsNotNull(result.Tapas.ToList()[nExpected].Schedule.Disable);
                 nExpected++;
             }
         }
