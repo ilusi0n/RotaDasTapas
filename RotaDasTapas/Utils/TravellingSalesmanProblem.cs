@@ -5,11 +5,11 @@ using RotaDasTapas.Models.TSP;
 
 namespace RotaDasTapas.Utils
 {
-    public class TravellingSalesmanProblem
+    public class TravellingSalesmanProblem : ITravellingSalesmanProblem
     {
         #region Constructor
 
-        public TravellingSalesmanProblem(int startVerticeIndex, IEnumerable<Vertice> vertices, Path[,] matrix)
+        public void Init(int startVerticeIndex, IEnumerable<Vertice> vertices, Path[,] matrix)
         {
             _vertices = vertices;
             _adjacencyMatrix = matrix;
@@ -35,9 +35,9 @@ namespace RotaDasTapas.Utils
 
         #region Member Variables
 
-        private readonly Path[,] _adjacencyMatrix;
-        private readonly IEnumerable<Vertice> _vertices;
-        private readonly int _startVerticeIndex;
+        private Path[,] _adjacencyMatrix;
+        private IEnumerable<Vertice> _vertices;
+        private int _startVerticeIndex;
 
         #endregion
 

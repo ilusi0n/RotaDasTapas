@@ -33,11 +33,9 @@ namespace RotaDasTapas.Services
             var result = _tapasGateway.GetTapasRoute(journeyParameters.City);
             var listSelectedTapas = journeyParameters.ListSelectedTapas.Split(Separators.Pipe);
             _journeyUtils.Init(listSelectedTapas, listSelectedTapas.First(), result);
-            var pathToTake = _journeyUtils.SolveProblem();
-            var listPath = pathToTake.Select(path => path.TapaDto).ToList();
-            listPath.RemoveAt(listPath.Count - 1);
-
-            return _mapper.Map<TapasResponse>(listPath,
+            var pathToTake = _journeyUtils.SolveProblem().ToList();
+            pathToTake.RemoveAt(pathToTake.Count - 1);
+            return _mapper.Map<TapasResponse>(pathToTake,
                 opts => { opts.Items["localtime"] = journeyParameters.Localtime; });
         }
     }

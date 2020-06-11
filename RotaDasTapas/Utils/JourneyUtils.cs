@@ -7,9 +7,14 @@ namespace RotaDasTapas.Utils
 {
     public class JourneyUtils : IJourneyUtils
     {
+        private readonly ITravellingSalesmanProblem _travellingSalesmanProblem;
         private IEnumerable<string> _selectedTapas;
         private IEnumerable<TapaDto> _tapasByCity;
-        private TravellingSalesmanProblem _travellingSalesmanProblem;
+
+        public JourneyUtils(ITravellingSalesmanProblem travellingSalesmanProblem)
+        {
+            _travellingSalesmanProblem = travellingSalesmanProblem;
+        }
 
         public void Init(IEnumerable<string> selectedTapas, string startTapaId, IEnumerable<TapaDto> tapasByCity)
         {
@@ -18,7 +23,7 @@ namespace RotaDasTapas.Utils
             var startVertice = selectedTapas.ToList().IndexOf(startTapaId);
             var vertices = GetVertices();
             var adjacencyMatrix = BuildMatrix(vertices);
-            _travellingSalesmanProblem = new TravellingSalesmanProblem(startVertice, vertices, adjacencyMatrix);
+            _travellingSalesmanProblem.Init(startVertice, vertices, adjacencyMatrix);
         }
 
         public IEnumerable<Vertice> SolveProblem()
