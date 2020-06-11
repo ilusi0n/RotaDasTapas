@@ -69,7 +69,7 @@ namespace RotaDasTapas.Unit.Tests.Utils
             };
         }
 
-        private bool CheckArraysAreEqual(IReadOnlyList<Vertice> expectedRoute, IReadOnlyList<Vertice> actual)
+        private bool CheckArraysAreEqual(IReadOnlyCollection<Vertice> expectedRoute, IReadOnlyList<Vertice> actual)
         {
             if (expectedRoute.Count != actual.Count) return false;
 

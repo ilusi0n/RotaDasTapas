@@ -8,6 +8,11 @@ cd $folder
 rm -rf .sonarqube
 rm rf report
 rm -rf results
+rm -rf TestResults
+rm -rf test/*/*/coverage*
+rm -rf coverage
+rm -rf src/*/*/bin
+rm -rf test/*/*/bin
 
 #code coverage
 
