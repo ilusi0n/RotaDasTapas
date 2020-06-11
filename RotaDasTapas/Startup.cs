@@ -18,7 +18,6 @@ using RotaDasTapas.Utils;
 
 namespace RotaDasTapas
 {
-    [ExcludeFromCodeCoverage]
     public class Startup
     {
         public Startup(IConfiguration configuration)

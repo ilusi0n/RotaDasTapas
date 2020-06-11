@@ -1,9 +1,11 @@
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using RotaDasTapas.Constants;
 using RotaDasTapas.Models.Response;
 
 namespace RotaDasTapas.Unit.Tests.Mocks
 {
+    [ExcludeFromCodeCoverage]
     public static class TapasServiceMocks
     {
         public static TapasResponse GetAllTapas()

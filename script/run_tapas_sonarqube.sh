@@ -1,6 +1,6 @@
 #!/bin/bash
 
-key=9c3ba13c5aec5155f145038cb44ff89fab345589
+key=e2670a96de09067940443bf7724f9ba947603693
 folder=$HOME/ctw/PersonalProjects/RotaDasTapas
 
 cd $folder

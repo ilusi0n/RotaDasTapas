@@ -1,10 +1,12 @@
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using RotaDasTapas.Constants;
 using RotaDasTapas.Models.Gateway;
 
 namespace RotaDasTapas.Utils
 {
+    [ExcludeFromCodeCoverage]
     public static class TapasUtils
     {
         public static IEnumerable<TapaDto> InitMock()

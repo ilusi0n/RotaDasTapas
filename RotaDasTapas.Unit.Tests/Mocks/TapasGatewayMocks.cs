@@ -1,8 +1,10 @@
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using RotaDasTapas.Models.Gateway;
 
 namespace RotaDasTapas.Unit.Tests.Mocks
 {
+    [ExcludeFromCodeCoverage]
     public static class TapasGatewayMocks
     {
         public static IEnumerable<TapaDto> GetListOfTapasSingleOneWithAllFields()
