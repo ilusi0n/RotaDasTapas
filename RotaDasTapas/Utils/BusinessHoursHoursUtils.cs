@@ -8,7 +8,7 @@ using RotaDasTapas.Models.Models;
 
 namespace RotaDasTapas.Utils
 {
-    public class BusinessHoursUtils :  IBusinessUtils
+    public class BusinessHoursHoursUtils :  IBusinessHoursUtils
     {
         private const string CompressedPattern =
             @"(?<openHour>[0-9]{2}):(?<openMinutes>[0-9]{2}),(?<closeHour>[0-9]{2}):(?<closeMinutes>[0-9]{2});(?<minDay>[0-6]),(?<maxDay>[0-6])";

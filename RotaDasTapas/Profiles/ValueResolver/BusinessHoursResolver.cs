@@ -8,20 +8,20 @@ namespace RotaDasTapas.Profiles.ValueResolver
 {
     public class BusinessHoursResolver : IValueResolver<TapaDto, Tapa, Schedule>
     {
-        private readonly IBusinessUtils _businessUtils;
-        public BusinessHoursResolver(IBusinessUtils businessUtils)
+        private readonly IBusinessHoursUtils _businessHoursUtils;
+        public BusinessHoursResolver(IBusinessHoursUtils businessHoursUtils)
         {
-            _businessUtils = businessUtils;
+            _businessHoursUtils = businessHoursUtils;
         }
         public Schedule Resolve(TapaDto source, Tapa destination, Schedule destMember,
             ResolutionContext context)
         {
             var localtime = DateTime.Parse((string) context.Items["localtime"]);
-            _businessUtils.Init(source.Schedule, localtime);
+            _businessHoursUtils.Init(source.Schedule, localtime);
             return new Schedule
             {
-                Status = _businessUtils.GetStatus(),
-                Hours = _businessUtils.GetCurrentSchedule()
+                Status = _businessHoursUtils.GetStatus(),
+                Hours = _businessHoursUtils.GetCurrentSchedule()
             };
         }
     }

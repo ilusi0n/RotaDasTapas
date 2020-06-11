@@ -19,11 +19,11 @@ namespace RotaDasTapas.Unit.Tests.Profiles
     public class TapasResponseProfileTests
     {
         private readonly IMapper _mapper;
-        private readonly Mock<IBusinessUtils> _mockBusinessUtils;
+        private readonly Mock<IBusinessHoursUtils> _mockBusinessUtils;
 
         public TapasResponseProfileTests()
         {
-            _mockBusinessUtils = new Mock<IBusinessUtils>();
+            _mockBusinessUtils = new Mock<IBusinessHoursUtils>();
             var serviceProvider = new Mock<IServiceProvider>();
 
             var configuration = new MapperConfiguration(mc =>

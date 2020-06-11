@@ -41,7 +41,7 @@ namespace RotaDasTapas
             services.AddScoped<ITapasGateway, TapasGateway>();
             services.AddScoped<IJourneyUtils, JourneyUtils>();
             services.AddScoped<ITravellingSalesmanProblem, TravellingSalesmanProblem>();
-            services.AddScoped<IBusinessUtils, BusinessHoursUtils>();
+            services.AddScoped<IBusinessHoursUtils, BusinessHoursHoursUtils>();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo

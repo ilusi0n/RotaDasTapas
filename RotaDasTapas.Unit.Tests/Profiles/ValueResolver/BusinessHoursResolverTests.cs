@@ -20,14 +20,13 @@ namespace RotaDasTapas.Unit.Tests.Profiles.ValueResolver
         private readonly Tapa _destination;
         private readonly Schedule _destMember;
         private readonly Mock<IMappingOperationOptions> _mappingOperationOptions;
-        private readonly Mock<IBusinessUtils> _mockBusinessUtils;
 
         public BusinessHoursResolverTests()
         {
             _destination = new Tapa();
             _destMember = new Schedule();
-            _mockBusinessUtils = new Mock<IBusinessUtils>();
-            _businessHoursResolver = new BusinessHoursResolver(_mockBusinessUtils.Object);
+            var mockBusinessUtils = new Mock<IBusinessHoursUtils>();
+            _businessHoursResolver = new BusinessHoursResolver(mockBusinessUtils.Object);
             var runtimeMapperMock = new Mock<IRuntimeMapper>();
             _mappingOperationOptions = new Mock<IMappingOperationOptions>();
             _context = new ResolutionContext(_mappingOperationOptions.Object, runtimeMapperMock.Object);

@@ -2,7 +2,7 @@ using System;
 
 namespace RotaDasTapas.Utils
 {
-    public interface IBusinessUtils
+    public interface IBusinessHoursUtils
     {
         void Init(string businessHours, DateTime dateTime);
         string GetStatus();
