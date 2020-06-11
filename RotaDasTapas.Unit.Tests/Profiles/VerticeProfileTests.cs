@@ -1,5 +1,6 @@
 using System;
 using System.Globalization;
+using System.Linq;
 using AutoMapper;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
