@@ -1,11 +1,8 @@
 using System;
-using System.Net;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
-using RotaDasTapas.Constants;
 using RotaDasTapas.Controllers;
-using RotaDasTapas.Errors;
 using RotaDasTapas.Models.Request;
 using RotaDasTapas.Models.Response;
 using RotaDasTapas.Services;
@@ -79,32 +76,6 @@ namespace RotaDasTapas.Unit.Tests.Controllers
             //Assert
             Assert.IsNotNull(result);
             Assert.AreEqual(tapasResponse, result);
-        }
-
-        [TestMethod]
-        public void GetTapas_ListTapasNull_ShouldReturnInternalServerError()
-        {
-            //Arrange
-            var headers = new RotaDasTapasHeaders
-            {
-                ApiKey = "fakekey"
-            };
-            var rotaDasTapasParameters = new TapasParameters
-            {
-                Localtime = DateTime.Now.ToString()
-            };
-            TapasResponse tapasResponse = null;
-            _mockTapasService.Setup(d => d.GetAllTapas(It.IsAny<TapasParameters>())).Returns(tapasResponse);
-
-            //Act
-            var response = _rotaDasTapasController.GetTapas(headers, rotaDasTapasParameters) as ObjectResult;
-            var result = response.Value as InternalServerError;
-
-            //Assert
-            Assert.IsNotNull(result);
-            Assert.AreEqual((int) HttpStatusCode.InternalServerError, result.StatusCode);
-            Assert.AreEqual(HttpStatusCode.InternalServerError.ToString(), result.StatusDescription);
-            Assert.AreEqual(ErrorConstants.InternalError, result.Message);
         }
     }
 }

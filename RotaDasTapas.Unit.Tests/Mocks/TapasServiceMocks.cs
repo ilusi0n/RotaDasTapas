@@ -27,7 +27,7 @@ namespace RotaDasTapas.Unit.Tests.Mocks
                         Schedule = new Schedule
                         {
                             Hours = "15:00-21:00",
-                            Status = "Open",
+                            Status = "Open"
                         }
                     },
                     new Tapa
@@ -43,7 +43,7 @@ namespace RotaDasTapas.Unit.Tests.Mocks
                         Schedule = new Schedule
                         {
                             Hours = "13:00-23:00",
-                            Status = "Open",
+                            Status = "Open"
                         }
                     },
                     new Tapa
@@ -59,7 +59,7 @@ namespace RotaDasTapas.Unit.Tests.Mocks
                         Schedule = new Schedule
                         {
                             Hours = "18:00-21:30",
-                            Status = "Open",
+                            Status = "Open"
                         }
                     },
                     new Tapa
@@ -76,7 +76,7 @@ namespace RotaDasTapas.Unit.Tests.Mocks
                         Schedule = new Schedule
                         {
                             Hours = "12:30-14:30",
-                            Status = "Closed",
+                            Status = "Closed"
                         }
                     },
                     new Tapa
@@ -91,7 +91,7 @@ namespace RotaDasTapas.Unit.Tests.Mocks
                         Schedule = new Schedule
                         {
                             Hours = "19:00-23:00",
-                            Status = "Closed",
+                            Status = "Closed"
                         }
                     },
                     new Tapa
@@ -107,7 +107,7 @@ namespace RotaDasTapas.Unit.Tests.Mocks
                         Schedule = new Schedule
                         {
                             Hours = "15:00-21:00",
-                            Status = "Open",
+                            Status = "Open"
                         }
                     }
                 }
