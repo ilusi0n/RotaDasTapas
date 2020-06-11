@@ -40,6 +40,7 @@ namespace RotaDasTapas
             services.AddScoped<ITapasService, TapasService>();
             services.AddScoped<ITapasGateway, TapasGateway>();
             services.AddScoped<IJourneyUtils, JourneyUtils>();
+            services.AddScoped<ITravellingSalesmanProblem, TravellingSalesmanProblem>();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo
@@ -90,6 +91,7 @@ namespace RotaDasTapas
         private static void SetupAutoMapper(IServiceCollection services)
         {
             services.AddAutoMapper(typeof(TapasResponseProfile));
+            services.AddAutoMapper(typeof(VerticeProfile));
         }
     }
 }

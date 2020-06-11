@@ -1,7 +1,9 @@
+using System.ComponentModel.DataAnnotations;
+
 namespace RotaDasTapas.Models.Request
 {
     public class TapasParameters
     {
-        public string Localtime { get; set; }
+        [Required] public string Localtime { get; set; }
     }
 }

@@ -47,8 +47,19 @@ namespace RotaDasTapas.Models.Response
 
     public class Schedule
     {
+        /// <summary>
+        ///     Schedule hours for the current day
+        /// </summary>
         public string Hours { get; set; }
+
+        /// <summary>
+        ///     Status of the place. Could be open, close, opening soon and closing soon
+        /// </summary>
         public string Status { get; set; }
+
+        /// <summary>
+        ///     Value to inform that the tapa should be closed if it's not opening today
+        /// </summary>
         public bool Disable => Status == BusinessHoursConstants.ClosedToday;
     }
 }

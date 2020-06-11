@@ -79,7 +79,7 @@ namespace RotaDasTapas.Unit.Tests.Services
             };
 
             _mockMapper.Setup(m =>
-                    m.Map<TapasResponse>(It.IsAny<IEnumerable<TapaDto>>(),
+                    m.Map<TapasResponse>(It.IsAny<IEnumerable<Vertice>>(),
                         It.IsAny<Action<IMappingOperationOptions>>()))
                 .Returns(expectedMock);
             _tapasGateway.Setup(d => d.GetTapasRoute("Lisbon")).Returns(expectedListTapas);

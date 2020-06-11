@@ -4,12 +4,14 @@ using System.Linq;
 using AutoMapper;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
+using RotaDasTapas.Constants;
 using RotaDasTapas.Models.Request;
 using RotaDasTapas.Models.Response;
 using RotaDasTapas.Profiles;
 using RotaDasTapas.Profiles.TypeConverter;
 using RotaDasTapas.Profiles.ValueResolver;
 using RotaDasTapas.Unit.Tests.Mocks;
+using RotaDasTapas.Utils;
 
 namespace RotaDasTapas.Unit.Tests.Profiles
 {
@@ -17,9 +19,11 @@ namespace RotaDasTapas.Unit.Tests.Profiles
     public class TapasResponseProfileTests
     {
         private readonly IMapper _mapper;
+        private readonly Mock<IBusinessUtils> _mockBusinessUtils;
 
         public TapasResponseProfileTests()
         {
+            _mockBusinessUtils = new Mock<IBusinessUtils>();
             var serviceProvider = new Mock<IServiceProvider>();
 
             var configuration = new MapperConfiguration(mc =>
@@ -33,7 +37,7 @@ namespace RotaDasTapas.Unit.Tests.Profiles
             serviceProvider.Setup(x => x.GetService(typeof(TapasResponseTypeConverter)))
                 .Returns(new TapasResponseTypeConverter(_mapper));
             serviceProvider.Setup(x => x.GetService(typeof(BusinessHoursResolver)))
-                .Returns(new BusinessHoursResolver());
+                .Returns(new BusinessHoursResolver(_mockBusinessUtils.Object));
         }
 
         [TestMethod]
@@ -59,6 +63,9 @@ namespace RotaDasTapas.Unit.Tests.Profiles
                     TapasServiceMocks.GetGetTapaAllFields()
             };
 
+            _mockBusinessUtils.Setup(el => el.GetStatus()).Returns(BusinessHoursConstants.Open);
+            _mockBusinessUtils.Setup(el => el.GetCurrentSchedule()).Returns("12:30-13:00");
+
             //Act
             var result = _mapper.Map<TapasResponse>(tapaDto,
                 options => options.Items["localtime"] = rotaDasTapasParameters.Localtime);
@@ -80,6 +87,9 @@ namespace RotaDasTapas.Unit.Tests.Profiles
             {
                 Tapas = TapasServiceMocks.GetListOfTapasSingleOneWithAllFields()
             };
+
+            _mockBusinessUtils.Setup(el => el.GetStatus()).Returns(BusinessHoursConstants.Open);
+            _mockBusinessUtils.Setup(el => el.GetCurrentSchedule()).Returns("12:30-13:30");
 
             //Act
             var result = _mapper.Map<TapasResponse>(listTapasDto,
