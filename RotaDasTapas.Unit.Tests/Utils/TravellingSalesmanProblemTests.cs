@@ -42,9 +42,15 @@ namespace RotaDasTapas.Unit.Tests.Utils
                 CreateVertice(2),
                 CreateVertice(0)
             };
+            var tspModel = new TspModel
+            {
+                StartVerticeId = startVertice,
+                matrix = matrix,
+                vertices = listVertices
+            };
 
             //Act
-            _travellingSalesmanProblem.Init(startVertice, listVertices, matrix);
+            _travellingSalesmanProblem.Init(tspModel);
             var result = _travellingSalesmanProblem.Solve(out var cost);
 
             //Assert

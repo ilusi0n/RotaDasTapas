@@ -23,7 +23,13 @@ namespace RotaDasTapas.Utils
             var startVertice = selectedTapas.ToList().IndexOf(startTapaId);
             var vertices = GetVertices();
             var adjacencyMatrix = BuildMatrix(vertices);
-            _travellingSalesmanProblem.Init(startVertice, vertices, adjacencyMatrix);
+            var tspModel = new TspModel
+            {
+                StartVerticeId = startVertice,
+                vertices = vertices,
+                matrix = adjacencyMatrix
+            };
+            _travellingSalesmanProblem.Init(tspModel);
         }
 
         public IEnumerable<Vertice> SolveProblem()
