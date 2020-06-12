@@ -28,6 +28,7 @@ namespace RotaDasTapas.Unit.Tests.Profiles
             var configuration = new MapperConfiguration(mc =>
             {
                 mc.AddProfile(new VerticeProfile());
+                mc.AddProfile(new TapasResponseProfile());
                 mc.ConstructServicesUsing(serviceProvider.Object.GetService);
             });
 
@@ -46,6 +47,7 @@ namespace RotaDasTapas.Unit.Tests.Profiles
             configuration.AssertConfigurationIsValid();
         }
 
+        [TestMethod]
         public void MapVerticeToTapa_ValidModel_ReturnNotNullAllParametersAreEqual()
         {
             //Arrange
