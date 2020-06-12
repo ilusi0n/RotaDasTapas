@@ -12,9 +12,10 @@ namespace RotaDasTapas.Unit.Tests.Profiles.TypeConverter
     [TestClass]
     public class VerticeTypeConverterTests
     {
+        private readonly ResolutionContext _context;
         private readonly Mock<IMapper> _mockMapper;
         private readonly VerticeTypeConverter _verticeTypeConverter;
-        private readonly ResolutionContext _context;
+
         public VerticeTypeConverterTests()
         {
             _mockMapper = new Mock<IMapper>();
@@ -28,7 +29,7 @@ namespace RotaDasTapas.Unit.Tests.Profiles.TypeConverter
         public void Resolve_Vertice_ReturnsTapaDto()
         {
             //arrange
-            var vertice = new Vertice()
+            var vertice = new Vertice
             {
                 TapaDto = new TapaDto()
             };

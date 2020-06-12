@@ -1,6 +1,5 @@
 using System;
 using System.Globalization;
-using System.Linq;
 using AutoMapper;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
@@ -21,6 +20,7 @@ namespace RotaDasTapas.Unit.Tests.Profiles
     {
         private readonly IMapper _mapper;
         private readonly Mock<IBusinessHoursUtils> _mockBusinessUtils;
+
         public VerticeProfileTests()
         {
             _mockBusinessUtils = new Mock<IBusinessHoursUtils>();
@@ -28,6 +28,7 @@ namespace RotaDasTapas.Unit.Tests.Profiles
             var configuration = new MapperConfiguration(mc =>
             {
                 mc.AddProfile(new VerticeProfile());
+                mc.AddProfile(new TapasResponseProfile());
                 mc.ConstructServicesUsing(serviceProvider.Object.GetService);
             });
 
@@ -37,7 +38,7 @@ namespace RotaDasTapas.Unit.Tests.Profiles
             serviceProvider.Setup(x => x.GetService(typeof(BusinessHoursResolver)))
                 .Returns(new BusinessHoursResolver(_mockBusinessUtils.Object));
         }
-        
+
         [TestMethod]
         public void MapperConfiguration_ValidProfile_ConfigurationIsValid()
         {
@@ -45,7 +46,8 @@ namespace RotaDasTapas.Unit.Tests.Profiles
             var configuration = new MapperConfiguration(cfg => { cfg.AddProfile<VerticeProfile>(); });
             configuration.AssertConfigurationIsValid();
         }
-        
+
+        [TestMethod]
         public void MapVerticeToTapa_ValidModel_ReturnNotNullAllParametersAreEqual()
         {
             //Arrange
@@ -53,15 +55,15 @@ namespace RotaDasTapas.Unit.Tests.Profiles
             {
                 Localtime = DateTime.Now.ToString(CultureInfo.InvariantCulture)
             };
-            
+
             var vertice = new Vertice
             {
-                TapaDto = new TapaDto()
+                TapaDto = new TapaDto
                 {
                     Id = "Lisboa_1"
                 }
             };
-            
+
             var expected = new Tapa
             {
                 Id = "Lisboa_1"
@@ -76,7 +78,7 @@ namespace RotaDasTapas.Unit.Tests.Profiles
 
             //Assert
             Assert.IsNotNull(result);
-            Assert.AreEqual(expected.Id,result.Id);
+            Assert.AreEqual(expected.Id, result.Id);
         }
     }
 }

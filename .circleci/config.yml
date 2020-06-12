@@ -12,15 +12,8 @@ jobs:
           name: build
           command: dotnet build --configuration Release --no-restore
       - run:
-          name: Run unit tests
-          command: |
-            cd ./RotaDasTapas.Unit.Tests/
-            dotnet test /p:CollectCoverage=true /p:CoverletOutput=TestResults/ /p:ThresholdType=line /p:Threshold=99 /p:thresholdStat=total /p:CoverletOutputFormat=lcov
-      - run:
-          name: Run integration tests
-          command: |
-            cd ./RotaDasTapas.Integration.Tests/
-            dotnet test /p:CollectCoverage=true /p:CoverletOutput=TestResults/ /p:ThresholdType=line /p:Threshold=99 /p:thresholdStat=total /p:CoverletOutputFormat=lcov
+          name: Run tests
+          command: dotnet test
 
 workflows:
   version: 2

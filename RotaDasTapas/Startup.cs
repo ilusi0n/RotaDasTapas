@@ -1,5 +1,4 @@
 using System;
-using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Reflection;
 using AutoMapper;
@@ -18,7 +17,6 @@ using RotaDasTapas.Utils;
 
 namespace RotaDasTapas
 {
-    [ExcludeFromCodeCoverage]
     public class Startup
     {
         public Startup(IConfiguration configuration)

@@ -1,0 +1,1546 @@
+{
+  "RotaDasTapas.dll": {
+    "/Users/ctw00430/ctw/PersonalProjects/RotaDasTapas/RotaDasTapas/Startup.cs": {
+      "RotaDasTapas.Startup": {
+        "Microsoft.Extensions.Configuration.IConfiguration RotaDasTapas.Startup::get_Configuration()": {
+          "Lines": {
+            "27": 0
+          },
+          "Branches": []
+        },
+        "System.Void RotaDasTapas.Startup::ConfigureServices(Microsoft.Extensions.DependencyInjection.IServiceCollection)": {
+          "Lines": {
+            "31": 0,
+            "32": 0,
+            "33": 0,
+            "34": 0,
+            "35": 0,
+            "36": 0,
+            "37": 0,
+            "38": 0,
+            "39": 0,
+            "40": 0,
+            "41": 0,
+            "42": 0,
+            "43": 0,
+            "44": 0,
+            "45": 0,
+            "46": 0,
+            "47": 0,
+            "48": 0,
+            "49": 0,
+            "50": 0,
+            "51": 0,
+            "52": 0,
+            "53": 0,
+            "54": 0,
+            "55": 0,
+            "56": 0,
+            "57": 0,
+            "58": 0,
+            "59": 0,
+            "60": 0,
+            "61": 0,
+            "63": 0,
+            "64": 0,
+            "65": 0
+          },
+          "Branches": []
+        },
+        "System.Void RotaDasTapas.Startup::Configure(Microsoft.AspNetCore.Builder.IApplicationBuilder,Microsoft.AspNetCore.Hosting.IWebHostEnvironment)": {
+          "Lines": {
+            "69": 0,
+            "70": 0,
+            "72": 0,
+            "73": 0,
+            "74": 0,
+            "75": 0,
+            "76": 0,
+            "77": 0,
+            "78": 0,
+            "79": 0,
+            "80": 0,
+            "81": 0,
+            "82": 0,
+            "83": 0
+          },
+          "Branches": [
+            {
+              "Line": 70,
+              "Offset": 9,
+              "EndOffset": 11,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 70,
+              "Offset": 9,
+              "EndOffset": 18,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            }
+          ]
+        },
+        "System.Void RotaDasTapas.Startup::SetupRotaDasTapasOptions(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.Extensions.Configuration.IConfiguration)": {
+          "Lines": {
+            "86": 0,
+            "87": 0,
+            "88": 0
+          },
+          "Branches": []
+        },
+        "System.Void RotaDasTapas.Startup::SetupAutoMapper(Microsoft.Extensions.DependencyInjection.IServiceCollection)": {
+          "Lines": {
+            "91": 0,
+            "92": 0,
+            "93": 0,
+            "94": 0
+          },
+          "Branches": []
+        },
+        "System.Void RotaDasTapas.Startup::.ctor(Microsoft.Extensions.Configuration.IConfiguration)": {
+          "Lines": {
+            "22": 0,
+            "23": 0,
+            "24": 0,
+            "25": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "/Users/ctw00430/ctw/PersonalProjects/RotaDasTapas/RotaDasTapas/Validators/JourneyParametersValidator.cs": {
+      "RotaDasTapas.Validators.JourneyParametersValidator": {
+        "System.Boolean RotaDasTapas.Validators.JourneyParametersValidator::CheckCountry(System.String)": {
+          "Lines": {
+            "30": 2,
+            "31": 2,
+            "32": 9,
+            "33": 2
+          },
+          "Branches": []
+        },
+        "System.Boolean RotaDasTapas.Validators.JourneyParametersValidator::CheckList(System.String)": {
+          "Lines": {
+            "36": 3,
+            "37": 3,
+            "38": 3
+          },
+          "Branches": []
+        },
+        "System.Boolean RotaDasTapas.Validators.JourneyParametersValidator::CheckLengthList(System.String)": {
+          "Lines": {
+            "41": 2,
+            "42": 2,
+            "43": 2
+          },
+          "Branches": []
+        },
+        "System.Boolean RotaDasTapas.Validators.JourneyParametersValidator::CheckValidDate(System.String)": {
+          "Lines": {
+            "46": 2,
+            "47": 2,
+            "48": 2
+          },
+          "Branches": []
+        },
+        "System.Void RotaDasTapas.Validators.JourneyParametersValidator::.ctor()": {
+          "Lines": {
+            "12": 10,
+            "13": 10,
+            "14": 10,
+            "15": 10,
+            "16": 10,
+            "17": 10,
+            "18": 10,
+            "19": 10,
+            "20": 10,
+            "21": 10,
+            "22": 10,
+            "23": 10,
+            "24": 10,
+            "25": 10,
+            "26": 10,
+            "27": 10
+          },
+          "Branches": []
+        }
+      }
+    },
+    "/Users/ctw00430/ctw/PersonalProjects/RotaDasTapas/RotaDasTapas/Validators/TapasParametersValidator.cs": {
+      "RotaDasTapas.Validators.TapasParametersValidator": {
+        "System.Boolean RotaDasTapas.Validators.TapasParametersValidator::CheckValidDate(System.String)": {
+          "Lines": {
+            "19": 2,
+            "20": 2,
+            "21": 2
+          },
+          "Branches": []
+        },
+        "System.Void RotaDasTapas.Validators.TapasParametersValidator::.ctor()": {
+          "Lines": {
+            "10": 3,
+            "11": 3,
+            "12": 3,
+            "13": 3,
+            "14": 3,
+            "15": 3,
+            "16": 3
+          },
+          "Branches": []
+        }
+      }
+    },
+    "/Users/ctw00430/ctw/PersonalProjects/RotaDasTapas/RotaDasTapas/Utils/BusinessHoursHoursUtils.cs": {
+      "RotaDasTapas.Utils.BusinessHoursHoursUtils": {
+        "System.Void RotaDasTapas.Utils.BusinessHoursHoursUtils::Init(System.String,System.DateTime)": {
+          "Lines": {
+            "22": 11,
+            "23": 11,
+            "24": 11,
+            "25": 11,
+            "26": 11,
+            "27": 11
+          },
+          "Branches": []
+        },
+        "System.String RotaDasTapas.Utils.BusinessHoursHoursUtils::GetStatus()": {
+          "Lines": {
+            "30": 5,
+            "31": 6,
+            "33": 4,
+            "35": 5,
+            "37": 3,
+            "38": 3,
+            "39": 3,
+            "40": 3,
+            "42": 4,
+            "44": 3,
+            "46": 1,
+            "47": 5
+          },
+          "Branches": [
+            {
+              "Line": 31,
+              "Offset": 19,
+              "EndOffset": 21,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 1
+            },
+            {
+              "Line": 31,
+              "Offset": 19,
+              "EndOffset": 33,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 4
+            },
+            {
+              "Line": 35,
+              "Offset": 48,
+              "EndOffset": 50,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 1
+            },
+            {
+              "Line": 35,
+              "Offset": 48,
+              "EndOffset": 59,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 3
+            },
+            {
+              "Line": 39,
+              "Offset": 102,
+              "EndOffset": 104,
+              "Path": 0,
+              "Ordinal": 4,
+              "Hits": 2
+            },
+            {
+              "Line": 39,
+              "Offset": 102,
+              "EndOffset": 133,
+              "Path": 1,
+              "Ordinal": 5,
+              "Hits": 1
+            },
+            {
+              "Line": 42,
+              "Offset": 140,
+              "EndOffset": 142,
+              "Path": 0,
+              "Ordinal": 6,
+              "Hits": 1
+            },
+            {
+              "Line": 42,
+              "Offset": 140,
+              "EndOffset": 151,
+              "Path": 1,
+              "Ordinal": 7,
+              "Hits": 2
+            },
+            {
+              "Line": 44,
+              "Offset": 156,
+              "EndOffset": 158,
+              "Path": 0,
+              "Ordinal": 8,
+              "Hits": 1
+            },
+            {
+              "Line": 44,
+              "Offset": 156,
+              "EndOffset": 167,
+              "Path": 1,
+              "Ordinal": 9,
+              "Hits": 1
+            },
+            {
+              "Line": 46,
+              "Offset": 168,
+              "EndOffset": 170,
+              "Path": 0,
+              "Ordinal": 10,
+              "Hits": 0
+            },
+            {
+              "Line": 46,
+              "Offset": 168,
+              "EndOffset": 177,
+              "Path": 1,
+              "Ordinal": 11,
+              "Hits": 1
+            }
+          ]
+        },
+        "System.String RotaDasTapas.Utils.BusinessHoursHoursUtils::GetCurrentSchedule()": {
+          "Lines": {
+            "50": 6,
+            "51": 8,
+            "53": 4,
+            "55": 5,
+            "57": 3,
+            "58": 3,
+            "59": 6
+          },
+          "Branches": [
+            {
+              "Line": 51,
+              "Offset": 17,
+              "EndOffset": 19,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 2
+            },
+            {
+              "Line": 51,
+              "Offset": 17,
+              "EndOffset": 27,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 4
+            },
+            {
+              "Line": 55,
+              "Offset": 40,
+              "EndOffset": 42,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 1
+            },
+            {
+              "Line": 55,
+              "Offset": 40,
+              "EndOffset": 50,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 3
+            }
+          ]
+        },
+        "System.Boolean RotaDasTapas.Utils.BusinessHoursHoursUtils::IsPlaceOpeningSoon(RotaDasTapas.Models.Models.ScheduleDay)": {
+          "Lines": {
+            "62": 3,
+            "63": 3,
+            "64": 3,
+            "65": 3
+          },
+          "Branches": [
+            {
+              "Line": 64,
+              "Offset": 41,
+              "EndOffset": 43,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 3
+            },
+            {
+              "Line": 64,
+              "Offset": 41,
+              "EndOffset": 59,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            }
+          ]
+        },
+        "System.Boolean RotaDasTapas.Utils.BusinessHoursHoursUtils::IsPlaceClosingSoon(RotaDasTapas.Models.Models.ScheduleDay)": {
+          "Lines": {
+            "68": 3,
+            "69": 3,
+            "70": 3,
+            "71": 3
+          },
+          "Branches": [
+            {
+              "Line": 70,
+              "Offset": 41,
+              "EndOffset": 43,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 1
+            },
+            {
+              "Line": 70,
+              "Offset": 41,
+              "EndOffset": 59,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 2
+            }
+          ]
+        },
+        "System.Collections.Generic.List`1<RotaDasTapas.Models.Models.ScheduleDay> RotaDasTapas.Utils.BusinessHoursHoursUtils::GetTimeFromCompressed(System.String)": {
+          "Lines": {
+            "74": 11,
+            "75": 11,
+            "76": 12,
+            "78": 10,
+            "80": 48,
+            "81": 10,
+            "82": 10,
+            "83": 12,
+            "85": 8,
+            "86": 8,
+            "88": 8,
+            "89": 11
+          },
+          "Branches": [
+            {
+              "Line": 76,
+              "Offset": 15,
+              "EndOffset": 17,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 1
+            },
+            {
+              "Line": 76,
+              "Offset": 15,
+              "EndOffset": 21,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 10
+            },
+            {
+              "Line": 80,
+              "Offset": 99,
+              "EndOffset": 40,
+              "Path": 1,
+              "Ordinal": 5,
+              "Hits": 10
+            },
+            {
+              "Line": 83,
+              "Offset": 67,
+              "EndOffset": 69,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 2
+            },
+            {
+              "Line": 83,
+              "Offset": 67,
+              "EndOffset": 77,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 8
+            },
+            {
+              "Line": 80,
+              "Offset": 99,
+              "EndOffset": 101,
+              "Path": 0,
+              "Ordinal": 4,
+              "Hits": 8
+            }
+          ]
+        },
+        "RotaDasTapas.Models.Models.ScheduleDay RotaDasTapas.Utils.BusinessHoursHoursUtils::GetTimeFromPatternCompressed(System.String)": {
+          "Lines": {
+            "92": 10,
+            "93": 10,
+            "94": 10,
+            "95": 10,
+            "97": 10,
+            "98": 8,
+            "99": 8,
+            "100": 8,
+            "101": 8,
+            "102": 8,
+            "103": 8,
+            "104": 8,
+            "105": 8,
+            "106": 8,
+            "107": 8,
+            "108": 8,
+            "109": 8,
+            "110": 8,
+            "111": 8,
+            "114": 2,
+            "115": 10
+          },
+          "Branches": [
+            {
+              "Line": 97,
+              "Offset": 34,
+              "EndOffset": 39,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 8
+            },
+            {
+              "Line": 97,
+              "Offset": 34,
+              "EndOffset": 265,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 2
+            }
+          ]
+        },
+        "RotaDasTapas.Models.Models.ScheduleDay RotaDasTapas.Utils.BusinessHoursHoursUtils::GetCurrentScheduleDay()": {
+          "Lines": {
+            "118": 8,
+            "119": 8,
+            "120": 8,
+            "121": 16,
+            "122": 8,
+            "123": 8
+          },
+          "Branches": [
+            {
+              "Line": 121,
+              "Offset": 17,
+              "EndOffset": 19,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 6
+            },
+            {
+              "Line": 121,
+              "Offset": 17,
+              "EndOffset": 43,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 2
+            }
+          ]
+        },
+        "System.String RotaDasTapas.Utils.BusinessHoursHoursUtils::GetTimespanToString(System.TimeSpan)": {
+          "Lines": {
+            "126": 6,
+            "127": 6,
+            "128": 6,
+            "129": 6,
+            "130": 6
+          },
+          "Branches": []
+        }
+      }
+    },
+    "/Users/ctw00430/ctw/PersonalProjects/RotaDasTapas/RotaDasTapas/Utils/JourneyUtils.cs": {
+      "RotaDasTapas.Utils.JourneyUtils": {
+        "System.Void RotaDasTapas.Utils.JourneyUtils::Init(System.Collections.Generic.IEnumerable`1<System.String>,System.String,System.Collections.Generic.IEnumerable`1<RotaDasTapas.Models.Gateway.TapaDto>)": {
+          "Lines": {
+            "20": 2,
+            "21": 2,
+            "22": 2,
+            "23": 2,
+            "24": 2,
+            "25": 2,
+            "26": 2,
+            "27": 2,
+            "28": 2,
+            "29": 2,
+            "30": 2,
+            "31": 2,
+            "32": 2,
+            "33": 2
+          },
+          "Branches": []
+        },
+        "System.Collections.Generic.IEnumerable`1<RotaDasTapas.Models.TSP.Vertice> RotaDasTapas.Utils.JourneyUtils::SolveProblem()": {
+          "Lines": {
+            "36": 2,
+            "37": 2,
+            "38": 2
+          },
+          "Branches": []
+        },
+        "System.Collections.Generic.IEnumerable`1<RotaDasTapas.Models.TSP.Vertice> RotaDasTapas.Utils.JourneyUtils::GetVertices()": {
+          "Lines": {
+            "41": 2,
+            "42": 2,
+            "43": 2,
+            "44": 18,
+            "45": 6,
+            "46": 6,
+            "47": 6,
+            "48": 6,
+            "49": 18,
+            "50": 6,
+            "51": 6,
+            "52": 6,
+            "54": 2,
+            "55": 2
+          },
+          "Branches": [
+            {
+              "Line": 44,
+              "Offset": 104,
+              "EndOffset": 24,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 6
+            },
+            {
+              "Line": 44,
+              "Offset": 104,
+              "EndOffset": 106,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 2
+            }
+          ]
+        },
+        "RotaDasTapas.Models.Gateway.Path[0...,0...] RotaDasTapas.Utils.JourneyUtils::BuildMatrix(System.Collections.Generic.IEnumerable`1<RotaDasTapas.Models.TSP.Vertice>)": {
+          "Lines": {
+            "58": 2,
+            "59": 2,
+            "60": 2,
+            "61": 16,
+            "62": 6,
+            "63": 6,
+            "64": 6,
+            "65": 48,
+            "66": 18,
+            "67": 18,
+            "68": 18,
+            "69": 18,
+            "70": 6,
+            "72": 2,
+            "73": 2
+          },
+          "Branches": [
+            {
+              "Line": 61,
+              "Offset": 169,
+              "EndOffset": 30,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 6
+            },
+            {
+              "Line": 65,
+              "Offset": 149,
+              "EndOffset": 69,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 18
+            },
+            {
+              "Line": 65,
+              "Offset": 149,
+              "EndOffset": 151,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 6
+            },
+            {
+              "Line": 61,
+              "Offset": 169,
+              "EndOffset": 174,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 2
+            }
+          ]
+        },
+        "System.Collections.Generic.IEnumerable`1<RotaDasTapas.Models.Gateway.Path> RotaDasTapas.Utils.JourneyUtils::GetSelectedTapasPath(System.Collections.Generic.IEnumerable`1<System.String>,RotaDasTapas.Models.Gateway.TapaDto)": {
+          "Lines": {
+            "76": 6,
+            "77": 42,
+            "78": 6
+          },
+          "Branches": []
+        },
+        "System.Void RotaDasTapas.Utils.JourneyUtils::.ctor(RotaDasTapas.Utils.ITravellingSalesmanProblem)": {
+          "Lines": {
+            "14": 2,
+            "15": 2,
+            "16": 2,
+            "17": 2
+          },
+          "Branches": []
+        }
+      }
+    },
+    "/Users/ctw00430/ctw/PersonalProjects/RotaDasTapas/RotaDasTapas/Utils/TravellingSalesmanProblem.cs": {
+      "RotaDasTapas.Utils.TravellingSalesmanProblem": {
+        "System.Void RotaDasTapas.Utils.TravellingSalesmanProblem::Init(RotaDasTapas.Models.TSP.TspModel)": {
+          "Lines": {
+            "13": 1,
+            "14": 1,
+            "15": 1,
+            "16": 1,
+            "17": 1
+          },
+          "Branches": []
+        },
+        "System.Collections.Generic.IEnumerable`1<RotaDasTapas.Models.TSP.Vertice> RotaDasTapas.Utils.TravellingSalesmanProblem::Solve(System.Double&)": {
+          "Lines": {
+            "24": 1,
+            "25": 1,
+            "26": 1,
+            "27": 1,
+            "29": 1,
+            "30": 1,
+            "31": 1,
+            "32": 1
+          },
+          "Branches": []
+        },
+        "System.Double RotaDasTapas.Utils.TravellingSalesmanProblem::GetMinimumCostRoute(RotaDasTapas.Models.TSP.Vertice,System.Collections.Generic.HashSet`1<RotaDasTapas.Models.TSP.Vertice>,RotaDasTapas.Models.TSP.Node)": {
+          "Lines": {
+            "47": 16,
+            "48": 16,
+            "49": 6,
+            "50": 6,
+            "51": 6,
+            "54": 10,
+            "55": 10,
+            "56": 10,
+            "57": 10,
+            "59": 60,
+            "60": 15,
+            "61": 15,
+            "63": 15,
+            "65": 15,
+            "66": 15,
+            "67": 15,
+            "68": 15,
+            "70": 15,
+            "71": 12,
+            "72": 12,
+            "73": 12,
+            "74": 12,
+            "76": 15,
+            "77": 15,
+            "79": 10,
+            "81": 10,
+            "82": 16
+          },
+          "Branches": [
+            {
+              "Line": 48,
+              "Offset": 12,
+              "EndOffset": 14,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 6
+            },
+            {
+              "Line": 48,
+              "Offset": 12,
+              "EndOffset": 103,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 10
+            },
+            {
+              "Line": 59,
+              "Offset": 287,
+              "EndOffset": 149,
+              "Path": 1,
+              "Ordinal": 5,
+              "Hits": 15
+            },
+            {
+              "Line": 70,
+              "Offset": 266,
+              "EndOffset": 268,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 12
+            },
+            {
+              "Line": 70,
+              "Offset": 266,
+              "EndOffset": 275,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 15
+            },
+            {
+              "Line": 59,
+              "Offset": 287,
+              "EndOffset": 292,
+              "Path": 0,
+              "Ordinal": 4,
+              "Hits": 10
+            }
+          ]
+        },
+        "System.Collections.Generic.IEnumerable`1<RotaDasTapas.Models.TSP.Vertice> RotaDasTapas.Utils.TravellingSalesmanProblem::TraverseTree(RotaDasTapas.Models.TSP.Node,RotaDasTapas.Models.TSP.Vertice)": {
+          "Lines": {
+            "85": 1,
+            "86": 1,
+            "87": 1,
+            "88": 1,
+            "89": 1,
+            "90": 1
+          },
+          "Branches": []
+        },
+        "System.Void RotaDasTapas.Utils.TravellingSalesmanProblem::TraverseTreeUtil(RotaDasTapas.Models.TSP.Node,System.Collections.Generic.Queue`1<RotaDasTapas.Models.TSP.Vertice>)": {
+          "Lines": {
+            "93": 5,
+            "94": 6,
+            "96": 26,
+            "97": 7,
+            "98": 4,
+            "99": 4,
+            "100": 4,
+            "101": 4,
+            "102": 5
+          },
+          "Branches": [
+            {
+              "Line": 94,
+              "Offset": 12,
+              "EndOffset": 16,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 4
+            },
+            {
+              "Line": 96,
+              "Offset": 76,
+              "EndOffset": 28,
+              "Path": 1,
+              "Ordinal": 5,
+              "Hits": 7
+            },
+            {
+              "Line": 97,
+              "Offset": 42,
+              "EndOffset": 44,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 4
+            },
+            {
+              "Line": 97,
+              "Offset": 42,
+              "EndOffset": 68,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 7
+            },
+            {
+              "Line": 94,
+              "Offset": 12,
+              "EndOffset": 78,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 5
+            },
+            {
+              "Line": 96,
+              "Offset": 76,
+              "EndOffset": 78,
+              "Path": 0,
+              "Ordinal": 4,
+              "Hits": 5
+            }
+          ]
+        }
+      }
+    },
+    "/Users/ctw00430/ctw/PersonalProjects/RotaDasTapas/RotaDasTapas/Services/TapasService.cs": {
+      "RotaDasTapas.Services.TapasService": {
+        "RotaDasTapas.Models.Response.TapasResponse RotaDasTapas.Services.TapasService::GetAllTapas(RotaDasTapas.Models.Request.TapasParameters)": {
+          "Lines": {
+            "25": 1,
+            "26": 1,
+            "27": 1,
+            "28": 0,
+            "29": 1
+          },
+          "Branches": []
+        },
+        "RotaDasTapas.Models.Response.TapasResponse RotaDasTapas.Services.TapasService::GetTapasRoute(RotaDasTapas.Models.Request.JourneyParameters)": {
+          "Lines": {
+            "32": 1,
+            "33": 1,
+            "34": 1,
+            "35": 1,
+            "36": 1,
+            "37": 1,
+            "38": 1,
+            "39": 0,
+            "40": 1
+          },
+          "Branches": []
+        },
+        "System.Void RotaDasTapas.Services.TapasService::.ctor(RotaDasTapas.Gateway.ITapasGateway,AutoMapper.IMapper,RotaDasTapas.Utils.IJourneyUtils)": {
+          "Lines": {
+            "17": 2,
+            "18": 2,
+            "19": 2,
+            "20": 2,
+            "21": 2,
+            "22": 2
+          },
+          "Branches": []
+        }
+      }
+    },
+    "/Users/ctw00430/ctw/PersonalProjects/RotaDasTapas/RotaDasTapas/Profiles/TapasResponseProfile.cs": {
+      "RotaDasTapas.Profiles.TapasResponseProfile": {
+        "System.Void RotaDasTapas.Profiles.TapasResponseProfile::.ctor()": {
+          "Lines": {
+            "12": 8,
+            "13": 8,
+            "14": 8,
+            "15": 16,
+            "16": 8,
+            "17": 16,
+            "18": 8,
+            "19": 8
+          },
+          "Branches": []
+        }
+      }
+    },
+    "/Users/ctw00430/ctw/PersonalProjects/RotaDasTapas/RotaDasTapas/Profiles/VerticeProfile.cs": {
+      "RotaDasTapas.Profiles.VerticeProfile": {
+        "System.Void RotaDasTapas.Profiles.VerticeProfile::.ctor()": {
+          "Lines": {
+            "11": 3,
+            "12": 3,
+            "13": 3,
+            "14": 3,
+            "15": 6,
+            "16": 3
+          },
+          "Branches": []
+        }
+      }
+    },
+    "/Users/ctw00430/ctw/PersonalProjects/RotaDasTapas/RotaDasTapas/Profiles/ValueResolver/BusinessHoursResolver.cs": {
+      "RotaDasTapas.Profiles.ValueResolver.BusinessHoursResolver": {
+        "RotaDasTapas.Models.Response.Schedule RotaDasTapas.Profiles.ValueResolver.BusinessHoursResolver::Resolve(RotaDasTapas.Models.Gateway.TapaDto,RotaDasTapas.Models.Response.Tapa,RotaDasTapas.Models.Response.Schedule,AutoMapper.ResolutionContext)": {
+          "Lines": {
+            "20": 9,
+            "21": 9,
+            "22": 9,
+            "23": 9,
+            "24": 9,
+            "25": 9,
+            "26": 9,
+            "27": 9,
+            "28": 9
+          },
+          "Branches": []
+        },
+        "System.Void RotaDasTapas.Profiles.ValueResolver.BusinessHoursResolver::.ctor(RotaDasTapas.Utils.IBusinessHoursUtils)": {
+          "Lines": {
+            "13": 11,
+            "14": 11,
+            "15": 11,
+            "16": 11
+          },
+          "Branches": []
+        }
+      }
+    },
+    "/Users/ctw00430/ctw/PersonalProjects/RotaDasTapas/RotaDasTapas/Profiles/TypeConverter/TapasResponseTypeConverter.cs": {
+      "RotaDasTapas.Profiles.TypeConverter.TapasResponseTypeConverter": {
+        "RotaDasTapas.Models.Response.TapasResponse RotaDasTapas.Profiles.TypeConverter.TapasResponseTypeConverter::Convert(RotaDasTapas.Models.Gateway.TapaDto,RotaDasTapas.Models.Response.TapasResponse,AutoMapper.ResolutionContext)": {
+          "Lines": {
+            "18": 1,
+            "19": 1,
+            "20": 4,
+            "21": 1,
+            "22": 1,
+            "23": 1,
+            "24": 1,
+            "25": 1,
+            "26": 1
+          },
+          "Branches": []
+        },
+        "System.Void RotaDasTapas.Profiles.TypeConverter.TapasResponseTypeConverter::.ctor(AutoMapper.IMapper)": {
+          "Lines": {
+            "12": 3,
+            "13": 3,
+            "14": 3,
+            "15": 3
+          },
+          "Branches": []
+        }
+      }
+    },
+    "/Users/ctw00430/ctw/PersonalProjects/RotaDasTapas/RotaDasTapas/Profiles/TypeConverter/VerticeTypeConverter.cs": {
+      "RotaDasTapas.Profiles.TypeConverter.VerticeTypeConverter": {
+        "RotaDasTapas.Models.Response.Tapa RotaDasTapas.Profiles.TypeConverter.VerticeTypeConverter::Convert(RotaDasTapas.Models.TSP.Vertice,RotaDasTapas.Models.Response.Tapa,AutoMapper.ResolutionContext)": {
+          "Lines": {
+            "17": 2,
+            "18": 2,
+            "19": 5,
+            "20": 2
+          },
+          "Branches": []
+        },
+        "System.Void RotaDasTapas.Profiles.TypeConverter.VerticeTypeConverter::.ctor(AutoMapper.IMapper)": {
+          "Lines": {
+            "11": 3,
+            "12": 3,
+            "13": 3,
+            "14": 3
+          },
+          "Branches": []
+        }
+      }
+    },
+    "/Users/ctw00430/ctw/PersonalProjects/RotaDasTapas/RotaDasTapas/Models/TSP/Node.cs": {
+      "RotaDasTapas.Models.TSP.Node": {
+        "RotaDasTapas.Models.TSP.Vertice RotaDasTapas.Models.TSP.Node::get_Value()": {
+          "Lines": {
+            "5": 25
+          },
+          "Branches": []
+        },
+        "RotaDasTapas.Models.TSP.Node[] RotaDasTapas.Models.TSP.Node::get_ChildNodes()": {
+          "Lines": {
+            "6": 65
+          },
+          "Branches": []
+        },
+        "System.Boolean RotaDasTapas.Models.TSP.Node::get_Selected()": {
+          "Lines": {
+            "7": 23
+          },
+          "Branches": []
+        }
+      }
+    },
+    "/Users/ctw00430/ctw/PersonalProjects/RotaDasTapas/RotaDasTapas/Models/TSP/TspModel.cs": {
+      "RotaDasTapas.Models.TSP.TspModel": {
+        "System.Int32 RotaDasTapas.Models.TSP.TspModel::get_StartVerticeId()": {
+          "Lines": {
+            "8": 4
+          },
+          "Branches": []
+        },
+        "System.Collections.Generic.IEnumerable`1<RotaDasTapas.Models.TSP.Vertice> RotaDasTapas.Models.TSP.TspModel::get_vertices()": {
+          "Lines": {
+            "9": 4
+          },
+          "Branches": []
+        },
+        "RotaDasTapas.Models.Gateway.Path[0...,0...] RotaDasTapas.Models.TSP.TspModel::get_matrix()": {
+          "Lines": {
+            "10": 4
+          },
+          "Branches": []
+        }
+      }
+    },
+    "/Users/ctw00430/ctw/PersonalProjects/RotaDasTapas/RotaDasTapas/Models/TSP/Vertice.cs": {
+      "RotaDasTapas.Models.TSP.Vertice": {
+        "System.Int32 RotaDasTapas.Models.TSP.Vertice::get_Id()": {
+          "Lines": {
+            "7": 61
+          },
+          "Branches": []
+        },
+        "RotaDasTapas.Models.Gateway.TapaDto RotaDasTapas.Models.TSP.Vertice::get_TapaDto()": {
+          "Lines": {
+            "8": 58
+          },
+          "Branches": []
+        }
+      }
+    },
+    "/Users/ctw00430/ctw/PersonalProjects/RotaDasTapas/RotaDasTapas/Models/Response/Tapa.cs": {
+      "RotaDasTapas.Models.Response.Tapa": {
+        "System.String RotaDasTapas.Models.Response.Tapa::get_Id()": {
+          "Lines": {
+            "10": 11
+          },
+          "Branches": []
+        },
+        "System.String RotaDasTapas.Models.Response.Tapa::get_Name()": {
+          "Lines": {
+            "15": 17
+          },
+          "Branches": []
+        },
+        "System.String RotaDasTapas.Models.Response.Tapa::get_Title()": {
+          "Lines": {
+            "20": 17
+          },
+          "Branches": []
+        },
+        "System.String RotaDasTapas.Models.Response.Tapa::get_Address()": {
+          "Lines": {
+            "25": 17
+          },
+          "Branches": []
+        },
+        "System.String RotaDasTapas.Models.Response.Tapa::get_Description()": {
+          "Lines": {
+            "30": 17
+          },
+          "Branches": []
+        },
+        "System.String RotaDasTapas.Models.Response.Tapa::get_City()": {
+          "Lines": {
+            "35": 21
+          },
+          "Branches": []
+        },
+        "System.String RotaDasTapas.Models.Response.Tapa::get_ImageUrl()": {
+          "Lines": {
+            "40": 7
+          },
+          "Branches": []
+        },
+        "RotaDasTapas.Models.Response.Schedule RotaDasTapas.Models.Response.Tapa::get_Schedule()": {
+          "Lines": {
+            "45": 15
+          },
+          "Branches": []
+        }
+      },
+      "RotaDasTapas.Models.Response.Schedule": {
+        "System.String RotaDasTapas.Models.Response.Schedule::get_Hours()": {
+          "Lines": {
+            "53": 26
+          },
+          "Branches": []
+        },
+        "System.String RotaDasTapas.Models.Response.Schedule::get_Status()": {
+          "Lines": {
+            "58": 26
+          },
+          "Branches": []
+        },
+        "System.Boolean RotaDasTapas.Models.Response.Schedule::get_Disable()": {
+          "Lines": {
+            "63": 2
+          },
+          "Branches": []
+        }
+      }
+    },
+    "/Users/ctw00430/ctw/PersonalProjects/RotaDasTapas/RotaDasTapas/Models/Response/TapasResponse.cs": {
+      "RotaDasTapas.Models.Response.TapasResponse": {
+        "System.Collections.Generic.IEnumerable`1<RotaDasTapas.Models.Response.Tapa> RotaDasTapas.Models.Response.TapasResponse::get_Tapas()": {
+          "Lines": {
+            "10": 46
+          },
+          "Branches": []
+        }
+      }
+    },
+    "/Users/ctw00430/ctw/PersonalProjects/RotaDasTapas/RotaDasTapas/Models/Request/JourneyParameters.cs": {
+      "RotaDasTapas.Models.Request.JourneyParameters": {
+        "System.String RotaDasTapas.Models.Request.JourneyParameters::get_City()": {
+          "Lines": {
+            "11": 18
+          },
+          "Branches": []
+        },
+        "System.String RotaDasTapas.Models.Request.JourneyParameters::get_ListSelectedTapas()": {
+          "Lines": {
+            "18": 22
+          },
+          "Branches": []
+        }
+      }
+    },
+    "/Users/ctw00430/ctw/PersonalProjects/RotaDasTapas/RotaDasTapas/Models/Request/TapasParameters.cs": {
+      "RotaDasTapas.Models.Request.TapasParameters": {
+        "System.String RotaDasTapas.Models.Request.TapasParameters::get_Localtime()": {
+          "Lines": {
+            "11": 31
+          },
+          "Branches": []
+        }
+      }
+    },
+    "/Users/ctw00430/ctw/PersonalProjects/RotaDasTapas/RotaDasTapas/Models/Models/ScheduleDay.cs": {
+      "RotaDasTapas.Models.Models.ScheduleDay": {
+        "RotaDasTapas.Models.Models.Hours RotaDasTapas.Models.Models.ScheduleDay::get_Hours()": {
+          "Lines": {
+            "7": 25
+          },
+          "Branches": []
+        },
+        "RotaDasTapas.Models.Models.WeekDay RotaDasTapas.Models.Models.ScheduleDay::get_WeekDay()": {
+          "Lines": {
+            "8": 22
+          },
+          "Branches": []
+        }
+      },
+      "RotaDasTapas.Models.Models.WeekDay": {
+        "System.Int32 RotaDasTapas.Models.Models.WeekDay::get_Min()": {
+          "Lines": {
+            "13": 16
+          },
+          "Branches": []
+        },
+        "System.Int32 RotaDasTapas.Models.Models.WeekDay::get_Max()": {
+          "Lines": {
+            "14": 14
+          },
+          "Branches": []
+        }
+      },
+      "RotaDasTapas.Models.Models.Hours": {
+        "System.TimeSpan RotaDasTapas.Models.Models.Hours::get_Min()": {
+          "Lines": {
+            "19": 17
+          },
+          "Branches": []
+        },
+        "System.TimeSpan RotaDasTapas.Models.Models.Hours::get_Max()": {
+          "Lines": {
+            "20": 16
+          },
+          "Branches": []
+        }
+      }
+    },
+    "/Users/ctw00430/ctw/PersonalProjects/RotaDasTapas/RotaDasTapas/Models/Gateway/Path.cs": {
+      "RotaDasTapas.Models.Gateway.Path": {
+        "System.String RotaDasTapas.Models.Gateway.Path::get_TapaId()": {
+          "Lines": {
+            "11": 243
+          },
+          "Branches": []
+        },
+        "System.Double RotaDasTapas.Models.Gateway.Path::get_Distance()": {
+          "Lines": {
+            "16": 319
+          },
+          "Branches": []
+        }
+      }
+    },
+    "/Users/ctw00430/ctw/PersonalProjects/RotaDasTapas/RotaDasTapas/Models/Gateway/TapaDto.cs": {
+      "RotaDasTapas.Models.Gateway.TapaDto": {
+        "System.String RotaDasTapas.Models.Gateway.TapaDto::get_Id()": {
+          "Lines": {
+            "7": 236
+          },
+          "Branches": []
+        },
+        "System.String RotaDasTapas.Models.Gateway.TapaDto::get_Name()": {
+          "Lines": {
+            "8": 36
+          },
+          "Branches": []
+        },
+        "System.String RotaDasTapas.Models.Gateway.TapaDto::get_Title()": {
+          "Lines": {
+            "9": 36
+          },
+          "Branches": []
+        },
+        "System.String RotaDasTapas.Models.Gateway.TapaDto::get_Address()": {
+          "Lines": {
+            "10": 36
+          },
+          "Branches": []
+        },
+        "System.String RotaDasTapas.Models.Gateway.TapaDto::get_Description()": {
+          "Lines": {
+            "11": 36
+          },
+          "Branches": []
+        },
+        "System.String RotaDasTapas.Models.Gateway.TapaDto::get_City()": {
+          "Lines": {
+            "12": 44
+          },
+          "Branches": []
+        },
+        "System.String RotaDasTapas.Models.Gateway.TapaDto::get_ImageUrl()": {
+          "Lines": {
+            "13": 34
+          },
+          "Branches": []
+        },
+        "System.Collections.Generic.IEnumerable`1<RotaDasTapas.Models.Gateway.Path> RotaDasTapas.Models.Gateway.TapaDto::get_Path()": {
+          "Lines": {
+            "14": 168
+          },
+          "Branches": []
+        },
+        "System.String RotaDasTapas.Models.Gateway.TapaDto::get_Schedule()": {
+          "Lines": {
+            "15": 46
+          },
+          "Branches": []
+        }
+      }
+    },
+    "/Users/ctw00430/ctw/PersonalProjects/RotaDasTapas/RotaDasTapas/Models/Configuration/RotaDasTapasConfiguration.cs": {
+      "RotaDasTapas.Models.Configuration.RotaDasTapasConfiguration": {
+        "System.String RotaDasTapas.Models.Configuration.RotaDasTapasConfiguration::get_ApiKey()": {
+          "Lines": {
+            "5": 6
+          },
+          "Branches": []
+        }
+      }
+    },
+    "/Users/ctw00430/ctw/PersonalProjects/RotaDasTapas/RotaDasTapas/Gateway/TapasGateway.cs": {
+      "RotaDasTapas.Gateway.TapasGateway": {
+        "System.Collections.Generic.IEnumerable`1<RotaDasTapas.Models.Gateway.TapaDto> RotaDasTapas.Gateway.TapasGateway::GetAllTapas()": {
+          "Lines": {
+            "18": 1,
+            "19": 1,
+            "20": 1
+          },
+          "Branches": []
+        },
+        "System.Collections.Generic.IEnumerable`1<RotaDasTapas.Models.Gateway.TapaDto> RotaDasTapas.Gateway.TapasGateway::GetTapasRoute(System.String)": {
+          "Lines": {
+            "23": 1,
+            "24": 2,
+            "25": 1
+          },
+          "Branches": []
+        },
+        "System.Void RotaDasTapas.Gateway.TapasGateway::.ctor()": {
+          "Lines": {
+            "12": 2,
+            "13": 2,
+            "14": 2,
+            "15": 2
+          },
+          "Branches": []
+        }
+      }
+    },
+    "/Users/ctw00430/ctw/PersonalProjects/RotaDasTapas/RotaDasTapas/Filters/ApiExceptionFilterAttribute.cs": {
+      "RotaDasTapas.Filters.ApiExceptionFilterAttribute": {
+        "System.Void RotaDasTapas.Filters.ApiExceptionFilterAttribute::OnException(Microsoft.AspNetCore.Mvc.Filters.ExceptionContext)": {
+          "Lines": {
+            "10": 1,
+            "11": 1,
+            "12": 1,
+            "13": 1,
+            "14": 1,
+            "15": 1
+          },
+          "Branches": []
+        }
+      }
+    },
+    "/Users/ctw00430/ctw/PersonalProjects/RotaDasTapas/RotaDasTapas/Filters/AuthorizationFilterAttribute.cs": {
+      "RotaDasTapas.Filters.AuthorizationFilterAttribute": {
+        "System.Void RotaDasTapas.Filters.AuthorizationFilterAttribute::OnAuthorization(Microsoft.AspNetCore.Mvc.Filters.AuthorizationFilterContext)": {
+          "Lines": {
+            "22": 3,
+            "23": 3,
+            "24": 3,
+            "26": 4,
+            "27": 2,
+            "28": 1,
+            "29": 3
+          },
+          "Branches": [
+            {
+              "Line": 24,
+              "Offset": 39,
+              "EndOffset": 41,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 3
+            },
+            {
+              "Line": 24,
+              "Offset": 39,
+              "EndOffset": 58,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 3
+            },
+            {
+              "Line": 26,
+              "Offset": 75,
+              "EndOffset": 79,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 2
+            },
+            {
+              "Line": 27,
+              "Offset": 92,
+              "EndOffset": 94,
+              "Path": 0,
+              "Ordinal": 4,
+              "Hits": 1
+            },
+            {
+              "Line": 26,
+              "Offset": 75,
+              "EndOffset": 116,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 3
+            },
+            {
+              "Line": 27,
+              "Offset": 92,
+              "EndOffset": 116,
+              "Path": 1,
+              "Ordinal": 5,
+              "Hits": 3
+            }
+          ]
+        },
+        "System.Void RotaDasTapas.Filters.AuthorizationFilterAttribute::.ctor(Microsoft.Extensions.Options.IOptions`1<RotaDasTapas.Models.Configuration.RotaDasTapasConfiguration>)": {
+          "Lines": {
+            "16": 3,
+            "17": 3,
+            "18": 3,
+            "19": 3
+          },
+          "Branches": []
+        }
+      }
+    },
+    "/Users/ctw00430/ctw/PersonalProjects/RotaDasTapas/RotaDasTapas/Errors/ApiError.cs": {
+      "RotaDasTapas.Errors.ApiError": {
+        "System.Int32 RotaDasTapas.Errors.ApiError::get_StatusCode()": {
+          "Lines": {
+            "19": 2
+          },
+          "Branches": []
+        },
+        "System.String RotaDasTapas.Errors.ApiError::get_StatusDescription()": {
+          "Lines": {
+            "21": 1
+          },
+          "Branches": []
+        },
+        "System.String RotaDasTapas.Errors.ApiError::get_Message()": {
+          "Lines": {
+            "24": 4
+          },
+          "Branches": []
+        },
+        "System.Void RotaDasTapas.Errors.ApiError::.ctor(System.Int32,System.String)": {
+          "Lines": {
+            "7": 2,
+            "8": 2,
+            "9": 2,
+            "10": 2,
+            "11": 2
+          },
+          "Branches": []
+        },
+        "System.Void RotaDasTapas.Errors.ApiError::.ctor(System.Int32,System.String,System.String)": {
+          "Lines": {
+            "14": 2,
+            "15": 2,
+            "16": 2,
+            "17": 2
+          },
+          "Branches": []
+        }
+      }
+    },
+    "/Users/ctw00430/ctw/PersonalProjects/RotaDasTapas/RotaDasTapas/Errors/InternalServerError.cs": {
+      "RotaDasTapas.Errors.InternalServerError": {
+        "System.Void RotaDasTapas.Errors.InternalServerError::.ctor(System.String)": {
+          "Lines": {
+            "8": 1,
+            "9": 1,
+            "10": 1
+          },
+          "Branches": []
+        }
+      }
+    },
+    "/Users/ctw00430/ctw/PersonalProjects/RotaDasTapas/RotaDasTapas/Errors/UnauthorizedError.cs": {
+      "RotaDasTapas.Errors.UnauthorizedError": {
+        "System.Void RotaDasTapas.Errors.UnauthorizedError::.ctor(System.String)": {
+          "Lines": {
+            "8": 1,
+            "9": 1,
+            "10": 1
+          },
+          "Branches": []
+        }
+      }
+    },
+    "/Users/ctw00430/ctw/PersonalProjects/RotaDasTapas/RotaDasTapas/Controllers/RotaDasTapasController.cs": {
+      "RotaDasTapas.Controllers.RotaDasTapasController": {
+        "Microsoft.AspNetCore.Mvc.IActionResult RotaDasTapas.Controllers.RotaDasTapasController::GetTapas(RotaDasTapas.Models.Request.RotaDasTapasHeaders,RotaDasTapas.Models.Request.TapasParameters)": {
+          "Lines": {
+            "37": 1,
+            "38": 1,
+            "39": 1,
+            "40": 1
+          },
+          "Branches": []
+        },
+        "Microsoft.AspNetCore.Mvc.IActionResult RotaDasTapas.Controllers.RotaDasTapasController::GetTapasRoute(RotaDasTapas.Models.Request.RotaDasTapasHeaders,RotaDasTapas.Models.Request.JourneyParameters)": {
+          "Lines": {
+            "55": 1,
+            "56": 1,
+            "57": 1,
+            "58": 1
+          },
+          "Branches": []
+        },
+        "System.Void RotaDasTapas.Controllers.RotaDasTapasController::.ctor(RotaDasTapas.Services.ITapasService)": {
+          "Lines": {
+            "19": 2,
+            "20": 2,
+            "21": 2,
+            "22": 2
+          },
+          "Branches": []
+        }
+      }
+    }
+  }
+}

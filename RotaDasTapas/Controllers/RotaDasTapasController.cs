@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using RotaDasTapas.Constants;
 using RotaDasTapas.Errors;
 using RotaDasTapas.Filters;
 using RotaDasTapas.Models.Request;
@@ -27,6 +26,7 @@ namespace RotaDasTapas.Controllers
         /// </summary>
         [HttpGet]
         [Route("Tapas")]
+        [ApiExceptionFilter]
         [ProducesResponseType(typeof(TapasResponse), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(InternalServerError), StatusCodes.Status500InternalServerError)]
         [ProducesResponseType(typeof(UnauthorizedError), StatusCodes.Status401Unauthorized)]
@@ -36,9 +36,7 @@ namespace RotaDasTapas.Controllers
             [FromQuery] TapasParameters tapasParameters)
         {
             var result = _tapasService.GetAllTapas(tapasParameters);
-            if (result == null) return new ObjectResult(new InternalServerError(ErrorConstants.InternalError));
-
-            return Ok(_tapasService.GetAllTapas(tapasParameters));
+            return Ok(result);
         }
 
         /// <summary>
@@ -46,6 +44,7 @@ namespace RotaDasTapas.Controllers
         /// </summary>
         [HttpGet]
         [Route("Journey")]
+        [ApiExceptionFilter]
         [ProducesResponseType(typeof(TapasResponse), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(InternalServerError), StatusCodes.Status500InternalServerError)]
         [ProducesResponseType(typeof(UnauthorizedError), StatusCodes.Status401Unauthorized)]

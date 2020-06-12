@@ -9,11 +9,11 @@ namespace RotaDasTapas.Utils
     {
         #region Constructor
 
-        public void Init(int startVerticeIndex, IEnumerable<Vertice> vertices, Path[,] matrix)
+        public void Init(TspModel tspModel)
         {
-            _vertices = vertices;
-            _adjacencyMatrix = matrix;
-            _startVerticeIndex = startVerticeIndex;
+            _vertices = tspModel.vertices;
+            _adjacencyMatrix = tspModel.matrix;
+            _startVerticeIndex = tspModel.StartVerticeId;
         }
 
         #endregion

@@ -28,7 +28,7 @@ namespace RotaDasTapas.Validators
 
         private bool CheckCountry(string city)
         {
-            var list = TapasUtils.InitMock();
+            var list = TapasUtils.Init();
             return list.ToList().Exists(s => s.City.Equals(city));
         }
 
