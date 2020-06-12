@@ -1,24 +1,9 @@
 #!/bin/bash
 
-key=e2670a96de09067940443bf7724f9ba947603693
+key=fe7018b1f11fb624f337f78e7b40ff06ee1c2454
 folder=$HOME/ctw/PersonalProjects/RotaDasTapas
 
 cd $folder
-
-rm -rf .sonarqube
-rm rf report
-rm -rf results
-rm -rf TestResults
-rm -rf test/*/*/coverage*
-rm -rf coverage
-rm -rf src/*/*/bin
-rm -rf test/*/*/bin
-
-#code coverage
-
-outputFormat=lcov
-coverageThreshold=100
-thresholdType=line
 
 #code coverage
 
@@ -27,8 +12,8 @@ thresholdType=line
 cd $folder
 
 #test
-dotnet sonarscanner begin /d:sonar.login=$key /k:"RotaDasTapas" /d:sonar.cs.opencover.reportsPaths="./results/coverage.opencover.xml"
+dotnet sonarscanner  begin /k:"RotaDasTapas" /d:sonar.host.url="http://localhost:9000" /d:sonar.login=$key /d:sonar.cs.opencover.reportsPaths="./results/coverage.opencover.xml"
 dotnet build
-dotnet sonarscanner end /d:sonar.login=admin /d:sonar.password=admin
+dotnet sonarscanner end /d:sonar.login=$key
 
 exit 0
