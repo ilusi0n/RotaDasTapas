@@ -12,7 +12,7 @@ cd $folder
 cd $folder
 
 #test
-dotnet sonarscanner  begin /k:"RotaDasTapas" /d:sonar.host.url="http://localhost:9000" /d:sonar.login=$key /d:sonar.cs.opencover.reportsPaths="./results/coverage.opencover.xml"
+dotnet sonarscanner  begin /k:"RotaDasTapas" /d:sonar.host.url="http://localhost:9000" /d:sonar.login=$key /d:sonar.cs.opencover.reportsPaths="./TestResults/coverage.opencover.xml"
 dotnet build
 dotnet sonarscanner end /d:sonar.login=$key
 
