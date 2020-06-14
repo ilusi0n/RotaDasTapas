@@ -4,7 +4,11 @@
 
 Backend Service for Rota das Tapas
 
-- This project is still under development and help is appreciated!
+This project has two endpoints  
+- GetTapas: Returns all the tapas on the repository.
+- GetRoute: Calculates the optimal path based on the selected tapas given by the user.
+
+* **This project is still under development and help is appreciated!**
 
 ## Contributing
 
@@ -16,6 +20,6 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 
 ## Acknowledgments
 
-- @joelpaula for the help!
+- [Joel Paula](https://github.com/joelpaula) for the help!
 - Ivan Silva for the UI/UX tips!
-- @aroque for (I don't know, what did you really did? :D)
+- [André Roque](https://github.com/aroque) (I don't know, what did you really did? :D)
