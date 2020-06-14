@@ -3,7 +3,7 @@ services:
   rotadastapas:
     container_name: rotadastapas
     build:
-      context: .
+      context: ./RotaDasTapas
       dockerfile: Dockerfile
     ports:
       - "5000:80"
