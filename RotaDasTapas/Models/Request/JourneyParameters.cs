@@ -5,7 +5,7 @@ namespace RotaDasTapas.Models.Request
     public class JourneyParameters : TapasParameters
     {
         /// <summary>
-        ///     City where the journey will  take place
+        ///     City where the journey will take place
         /// </summary>
         [Required]
         public string City { get; set; }
