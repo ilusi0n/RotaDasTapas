@@ -1,0 +1,408 @@
+{
+	"info": {
+		"_postman_id": "a135b773-9722-441e-892a-d05905e164ce",
+		"name": "Rota das Tapas",
+		"description": "A simple API for Rota das Tapas\n\nContact Support:\n Name: Hugo Cabrita",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "api/v1/Rota Das Tapas",
+			"item": [
+				{
+					"name": "Get all Tapas ordered by City, Name.",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "rotaDasTapasHeaders",
+								"value": {
+									"apiKey": "<string>"
+								}
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/RotaDasTapas/Tapas?Localtime=7/2/2020 5:30:52 AM",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"RotaDasTapas",
+								"Tapas"
+							],
+							"query": [
+								{
+									"key": "Localtime",
+									"value": "7/2/2020 5:30:52 AM",
+									"description": "(Required) Current datetime of the client used for schedule algorithm"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Unauthorized",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "rotaDasTapasHeaders",
+										"value": {
+											"apiKey": "<string>"
+										}
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/v1/RotaDasTapas/Tapas?Localtime=<string>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"RotaDasTapas",
+										"Tapas"
+									],
+									"query": [
+										{
+											"key": "Localtime",
+											"value": "<string>"
+										}
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n \"statusCode\": 65266367,\n \"statusDescription\": \"officia dolor fugiat\",\n \"message\": \"laborum in proident\"\n}"
+						},
+						{
+							"name": "Success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "rotaDasTapasHeaders",
+										"value": {
+											"apiKey": "<string>"
+										}
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/v1/RotaDasTapas/Tapas?Localtime=<string>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"RotaDasTapas",
+										"Tapas"
+									],
+									"query": [
+										{
+											"key": "Localtime",
+											"value": "<string>"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n \"tapas\": [\n  {\n   \"id\": \"ex enim qui\",\n   \"name\": \"ad sunt\",\n   \"title\": \"ut adipisicing do\",\n   \"address\": \"fugiat ipsum qui\",\n   \"description\": \"id reprehenderit officia\",\n   \"city\": \"commodo labore in laboris occaecat\",\n   \"imageUrl\": \"l\",\n   \"schedule\": {\n    \"hours\": \"conse\",\n    \"status\": \"Lorem adipisicing exercitat\",\n    \"disable\": true\n   }\n  },\n  {\n   \"id\": \"incididunt\",\n   \"name\": \"incididunt sunt\",\n   \"title\": \"commodo ut in\",\n   \"address\": \"ipsum aliqua velit\",\n   \"description\": \"est Ut culpa\",\n   \"city\": \"velit minim\",\n   \"imageUrl\": \"laborum\",\n   \"schedule\": {\n    \"hours\": \"consequ\",\n    \"status\": \"ea dolor aliquip esse\",\n    \"disable\": false\n   }\n  }\n ]\n}"
+						},
+						{
+							"name": "Server Error",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "rotaDasTapasHeaders",
+										"value": {
+											"apiKey": "<string>"
+										}
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/v1/RotaDasTapas/Tapas?Localtime=<string>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"RotaDasTapas",
+										"Tapas"
+									],
+									"query": [
+										{
+											"key": "Localtime",
+											"value": "<string>"
+										}
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n \"statusCode\": 65266367,\n \"statusDescription\": \"officia dolor fugiat\",\n \"message\": \"laborum in proident\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Calculate the optimal path from the selected Tapas",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "rotaDasTapasHeaders",
+								"value": {
+									"apiKey": "<string>"
+								}
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/RotaDasTapas/Journey?City=<string>&ListSelectedTapas=<string>&Localtime=<string>",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"RotaDasTapas",
+								"Journey"
+							],
+							"query": [
+								{
+									"key": "City",
+									"value": "<string>",
+									"description": "(Required) City where the journey will take place"
+								},
+								{
+									"key": "ListSelectedTapas",
+									"value": "<string>",
+									"description": "(Required) List of the selected tapas choosed by the user.\r\nShould be at the minimum 3."
+								},
+								{
+									"key": "Localtime",
+									"value": "<string>",
+									"description": "(Required) Current datetime of the client used for schedule algorithm"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Server Error",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "rotaDasTapasHeaders",
+										"value": {
+											"apiKey": "<string>"
+										}
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/v1/RotaDasTapas/Journey?City=<string>&ListSelectedTapas=<string>&Localtime=<string>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"RotaDasTapas",
+										"Journey"
+									],
+									"query": [
+										{
+											"key": "City",
+											"value": "<string>"
+										},
+										{
+											"key": "ListSelectedTapas",
+											"value": "<string>"
+										},
+										{
+											"key": "Localtime",
+											"value": "<string>"
+										}
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n \"statusCode\": 65266367,\n \"statusDescription\": \"officia dolor fugiat\",\n \"message\": \"laborum in proident\"\n}"
+						},
+						{
+							"name": "Success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "rotaDasTapasHeaders",
+										"value": {
+											"apiKey": "<string>"
+										}
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/v1/RotaDasTapas/Journey?City=<string>&ListSelectedTapas=<string>&Localtime=<string>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"RotaDasTapas",
+										"Journey"
+									],
+									"query": [
+										{
+											"key": "City",
+											"value": "<string>"
+										},
+										{
+											"key": "ListSelectedTapas",
+											"value": "<string>"
+										},
+										{
+											"key": "Localtime",
+											"value": "<string>"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n \"tapas\": [\n  {\n   \"id\": \"nulla non n\",\n   \"name\": \"adipisicing enim\",\n   \"title\": \"laboris Lorem sed\",\n   \"address\": \"irure ut esse\",\n   \"description\": \"commodo\",\n   \"city\": \"in\",\n   \"imageUrl\": \"ipsum ex\",\n   \"schedule\": {\n    \"hours\": \"minim irure\",\n    \"status\": \"Ut labore\",\n    \"disable\": false\n   }\n  },\n  {\n   \"id\": \"aute in\",\n   \"name\": \"pariatur et incididunt esse\",\n   \"title\": \"id ex pariatur aliquip in\",\n   \"address\": \"ex Ut aliqu\",\n   \"description\": \"exercitation veniam tempor\",\n   \"city\": \"ipsum Lorem consectetur nisi\",\n   \"imageUrl\": \"sit minim\",\n   \"schedule\": {\n    \"hours\": \"et laborum in cupidatat\",\n    \"status\": \"irure adipisicing do\",\n    \"disable\": false\n   }\n  }\n ]\n}"
+						},
+						{
+							"name": "Unauthorized",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "rotaDasTapasHeaders",
+										"value": {
+											"apiKey": "<string>"
+										}
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/v1/RotaDasTapas/Journey?City=<string>&ListSelectedTapas=<string>&Localtime=<string>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"RotaDasTapas",
+										"Journey"
+									],
+									"query": [
+										{
+											"key": "City",
+											"value": "<string>"
+										},
+										{
+											"key": "ListSelectedTapas",
+											"value": "<string>"
+										},
+										{
+											"key": "Localtime",
+											"value": "<string>"
+										}
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n \"statusCode\": 65266367,\n \"statusDescription\": \"officia dolor fugiat\",\n \"message\": \"laborum in proident\"\n}"
+						}
+					]
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "7a84cdc4-5363-4940-8e85-cf877192bb40",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "e0c106f6-1c67-469b-b4ea-7ec11e9dd3c5",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "7abf2adc-0009-4919-ae85-118953e4bebd",
+			"key": "baseUrl",
+			"value": "http://localhost:5000"
+		}
+	],
+	"protocolProfileBehavior": {}
+}
