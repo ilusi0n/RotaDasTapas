@@ -23,9 +23,10 @@ namespace RotaDasTapas.Filters
             var apiKey = context.HttpContext.Request.Headers["ApiKey"];
             var herokuKey = Environment.GetEnvironmentVariable("apikey") ?? _rotaDasTapasConfiguration.Value.ApiKey;
 
-            if (!apiKey.Any()) return;
-            if (!apiKey.Equals(herokuKey))
-                context.Result = new ObjectResult(new UnauthorizedError(ErrorConstants.UnauthorizedError));
+            if (!apiKey.Any() || !apiKey.Equals(herokuKey))
+            {
+                context.Result = new ObjectResult(new UnauthorizedError(ErrorConstants.UnauthorizedError));   
+            }
         }
     }
 }
