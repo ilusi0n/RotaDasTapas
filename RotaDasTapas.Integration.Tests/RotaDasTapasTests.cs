@@ -1,3 +1,4 @@
+using System;
 using System.Net.Http;
 using System.Threading.Tasks;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -7,7 +8,7 @@ using RotaDasTapas.Models.Request;
 namespace RotaDasTapas.Integration.Tests
 {
     [TestClass]
-    public class RotaDasTapasTests
+    public class RotaDasTapasTests : IDisposable
     {
         private const string RotasBaseUrl = "/api/v1/RotaDasTapas/Tapas?";
         private readonly HttpClient _client;
