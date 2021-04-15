@@ -109,10 +109,14 @@ namespace RotaDasTapas.Unit.Tests.Filters
 
             //Act
             filter.OnAuthorization(_context);
-            var result = _context.Result;
+            var response = _context.Result as ObjectResult;
+            var result = response.Value as UnauthorizedError;
 
             //Assert
-            Assert.IsNull(result);
+            Assert.IsNotNull(result);
+            Assert.AreEqual((int) HttpStatusCode.Unauthorized, result.StatusCode);
+            Assert.AreEqual(HttpStatusCode.Unauthorized.ToString(), result.StatusDescription);
+            Assert.AreEqual(ErrorConstants.UnauthorizedError, result.Message);
         }
     }
 }
